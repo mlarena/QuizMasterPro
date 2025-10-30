@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+{% block title %}Available Quizzes{% endblock %}
+{% block content %}
+<div class="card">
+    <div class="card-content">
+        <h2>Available Quizzes</h2>
+        {% if quizzes %}
+            <div class="quiz-list">
+                {% for quiz in quizzes %}
+                    <div class="card quiz-card">
+                        <div class="card-content">
+                            <h4>{{ quiz.title }}</h4>
+                            <p>{{ quiz.description or 'No description' }}</p>
+                            <p>Created: {{ quiz.created_at.strftime('%Y-%m-%d %H:%M') }}</p>
+                            <div class="text-right">
+                                <a href="{{ url_for('quiz.take_quiz', quiz_id=quiz.id) }}" class="btn btn-primary">Take Quiz</a>
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        {% else %}
+            <p>No quizzes available.</p>
+        {% endif %}
+    </div>
+</div>
+{% endblock %}  

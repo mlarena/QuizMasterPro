@@ -1,0 +1,35 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Virtual Environment
+venv/
+.venv/
+ENV/
+
+# Database
+*.sqlite
+*.db
+instance/
+
+!quizmaster.db
+
+# Flask Migrations
+migrations/
+
+# IDE
+.vscode/
+.idea/
+
+# Environment variables
+.env
+.env.local
+
+# Logs
+logs/
+*.log
+
+promt.txt
+z_load_q.py
+zquiz/

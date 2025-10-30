@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+{% block title %}Quiz Results: {{ quiz.title }}{% endblock %}
+{% block content %}
+<div class="card">
+    <div class="card-content">
+        <h2>Quiz Results: {{ quiz.title }}</h2>
+        <p>Score: {{ result.score }}%</p>
+        <p>Correct Answers: {{ quiz_results.correct_count }} / {{ quiz_results.total_questions }}</p>
+        <p>Incorrect Answers: {{ quiz_results.incorrect_count }}</p>
+        <h3>Details</h3>
+        {% for detail in quiz_results.results %}
+            <div class="card question-card">
+                <div class="card-content">
+                    <p>Question {{ loop.index }}: {% if detail.is_correct %}Correct{% else %}Incorrect{% endif %}</p>
+                </div>
+            </div>
+        {% endfor %}
+        <div class="text-right">
+            <a href="{{ url_for('quiz.list_quizzes') }}" class="btn btn-primary">Back to Quizzes</a>
+        </div>
+    </div>
+</div>
+{% endblock %}

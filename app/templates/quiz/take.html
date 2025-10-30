@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+{% block title %}Take Quiz: {{ quiz.title }}{% endblock %}
+{% block content %}
+<div class="card">
+    <div class="card-content">
+        <h2>{{ quiz.title }}</h2>
+        <p>{{ quiz.description or '' }}</p>
+        <div id="questionProgress" class="progress-container"></div>
+        <div id="quizContainer"></div>
+        <div class="flex flex-center mt-3">
+            <button id="prevQuestionBtn" class="btn btn-secondary mr-2">Previous</button>
+            <button id="nextQuestionBtn" class="btn btn-primary">Next</button>
+            <button id="submitQuizBtn" class="btn btn-primary" style="display: none;">Submit</button>
+        </div>
+    </div>
+</div>
+<script>
+    const quizId = {{ quiz.id }};
+    const questions = {{ questions | tojson }};
+</script>
+{% endblock %}
+{% block scripts %}
+<script src="{{ url_for('static', filename='js/quiz.js') }}"></script>
+{% endblock %}

@@ -1,0 +1,68 @@
+{% extends "base.html" %}
+{% block title %}Edit Question {{ question_order }}{% endblock %}
+{% block content %}
+<div class="card">
+    <div class="card-content">
+        <h2>Edit Question {{ question_order }} of {{ total_questions }} in Quiz: {{ quiz.title }}</h2>
+        <div class="question-card">
+            <div class="card-content">
+                <div class="flex">
+                    <textarea class="form-control question-textarea" placeholder="Question text" style="width: 999px; height: 55px;" required>{{ question_data.text }}</textarea>
+                    <button type="button" class="btn btn-error btn-sm ml-2" onclick="if(confirm('Delete this question?')) { /* логика удаления */ }"><i class="material-icons">delete</i></button>
+                </div>
+                <div class="answers-container mt-2"></div>
+                <button type="button" class="btn btn-secondary btn-sm" onclick="addAnswerElement(document.querySelector('.answers-container'))">Add Answer</button>
+            </div>
+        </div>
+        <div class="flex flex-center mt-3">
+            <button id="prevQuestionBtn" class="btn btn-secondary mr-2" {% if question_order == 1 %}disabled{% endif %} onclick="saveAndNavigate('prev')">Previous</button>
+            <button id="saveQuestionBtn" class="btn btn-primary mr-2" onclick="saveAndNavigate('save')">Save</button>
+            <button id="nextQuestionBtn" class="btn btn-primary" {% if question_order == total_questions %}disabled{% endif %} onclick="saveAndNavigate('next')">Next</button>
+        </div>
+    </div>
+</div>
+<script>
+    const quizData = {{ question_data | tojson }};
+</script>
+{% endblock %}
+{% block scripts %}
+<script src="{{ url_for('static', filename='js/admin.js') }}"></script>
+<script>
+    function saveAndNavigate(action) {
+        const data = {
+            text: document.querySelector('.question-textarea').value,
+            answers: collectAnswers(), // Адаптированная функция collectQuizData()[0].answers
+            action: action
+        };
+        fetch(window.location.href, {
+            method: 'POST',
+            headers: {'Content-Type': 'application/json'},
+            body: JSON.stringify(data)
+        }).then(response => response.json())
+        .then(result => {
+            if (result.success && result.redirect) {
+                window.location.href = result.redirect;
+            } else if (result.success) {
+                showMaterialToast('Question saved!', 'success');
+            } else {
+                showMaterialToast(result.message, 'error');
+            }
+        });
+    }
+
+    function collectAnswers() {
+        const answerElements = document.querySelectorAll('.answer-option');
+        const answers = [];
+        answerElements.forEach((aEl, aIdx) => {
+            const answerInput = aEl.querySelector('.answer-textarea');
+            const correctCheckbox = aEl.querySelector('input[type="checkbox"]');
+            answers.push({
+                text: answerInput.value,
+                is_correct: correctCheckbox.checked,
+                order: aIdx + 1
+            });
+        });
+        return answers;
+    }
+</script>
+{% endblock %}
