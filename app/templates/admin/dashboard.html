@@ -7,19 +7,29 @@
         <a href="{{ url_for('admin.create_quiz') }}" class="btn btn-primary mb-3">Create New Quiz</a>
         <h3>Existing Quizzes</h3>
         {% if quizzes %}
-            <div class="quiz-list">
-                {% for quiz in quizzes %}
-                    <div class="card quiz-card">
-                        <div class="card-content">
-                            <h4>{{ quiz.title }}</h4>
-                            <p>{{ quiz.description or 'No description' }}</p>
-                            <p>Created: {{ quiz.created_at.strftime('%Y-%m-%d %H:%M') }}</p>
-                            <div class="text-right">
-                                <a href="{{ url_for('admin.edit_quiz', quiz_id=quiz.id) }}" class="btn btn-primary">Edit</a>
-                            </div>
-                        </div>
-                    </div>
-                {% endfor %}
+            <div class="table-responsive">
+                <table class="table table-bordered table-hover">
+                    <thead>
+                        <tr>
+                            <th>Title</th>
+                            <th>Description</th>
+                            <th style="white-space: nowrap;">Created</th>
+                            <th style="min-width: 100px;">Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for quiz in quizzes %}
+                        <tr>
+                            <td><strong>{{ quiz.title }}</strong></td>
+                            <td>{{ quiz.description or 'No description' }}</td>
+                            <td style="white-space: nowrap;">{{ quiz.created_at.strftime('%Y-%m-%d %H:%M') }}</td>
+                            <td>
+                                <a href="{{ url_for('admin.edit_quiz', quiz_id=quiz.id) }}" class="btn btn-primary btn-sm" style="white-space: nowrap;">Edit</a>
+                            </td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
             </div>
         {% else %}
             <p>No quizzes available.</p>

@@ -360,3 +360,80 @@ h3 { font-size: 1.25rem; }
         max-width: 100%; /* Full width on smaller screens */
     }
 }
+
+/* Table Styles */
+.table-responsive {
+    overflow-x: auto;
+    margin: 1rem 0;
+}
+
+.table {
+    width: 100%;
+    border-collapse: collapse;
+    background-color: var(--surface);
+    border-radius: 4px;
+    overflow: hidden;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.table-bordered {
+    border: 1px solid var(--divider);
+}
+
+.table-bordered th,
+.table-bordered td {
+    border: 1px solid var(--divider);
+}
+
+.table th {
+    background-color: var(--primary);
+    color: white;
+    font-weight: 500;
+    text-align: left;
+    padding: 1rem;
+    font-size: 0.875rem;
+    text-transform: uppercase;
+    letter-spacing: 0.02857em;
+}
+
+.table td {
+    padding: 1rem;
+    border-bottom: 1px solid var(--divider);
+    color: var(--text-primary);
+    transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+}
+
+.table-hover tbody tr:hover {
+    background-color: rgba(25, 118, 210, 0.04);
+    cursor: pointer;
+}
+
+.table-striped tbody tr:nth-of-type(odd) {
+    background-color: rgba(0, 0, 0, 0.02);
+}
+
+.table-striped.table-hover tbody tr:hover {
+    background-color: rgba(25, 118, 210, 0.08);
+}
+
+/* Responsive table */
+@media (max-width: 768px) {
+    .table th,
+    .table td {
+        padding: 0.75rem 0.5rem;
+        font-size: 0.875rem;
+    }
+    
+    .table th {
+        font-size: 0.8rem;
+    }
+}
+
+/* Card improvements for tables */
+.card-content .table-responsive:first-child {
+    margin-top: 0;
+}
+
+.card-content .table-responsive:last-child {
+    margin-bottom: 0;
+}

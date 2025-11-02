@@ -10,7 +10,7 @@ def print_directory_structure(path, indent=""):
         return
 
     # Исключаем каталоги __pycache__ и venv
-    if os.path.basename(path) in ["__pycache__", "venv", "migrations", "logs"]:
+    if os.path.basename(path) in ["__pycache__", "venv", "migrations", "logs", "zquiz", ".git"]:
         return
 
     print(indent + "|--- " + os.path.basename(path) + "/")
@@ -27,7 +27,7 @@ def print_directory_structure(path, indent=""):
 
 if __name__ == "__main__":
      #directory_path = input("Enter the directory path: ")
-    directory_path = "C:\\git\\QuizMasterPro"
+    directory_path = "C:\\_ExamCollection\\QuizMasterPro"
     print_directory_structure(directory_path)
 
 
