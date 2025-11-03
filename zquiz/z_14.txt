@@ -1,0 +1,351 @@
+Вопросы по табличным пространствам, хранению и перемещению данных
+1. Что такое табличное пространство в PostgreSQL?
+a) Логическая группировка таблиц
+b) Физическое расположение на диске для хранения объектов БД
+c) Пространство имен для таблиц
+d) Виртуальное хранилище данных
+Правильный ответ: b
+
+2. Какой командой создается табличное пространство?
+a) CREATE TABLESPACE
+b) CREATE SPACE
+c) ADD TABLESPACE
+d) NEW TABLESPACE
+Правильный ответ: a
+
+3. Где хранятся данные таблицы по умолчанию?
+a) В каталоге base основной директории данных
+b) В отдельном табличном пространстве
+c) В системном каталоге pg_default
+d) В памяти сервера
+Правильный ответ: a
+
+4. Как переместить таблицу в другое табличное пространство?
+a) ALTER TABLE table_name SET TABLESPACE new_tablespace
+b) MOVE TABLE table_name TO new_tablespace
+c) RELOCATE TABLE table_name TO new_tablespace
+d) CHANGE TABLE table_name TABLESPACE new_tablespace
+Правильный ответ: a
+
+5. Какой системный каталог содержит информацию о табличных пространствах?
+a) pg_tablespace
+b) pg_space
+c) pg_storage
+d) pg_location
+Правильный ответ: a
+
+6. Что содержит каталог pg_wal в структуре PGDATA?
+a) WAL-файлы (журнал предзаписи)
+b) Файлы временных таблиц
+c) Архивные копии данных
+d) Логи ошибок
+Правильный ответ: a
+
+7. Как создать базу данных в указанном табличном пространстве?
+a) CREATE DATABASE dbname TABLESPACE tspacename
+b) CREATE DATABASE dbname IN TABLESPACE tspacename
+c) CREATE DATABASE dbname WITH TABLESPACE = tspacename
+d) CREATE DATABASE dbname LOCATION tspacename
+Правильный ответ: a
+
+8. Какой каталог содержит подкаталоги для отдельных баз данных?
+a) base
+b) data
+c) dbs
+d) databases
+Правильный ответ: a
+
+9. Как переместить индекс в другое табличное пространство?
+a) ALTER INDEX index_name SET TABLESPACE new_tablespace
+b) MOVE INDEX index_name TO new_tablespace
+c) RELOCATE INDEX index_name TO new_tablespace
+d) REINDEX INDEX index_name IN new_tablespace
+Правильный ответ: a
+
+10. Что такое OID базы данных?
+a) Уникальный числовой идентификатор базы данных
+b) Объектный идентификатор таблицы
+c) Идентификатор операционной системы
+d) Открытый идентификатор данных
+Правильный ответ: a
+
+11. Как узнать путь к файлам конкретной базы данных?
+a) $PGDATA/base/OID_базы
+b) $PGDATA/db/OID_базы
+c) $PGDATA/data/OID_базы
+d) $PGDATA/database/OID_базы
+Правильный ответ: a
+
+12. Какой командой удаляется табличное пространство?
+a) DROP TABLESPACE
+b) DELETE TABLESPACE
+c) REMOVE TABLESPACE
+d) DESTROY TABLESPACE
+Правильный ответ: a
+
+13. Что такое TOAST в контексте хранения данных?
+a) Механизм хранения больших атрибутов вне основной таблицы
+b) Система сжатия данных
+c) Метод шифрования больших объектов
+d) Технология оптимизации хранения
+Правильный ответ: a
+
+14. Как посмотреть список всех табличных пространств?
+a) SELECT * FROM pg_tablespace
+b) SHOW TABLESPACES
+c) LIST TABLESPACES
+d) DISPLAY TABLESPACES
+Правильный ответ: a
+
+15. В каком каталоге хранятся временные файлы?
+a) pg_tmp
+b) tmp
+c) temp
+d) pg_temp
+Правильный ответ: a
+
+16. Как переместить все объекты базы данных в другое табличное пространство?
+a) ALTER DATABASE dbname SET TABLESPACE new_tablespace
+b) MOVE DATABASE dbname TO new_tablespace
+c) RELOCATE DATABASE dbname TO new_tablespace
+d) CLONE DATABASE dbname TO new_tablespace
+Правильный ответ: a
+
+17. Какой каталог содержит файлы контрольных точек?
+a) pg_control
+b) pg_checkpoint
+c) checkpoint
+d) control_files
+Правильный ответ: a
+
+18. Что такое таблица-сегмент (segment) в контексте хранения?
+a) Файл размером до 1GB, содержащий данные таблицы
+b) Часть таблицы в партиционировании
+c) Сегмент памяти для кэширования
+d) Логическая единица распределения данных
+Правильный ответ: a
+
+19. Как создать таблицу в определенном табличном пространстве?
+a) CREATE TABLE table_name (...) TABLESPACE tablespace_name
+b) CREATE TABLE table_name (...) IN TABLESPACE tablespace_name
+c) CREATE TABLE table_name (...) WITH TABLESPACE = tablespace_name
+d) CREATE TABLE table_name (...) LOCATION tablespace_name
+Правильный ответ: a
+
+20. Какой каталог содержит файлы с информацией о логической репликации?
+a) pg_logical
+b) pg_replical
+c) pg_logrep
+d) logical_replication
+Правильный ответ: a
+
+21. Что такое visibility map в контексте хранения?
+a) Битовая карта страниц, где все кортежи видимы
+b) Карта видимых данных для пользователей
+c) Файл отображения видимости индексов
+d) Система управления видимостью транзакций
+Правильный ответ: a
+
+22. Как узнать OID базы данных по её имени?
+a) SELECT oid FROM pg_database WHERE datname = 'dbname'
+b) SHOW DATABASE OID 'dbname'
+c) GET OID FOR DATABASE 'dbname'
+d) SELECT database_oid('dbname')
+Правильный ответ: a
+
+23. Какой каталог содержит файлы с информацией о подписках логической репликации?
+a) pg_subscription
+b) pg_logical
+c) pg_replication
+d) pg_pubsub
+Правильный ответ: a
+
+24. Что такое init fork в контексте хранения таблиц?
+a) Начальный фрагмент таблицы с bootstrap информацией
+b) Файл инициализации табличного пространства
+c) Начальный сегмент базы данных
+d) Фрагмент инициализации индекса
+Правильный ответ: a
+
+25. Как установить табличное пространство по умолчанию для базы данных?
+a) ALTER DATABASE dbname SET TABLESPACE tspacename
+b) SET DEFAULT TABLESPACE FOR DATABASE dbname TO tspacename
+c) MODIFY DATABASE dbname DEFAULT TABLESPACE tspacename
+d) CHANGE DATABASE dbname TABLESPACE tspacename
+Правильный ответ: a
+
+26. Какой каталог содержит файлы мультиксакт-блокировок?
+a) pg_multixact
+b) pg_multi
+c) pg_mxact
+d) multixact
+Правильный ответ: a
+
+27. Что такое FSM (Free Space Map) в контексте хранения?
+a) Карта свободного пространства в файлах данных
+b) Файловая система менеджера
+c) Карта файлового пространства
+d) Система управления свободной памятью
+Правильный ответ: a
+
+28. Как узнать местоположение табличного пространства?
+a) SELECT spcname, spclocation FROM pg_tablespace
+b) SHOW TABLESPACE LOCATION
+c) SELECT * FROM pg_tablespace_location
+d) DISPLAY TABLESPACE PATH
+Правильный ответ: a
+
+29. Какой каталог содержит файлы с информацией о коммитах транзакций?
+a) pg_commit_ts
+b) pg_commit
+c) pg_xact
+d) pg_transaction
+Правильный ответ: a
+
+30. Что такое VM (Visibility Map) в контексте VACUUM?
+a) Карта видимости для оптимизации VACUUM
+b) Виртуальная память для операций очистки
+c) Карта версий для управления видимостью
+d) Система визуализации процессов VACUUM
+Правильный ответ: a
+
+31. Как посмотреть размер табличного пространства?
+a) SELECT pg_tablespace_size('tablespace_name')
+b) SHOW TABLESPACE SIZE 'tablespace_name'
+c) SELECT size FROM pg_tablespace_size WHERE spcname = 'tablespace_name'
+d) \db+ в psql
+Правильный ответ: a
+
+32. Какой каталог содержит файлы состояний процессов?
+a) pg_stat
+b) pg_proc
+c) pg_serial
+d) pg_snapshots
+Правильный ответ: a
+
+33. Как переместить материализованное представление в другое табличное пространство?
+a) ALTER MATERIALIZED VIEW view_name SET TABLESPACE new_tablespace
+b) MOVE MATERIALIZED VIEW view_name TO new_tablespace
+c) RELOCATE MATERIALIZED VIEW view_name TO new_tablespace
+d) CHANGE MATERIALIZED VIEW view_name TABLESPACE new_tablespace
+Правильный ответ: a
+
+34. Какой каталог содержит файлы с информацией о временных статистиках?
+a) pg_stat_tmp
+b) pg_temp_stats
+c) tmp_stats
+d) stat_temp
+Правильный ответ: a
+
+35. Что такое fork в контексте файлов данных таблиц?
+a) Различные типы файлов данных для одной таблицы
+b) Ветвление таблицы для партиционирования
+c) Разделение данных между табличными пространствами
+d) Копирование таблицы для репликации
+Правильный ответ: a
+
+36. Как создать табличное пространство с указанием местоположения?
+a) CREATE TABLESPACE name LOCATION 'path'
+b) CREATE TABLESPACE name IN 'path'
+c) CREATE TABLESPACE name AT 'path'
+d) CREATE TABLESPACE name PATH 'path'
+Правильный ответ: a
+
+37. Какой каталог содержит логические файлы репликационных слотов?
+a) pg_replslot
+b) pg_replication
+c) pg_slots
+d) pg_logical
+Правильный ответ: a
+
+38. Как переместить последовательность (sequence) в другое табличное пространство?
+a) ALTER SEQUENCE sequence_name SET TABLESPACE new_tablespace
+b) MOVE SEQUENCE sequence_name TO new_tablespace
+c) RELOCATE SEQUENCE sequence_name TO new_tablespace
+d) CHANGE SEQUENCE sequence_name TABLESPACE new_tablespace
+Правильный ответ: a
+
+39. Какой каталог содержит файлы блокировок?
+a) run (в PGDATA)
+b) locks
+c) pg_lock
+d) pg_stat
+Правильный ответ: a
+
+40. Что такое relfilenode в контексте хранения?
+a) Идентификатор файла для отношения (таблицы/индекса)
+b) Узел связанных файлов
+c) Идентификатор файловой системы
+d) Нод репликации файлов
+Правильный ответ: a
+
+41. Как установить табличное пространство по умолчанию для всей кластера?
+a) SET default_tablespace = 'tablespace_name'
+b) ALTER SYSTEM SET default_tablespace TO 'tablespace_name'
+c) SET GLOBAL default_tablespace = 'tablespace_name'
+d) CONFIGURE DEFAULT TABLESPACE 'tablespace_name'
+Правильный ответ: a
+
+42. Какой каталог содержит файлы с информацией о подкачке?
+a) pgsql_tmp
+b) pg_swap
+c) swap
+d) pg_tmp (для больших сортировок)
+Правильный ответ: a
+
+43. Как узнать, в каком табличном пространстве находится таблица?
+a) SELECT tablename, tablespace FROM pg_tables WHERE tablename = 'table_name'
+b) SHOW TABLE TABLESPACE 'table_name'
+c) SELECT relname, reltablespace FROM pg_class WHERE relname = 'table_name'
+d) \d+ table_name в psql
+Правильный ответ: a
+
+44. Какой системный каталок содержит информацию о статистике использования индексов?
+a) pg_stat_all_indexes
+b) pg_index_stats
+c) pg_index_usage
+d) pg_stat_indexes
+Правильный ответ: a
+
+45. Что такое page в контексте хранения PostgreSQL?
+a) Блок данных фиксированного размера (обычно 8KB)
+b) Страница памяти операционной системы
+c) Веб-страница с данными
+d) Логическая единица разбиения таблицы
+Правильный ответ: a
+
+46. Как удалить табличное пространство, если в нём есть объекты?
+a) Сначала переместить все объекты, затем удалить
+b) Использовать DROP TABLESPACE FORCE
+c) Использовать DROP TABLESPACE CASCADE
+d) Табличное пространство с объектами удалить нельзя
+Правильный ответ: a
+
+47. Какой каталог содержит файлы с информацией о транзакциях?
+a) pg_xact
+b) pg_transaction
+c) pg_tx
+d) transaction_files
+Правильный ответ: a
+
+48. Как переместить таблицу вместе с индексами в другое табличное пространство?
+a) Переместить таблицу, затем индексы по отдельности
+b) Использовать ALTER TABLE ... SET TABLESPACE CASCADE
+c) Создать новую таблицу и скопировать данные
+d) Использовать MOVE TABLE WITH INDEXES
+Правильный ответ: a
+
+49. Какой каталог содержит файлы с информацией о отношениях (relations)?
+a) pg_relation
+b) pg_rel
+c) base (через OID базы и relfilenode)
+d) pg_tables
+Правильный ответ: c
+
+50. Что такое tablespace mapping при логической репликации?
+a) Отображение табличных пространств между мастером и репликой
+b) Карта расположения табличных пространств
+c) Система миграции табличных пространств
+d) Метод репликации табличных пространств
+Правильный ответ: a
+

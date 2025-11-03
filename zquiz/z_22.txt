@@ -1,0 +1,350 @@
+Вопросы по системным представлениям PostgreSQL
+1. Какое представление содержит информацию о всех таблицах в текущей базе данных?
+a) pg_tables
+b) pg_class
+c) pg_relations
+d) pg_objects
+Правильный ответ: a
+
+2. Как посмотреть список всех баз данных в кластере?
+a) pg_database
+b) pg_databases
+c) pg_db
+d) pg_catalog_db
+Правильный ответ: a
+
+3. Какое представление показывает текущие активные запросы?
+a) pg_stat_activity
+b) pg_activity
+c) pg_current_queries
+d) pg_running_processes
+Правильный ответ: a
+
+4. Где можно найти информацию о размерах таблиц и индексов?
+a) pg_relation_size() функции
+b) pg_table_size() функции
+c) pg_total_relation_size() функции
+d) Все перечисленные
+Правильный ответ: d
+
+5. Какое представление содержит статистику по индексам?
+a) pg_stat_all_indexes
+b) pg_index_stats
+c) pg_index_usage
+d) pg_stat_indexes
+Правильный ответ: a
+
+6. Как посмотреть информацию о блокировках?
+a) pg_locks
+b) pg_blocks
+c) pg_lock_info
+d) pg_current_locks
+Правильный ответ: a
+
+7. Какое представление показывает статистику по таблицам?
+a) pg_stat_all_tables
+b) pg_table_stats
+c) pg_stats
+d) pg_stat_tables
+Правильный ответ: a
+
+8. Где находится информация о пользователях и ролях?
+a) pg_roles
+b) pg_users
+c) pg_authid
+d) Все перечисленные
+Правильный ответ: d
+
+9. Какое представление содержит информацию о репликации?
+a) pg_stat_replication
+b) pg_replication_stats
+c) pg_slave_status
+d) pg_streaming_stats
+Правильный ответ: a
+
+10. Как посмотреть список всех представлений (views) в базе?
+a) pg_views
+b) pg_view
+c) pg_matviews
+d) pg_class с фильтром по relkind
+Правильный ответ: a
+
+11. Какое представление показывает прогресс выполнения VACUUM?
+a) pg_stat_progress_vacuum
+b) pg_vacuum_progress
+c) pg_cleanup_status
+d) vacuum_progress_info
+Правильный ответ: a
+
+12. Где найти информацию о настройках параметров PostgreSQL?
+a) pg_settings
+b) pg_config
+c) pg_parameters
+d) pg_conf
+Правильный ответ: a
+
+13. Какое представление содержит статистику по функциям?
+a) pg_stat_user_functions
+b) pg_function_stats
+c) pg_proc_stats
+d) pg_stat_functions
+Правильный ответ: a
+
+14. Как посмотреть информацию о расширениях?
+a) pg_extension
+b) pg_extensions
+c) pg_plugins
+d) pg_modules
+Правильный ответ: a
+
+15. Какое представление показывает статистику по WAL?
+a) pg_stat_wal
+b) pg_wal_stats
+c) pg_xlog_stats
+d) pg_transaction_log_stats
+Правильный ответ: a
+
+16. Где находится информация о табличных пространствах?
+a) pg_tablespace
+b) pg_space
+c) pg_storage
+d) pg_location
+Правильный ответ: a
+
+17. Какое представление содержит информацию о подготовленных транзакциях?
+a) pg_prepared_xacts
+b) pg_prepared_transactions
+c) pg_transaction_status
+d) pg_stat_transactions
+Правильный ответ: a
+
+18. Как посмотреть статистику по буферному кешу?
+a) pg_stat_bgwriter
+b) pg_buffercache
+c) pg_buffer_stats
+d) pg_cache_stats
+Правильный ответ: b
+
+19. Какое представление показывает информацию о подписках логической репликации?
+a) pg_subscription
+b) pg_subscriptions
+c) pg_sub_info
+d) pg_replication_subscriptions
+Правильный ответ: a
+
+20. Где найти информацию о зависимостях между объектами?
+a) pg_depend
+b) pg_dependencies
+c) pg_relations
+d) pg_links
+Правильный ответ: a
+
+21. Какое представление содержит статистику по запросам?
+a) pg_stat_statements
+b) pg_query_stats
+c) pg_statement_stats
+d) pg_sql_stats
+Правильный ответ: a
+
+22. Как посмотреть информацию о триггерах?
+a) pg_trigger
+b) pg_triggers
+c) pg_trigger_info
+d) pg_event_trigger
+Правильный ответ: a
+
+23. Какое представление показывает информацию о правилах (rules)?
+a) pg_rewrite
+b) pg_rules
+c) pg_rule_info
+d) pg_transform
+Правильный ответ: a
+
+24. Где находится информация о последовательностях?
+a) pg_sequence
+b) pg_sequences
+c) pg_serial
+d) pg_seq
+Правильный ответ: a
+
+25. Какое представление содержит информацию о внешних таблицах?
+a) pg_foreign_table
+b) pg_external
+c) pg_foreign_data
+d) pg_external_table
+Правильный ответ: a
+
+26. Как посмотреть информацию о публикациях логической репликации?
+a) pg_publication
+b) pg_publications
+c) pg_pub_info
+d) pg_replication_publications
+Правильный ответ: a
+
+27. Какое представление показывает прогресс создания индекса?
+a) pg_stat_progress_create_index
+b) pg_index_progress
+c) pg_create_index_status
+d) pg_index_build_progress
+Правильный ответ: a
+
+28. Где найти информацию о ограничениях?
+a) pg_constraint
+b) pg_constraints
+c) pg_restrictions
+d) pg_limits
+Правильный ответ: a
+
+29. Какое представление содержит информацию о наследовании таблиц?
+a) pg_inherits
+b) pg_inheritance
+c) pg_table_inherits
+d) pg_parent_child
+Правильный ответ: a
+
+30. Как посмотреть информацию о статистике по базам данных?
+a) pg_stat_database
+b) pg_database_stats
+c) pg_db_stats
+d) pg_stat_db
+Правильный ответ: a
+
+31. Какое представление показывает информацию о временных статистиках?
+a) pg_stat_database_conflicts
+b) pg_db_conflicts
+c) pg_database_conflict_stats
+d) pg_conflict_stats
+Правильный ответ: a
+
+32. Где находится информация о атрибутах таблиц?
+a) pg_attribute
+b) pg_columns
+c) pg_fields
+d) pg_struct
+Правильный ответ: a
+
+33. Какое представление содержит информацию о индексах?
+a) pg_index
+b) pg_indexes
+c) pg_ind
+d) pg_index_info
+Правильный ответ: a
+
+34. Как посмотреть информацию о процедурах и функциях?
+a) pg_proc
+b) pg_functions
+c) pg_routines
+d) pg_function_info
+Правильный ответ: a
+
+35. Какое представление показывает информацию о статистике по операциям ввода-вывода?
+a) pg_stat_io
+b) pg_io_stats
+c) pg_disk_io
+d) pg_storage_stats
+Правильный ответ: a
+
+36. Где найти информацию о схемах?
+a) pg_namespace
+b) pg_schema
+c) pg_schemas
+d) information_schema.schemata
+Правильный ответ: a
+
+37. Какое представление содержит информацию о репликационных слотах?
+a) pg_replication_slots
+b) pg_slots
+c) pg_replication_slot_info
+d) pg_slot_status
+Правильный ответ: a
+
+38. Как посмотреть информацию о материализованных представлениях?
+a) pg_matviews
+b) pg_materialized_views
+c) pg_mviews
+d) pg_class с фильтром
+Правильный ответ: a
+
+39. Какое представление показывает информацию о статистике архивации WAL?
+a) pg_stat_archiver
+b) pg_archiver_stats
+c) pg_wal_archive_stats
+d) pg_archive_status
+Правильный ответ: a
+
+40. Где находится информация о настройках локали?
+a) pg_collation
+b) pg_locale
+c) pg_encoding
+d) pg_charset
+Правильный ответ: a
+
+41. Какое представление содержит информацию о статистике по большим объектам?
+a) pg_stat_bgwriter
+b) pg_largeobject
+c) pg_lo_stats
+d) Статистика по большим объектам не ведется
+Правильный ответ: d
+
+42. Как посмотреть информацию о типах данных?
+a) pg_type
+b) pg_types
+c) pg_datatype
+d) pg_data_types
+Правильный ответ: a
+
+43. Какое представление показывает информацию о операторах?
+a) pg_operator
+b) pg_operators
+c) pg_ops
+d) pg_operation
+Правильный ответ: a
+
+44. Где найти информацию о агрегатных функциях?
+a) pg_aggregate
+b) pg_aggregates
+c) pg_agg
+d) pg_group_func
+Правильный ответ: a
+
+45. Какое представление содержит информацию о преобразованиях типов?
+a) pg_cast
+b) pg_casts
+c) pg_conversion
+d) pg_type_conv
+Правильный ответ: a
+
+46. Как посмотреть информацию о доменах?
+a) pg_domain
+b) pg_domains
+c) pg_type с фильтром
+d) information_schema.domains
+Правильный ответ: d
+
+47. Какое представление показывает информацию о статистике по планировщику?
+a) pg_stat_statements
+b) Статистика планировщика не ведется
+c) pg_planner_stats
+d) pg_query_planner
+Правильный ответ: b
+
+48. Где находится информация о политиках RLS?
+a) pg_policy
+b) pg_policies
+c) pg_rls_policy
+d) pg_security_policy
+Правильный ответ: a
+
+49. Какое представление содержит информацию о статистике по автоочистке?
+a) pg_stat_progress_vacuum
+b) pg_stat_all_tables (autovacuum_count, last_autovacuum)
+c) pg_autovacuum_stats
+d) pg_vacuum_stats
+Правильный ответ: b
+
+50. Как посмотреть информацию о привилегиях объектов?
+a) information_schema.table_privileges
+b) pg_class.relacl
+c) \dp в psql
+d) Все перечисленные
+Правильный ответ: d

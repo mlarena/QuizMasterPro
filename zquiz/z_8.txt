@@ -1,0 +1,350 @@
+Вопросы по табличным пространствам и каталогам PostgreSQL
+1. Какой командой создается табличное пространство в PostgreSQL?
+a) CREATE TABLESPACE
+b) CREATE SPACE
+c) ADD TABLESPACE
+d) NEW TABLESPACE
+Правильный ответ: a
+
+2. В каком системном каталоге хранится информация о табличных пространствах?
+a) pg_tablespace
+b) pg_space
+c) pg_storage
+d) pg_location
+Правильный ответ: a
+
+3. Какой системный каталог содержит информацию о всех таблицах базы данных?
+a) pg_class
+b) pg_tables
+c) pg_objects
+d) pg_relations
+Правильный ответ: a
+
+4. Как посмотреть список всех табличных пространств в кластере?
+a) SELECT * FROM pg_tablespace
+b) SHOW TABLESPACES
+c) LIST TABLESPACES
+d) DISPLAY TABLESPACES
+Правильный ответ: a
+
+5. Какой параметр команды CREATE DATABASE указывает табличное пространство для новой базы данных?
+a) LOCATION
+b) TABLESPACE
+c) DIRECTORY
+d) DATASPACE
+Правильный ответ: b
+
+6. В каком каталоге по умолчанию хранятся данные кластера PostgreSQL?
+a) DATA_DIR
+b) PGDATA
+c) CLUSTER_DIR
+d) POSTGRES_DATA
+Правильный ответ: b
+
+7. Какой системный каталог содержит информацию о базах данных кластера?
+a) pg_db
+b) pg_database
+c) pg_databases
+d) pg_catalog_db
+Правильный ответ: b
+
+8. Как переместить таблицу в другое табличное пространство?
+a) MOVE TABLE table_name TO new_tablespace
+b) ALTER TABLE table_name SET TABLESPACE new_tablespace
+c) RELOCATE TABLE table_name TO new_tablespace
+d) CHANGE TABLE table_name TABLESPACE new_tablespace
+Правильный ответ: b
+
+9. Какой системный каталог хранит информацию об индексах?
+a) pg_indexes
+b) pg_index
+c) pg_ind
+d) pg_index_info
+Правильный ответ: b
+
+10. Что содержит каталог base в структуре PGDATA?
+a) Базовые конфигурационные файлы
+b) Подкаталоги с данными отдельных баз данных
+c) Системные каталоги
+d) Логи транзакций
+Правильный ответ: b
+
+11. Какой командой удаляется табличное пространство?
+a) DELETE TABLESPACE
+b) DROP TABLESPACE
+c) REMOVE TABLESPACE
+d) DESTROY TABLESPACE
+Правильный ответ: b
+
+12. В каком системном каталоге хранится информация о столбцах таблиц?
+a) pg_columns
+b) pg_attribute
+c) pg_fields
+d) pg_struct
+Правильный ответ: b
+
+13. Как узнать OID базы данных по её имени?
+a) SHOW DATABASE OID 'dbname'
+b) SELECT oid FROM pg_database WHERE datname = 'dbname'
+c) GET OID FOR DATABASE 'dbname'
+d) SELECT database_oid('dbname')
+Правильный ответ: b
+
+14. Какая метакоманда psql показывает табличные пространства?
+a) \dt
+b) \db
+c) \ds
+d) \df
+Правильный ответ: b
+
+15. В каком каталоге находятся WAL-файлы?
+a) wal_logs
+b) pg_wal
+c) transaction_logs
+d) pg_xlog
+Правильный ответ: b
+
+16. Какой системный каталог содержит информацию о пользователях и ролях?
+a) pg_users
+b) pg_authid
+c) pg_roles
+d) pg_authorization
+Правильный ответ: b
+
+17. Как создать табличное пространство с указанием местоположения?
+a) CREATE TABLESPACE name IN 'path'
+b) CREATE TABLESPACE name LOCATION 'path'
+c) CREATE TABLESPACE name AT 'path'
+d) CREATE TABLESPACE name PATH 'path'
+Правильный ответ: b
+
+18. В каком каталоге хранятся логические файлы репликационных слотов?
+a) pg_replication
+b) pg_replslot
+c) pg_slots
+d) pg_logical
+Правильный ответ: b
+
+19. Какой системный каталог содержит информацию о внешних таблицах?
+a) pg_external
+b) pg_foreign_table
+c) pg_foreign_data
+d) pg_external_table
+Правильный ответ: b
+
+20. Как узнать местоположение табличного пространства?
+a) SHOW TABLESPACE LOCATION
+b) SELECT spcname, spclocation FROM pg_tablespace
+c) SELECT * FROM pg_tablespace_location
+d) DISPLAY TABLESPACE PATH
+Правильный ответ: b
+
+21. В каком каталоге хранятся временные файлы?
+a) tmp
+b) pg_tmp
+c) temp
+d) pg_temp
+Правильный ответ: b
+
+22. Какой системный каталок содержит информацию о привилегиях?
+a) pg_privileges
+b) pg_class
+c) pg_permissions
+d) pg_acl
+Правильный ответ: b
+
+23. Как установить табличное пространство по умолчанию для базы данных?
+a) SET DEFAULT TABLESPACE FOR DATABASE dbname TO tspacename
+b) ALTER DATABASE dbname SET TABLESPACE tspacename
+c) MODIFY DATABASE dbname DEFAULT TABLESPACE tspacename
+d) CHANGE DATABASE dbname TABLESPACE tspacename
+Правильный ответ: b
+
+24. В каком каталоге находятся файлы блокировок?
+a) locks
+b) run (в PGDATA)
+c) pg_lock
+d) pg_stat
+Правильный ответ: b
+
+25. Какой системный каталок содержит информацию о статистике использования индексов?
+a) pg_index_stats
+b) pg_stat_all_indexes
+c) pg_index_usage
+d) pg_stat_indexes
+Правильный ответ: b
+
+26. Как переместить индекс в другое табличное пространство?
+a) MOVE INDEX index_name TO new_tablespace
+b) ALTER INDEX index_name SET TABLESPACE new_tablespace
+c) RELOCATE INDEX index_name TO new_tablespace
+d) REINDEX INDEX index_name IN new_tablespace
+Правильный ответ: b
+
+27. В каком каталоге хранятся файлы состояний процессов?
+a) pg_proc
+b) pg_stat
+c) pg_serial
+d) pg_snapshots
+Правильный ответ: b
+
+28. Какой системный каталок содержит информацию о триггерах?
+a) pg_triggers
+b) pg_trigger
+c) pg_trigger_info
+d) pg_event_trigger
+Правильный ответ: b
+
+29. Как посмотреть размер табличного пространства?
+a) SHOW TABLESPACE SIZE 'tablespace_name'
+b) SELECT pg_tablespace_size('tablespace_name')
+c) SELECT size FROM pg_tablespace_size WHERE spcname = 'tablespace_name'
+d) \db+ в psql
+Правильный ответ: b
+
+30. В каком каталоге находятся файлы контрольных точек?
+a) pg_checkpoint
+b) pg_control
+c) checkpoint
+d) control_files
+Правильный ответ: b
+
+31. Какой системный каталок содержит информацию о зависимостях между объектами?
+a) pg_dependencies
+b) pg_depend
+c) pg_relations
+d) pg_links
+Правильный ответ: b
+
+32. Как создать базу данных в указанном табличном пространстве?
+a) CREATE DATABASE dbname IN TABLESPACE tspacename
+b) CREATE DATABASE dbname TABLESPACE tspacename
+c) CREATE DATABASE dbname WITH TABLESPACE = tspacename
+d) CREATE DATABASE dbname LOCATION tspacename
+Правильный ответ: b
+
+33. В каком каталоге хранятся файлы подкачки?
+a) pg_swap
+b) pgsql_tmp
+c) swap
+d) pg_tmp (для больших сортировок)
+Правильный ответ: b
+
+34. Какой системный каталок содержит информацию о настройках параметров?
+a) pg_config
+b) pg_settings
+c) pg_parameters
+d) pg_conf
+Правильный ответ: b
+
+35. Как установить табличное пространство по умолчанию для всей кластера?
+a) ALTER SYSTEM SET default_tablespace TO 'tablespace_name'
+b) SET default_tablespace = 'tablespace_name'
+c) SET GLOBAL default_tablespace = 'tablespace_name'
+d) CONFIGURE DEFAULT TABLESPACE 'tablespace_name'
+Правильный ответ: b
+
+36. В каком каталоге находятся файлы мультиксакт-блокировок?
+a) pg_multi
+b) pg_multixact
+c) pg_mxact
+d) multixact
+Правильный ответ: b
+
+37. Какой системный каталок содержит информацию о наследовании таблиц?
+a) pg_inheritance
+b) pg_inherits
+c) pg_table_inherits
+d) pg_parent_child
+Правильный ответ: b
+
+38. Как переместить все объекты базы данных в другое табличное пространство?
+a) MOVE DATABASE dbname TO new_tablespace
+b) ALTER DATABASE dbname SET TABLESPACE new_tablespace
+c) RELOCATE DATABASE dbname TO new_tablespace
+d) CLONE DATABASE dbname TO new_tablespace
+Правильный ответ: b
+
+39. В каком каталоге хранятся файлы с информацией о подписках логической репликации?
+a) pg_logical
+b) pg_subscription
+c) pg_replication
+d) pg_pubsub
+Правильный ответ: b
+
+40. Какой системный каталок содержит информацию о статистике по таблицам?
+a) pg_table_stats
+b) pg_stat_all_tables
+c) pg_stats
+d) pg_stat_tables
+Правильный ответ: b
+
+41. Как узнать, в каком табличном пространстве находится таблица?
+a) SHOW TABLE TABLESPACE 'table_name'
+b) SELECT tablename, tablespace FROM pg_tables WHERE tablename = 'table_name'
+c) SELECT relname, reltablespace FROM pg_class WHERE relname = 'table_name'
+d) \d+ table_name в psql
+Правильный ответ: b
+
+42. В каком каталоге находятся файлы с информацией о временных статистиках?
+a) pg_temp_stats
+b) pg_stat_tmp
+c) tmp_stats
+d) stat_temp
+Правильный ответ: b
+
+43. Какой системный каталок содержит информацию о правилах (rules)?
+a) pg_rules
+b) pg_rewrite
+c) pg_rule_info
+d) pg_transform
+Правильный ответ: b
+
+44. Как удалить табличное пространство, если в нём есть объекты?
+a) Использовать DROP TABLESPACE FORCE
+b) Сначала переместить все объекты, затем удалить
+c) Использовать DROP TABLESPACE CASCADE
+d) Табличное пространство с объектами удалить нельзя
+Правильный ответ: b
+
+45. В каком каталоге хранятся файлы с информацией о коммитах транзакций?
+a) pg_commit
+b) pg_commit_ts
+c) pg_xact
+d) pg_transaction
+Правильный ответ: b
+
+46. Какой системный каталок содержит информацию о расширениях?
+a) pg_extensions
+b) pg_extension
+c) pg_plugins
+d) pg_modules
+Правильный ответ: b
+
+47. Как создать таблицу в определенном табличном пространстве?
+a) CREATE TABLE table_name (...) IN TABLESPACE tablespace_name
+b) CREATE TABLE table_name (...) TABLESPACE tablespace_name
+c) CREATE TABLE table_name (...) WITH TABLESPACE = tablespace_name
+d) CREATE TABLE table_name (...) LOCATION tablespace_name
+Правильный ответ: b
+
+48. В каком каталоге находятся файлы с информацией о логической репликации?
+a) pg_replical
+b) pg_logical
+c) pg_logrep
+d) logical_replication
+Правильный ответ: b
+
+49. Какой системный каталок содержит информацию о статистике по базам данных?
+a) pg_database_stats
+b) pg_stat_database
+c) pg_db_stats
+d) pg_stat_db
+Правильный ответ: b
+
+50. Как узнать путь к текущему табличному пространству базы данных?
+a) SELECT current_setting('data_directory')
+b) SHOW data_directory
+c) SELECT setting FROM pg_settings WHERE name = 'data_directory'
+d) \db в psql для текущей БД
+Правильный ответ: b

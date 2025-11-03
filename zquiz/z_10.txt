@@ -1,0 +1,350 @@
+Вопросы по автоочистке, ручной очистке, разрастанию и перестроению
+1. Какой процесс отвечает за автоматический запуск VACUUM в PostgreSQL?
+a) autovacuum launcher
+b) background writer
+c) stats collector
+d) wal writer
+Правильный ответ: a
+
+2. Какой командой выполняется ручная очистка таблицы customers?
+a) VACUUM customers;
+b) CLEAN customers;
+c) PURGE customers;
+d) REFRESH customers;
+Правильный ответ: a
+
+3. Что такое "bloat" в контексте PostgreSQL?
+a) Раздувание таблиц из-за неэффективного использования пространства
+b) Временные файлы операций
+c) Избыточные данные в WAL
+d) Фрагментация диска
+Правильный ответ: b
+
+4. Какая команда полностью перестраивает таблицу и возвращает пространство ОС?
+a) VACUUM FULL
+b) VACUUM COMPLETE
+c) REBUILD TABLE
+d) REFRESH TABLE
+Правильный ответ: a
+
+5. Какой параметр включает/выключает autovacuum для всей кластера?
+a) autovacuum
+b) autovacuum_enabled
+c) enable_autovacuum
+d) vacuum_auto
+Правильный ответ: b
+
+6. Как выполнить ANALYZE для конкретной таблицы вручную?
+a) ANALYZE table_name;
+b) UPDATE STATISTICS table_name;
+c) REFRESH STATS table_name;
+d) COLLECT STATS table_name;
+Правильный ответ: a
+
+7. Какой инструмент лучше всего подходит для обнаружения bloat?
+a) pg_stat_statements
+b) pgstattuple extension
+c) explain analyze
+d) pg_buffercache
+Правильный ответ: b
+
+8. Что делает команда REINDEX?
+a) Перестраивает индексы для устранения фрагментации
+b) Удаляет и заново создает индексы
+c) Обновляет статистику по индексам
+d) Изменяет тип индекса
+Правильный ответ: b
+
+9. При каком условии autovacuum автоматически запускается для таблицы?
+a) При достижении порога dead tuples
+b) Каждые 5 минут
+c) При каждом UPDATE/DELETE
+d) При нехватке места в таблице
+Правильный ответ: a
+
+10. Какой параметр управляет задержкой между циклами autovacuum?
+a) autovacuum_naptime
+b) autovacuum_sleep
+c) autovacuum_delay
+d) vacuum_sleep_time
+Правильный ответ: a
+
+11. Как выполнить VACUUM с выводом подробной информации?
+a) VACUUM (VERBOSE) table_name;
+b) VACUUM VERBOSE table_name;
+c) VACUUM (DETAILED) table_name;
+d) VACUUM INFO table_name;
+Правильный ответ: a
+
+12. Какой запрос показывает количество мертвых кортежей в таблице?
+a) SELECT n_dead_tup FROM pg_stat_user_tables;
+b) SELECT dead_tuples FROM pg_table_stats;
+c) SHOW table_dead_tuples;
+d) \d+ table_name в psql
+Правильный ответ: a
+
+13. Чем отличается VACUUM FULL от обычного VACUUM?
+a) Требует эксклюзивной блокировки и возвращает пространство ОС
+b) Работает быстрее
+c) Не обновляет статистику
+d) Не обрабатывает индексы
+Правильный ответ: a
+
+14. Как перестроить все индексы таблицы?
+a) REINDEX TABLE table_name;
+b) REFRESH INDEXES table_name;
+c) REBUILD INDEXES table_name;
+d) RESET INDEXES table_name;
+Правильный ответ: a
+
+15. Какой параметр определяет порог срабатывания autovacuum?
+a) autovacuum_vacuum_threshold
+b) autovacuum_scale_factor
+c) autovacuum_naptime
+d) autovacuum_analyze_threshold
+Правильный ответ: a
+
+16. Как выполнить одновременный VACUUM и ANALYZE?
+a) VACUUM ANALYZE table_name;
+b) VACUUM (ANALYZE) table_name;
+c) ANALYZE VACUUM table_name;
+d) VACUUM AND ANALYZE table_name;
+Правильный ответ: a
+
+17. Что вызывает разрастание индексов?
+a) Частые UPDATE и DELETE операции
+b) Большое количество INSERT операций
+c) Отсутствие первичного ключа
+d) Неправильные типы данных
+Правильный ответ: a
+
+18. Как безопасно перестроить индекс без блокировки записи?
+a) REINDEX CONCURRENTLY index_name;
+b) REINDEX (CONCURRENT) index_name;
+c) REINDEX NONBLOCKING index_name;
+d) REINDEX ASYNC index_name;
+Правильный ответ: a
+
+19. Как отключить autovacuum для конкретной таблицы?
+a) ALTER TABLE table_name SET (autovacuum_enabled = false);
+b) ALTER TABLE table_name DISABLE AUTOVACUUM;
+c) UPDATE pg_class SET relautovacuum = false;
+d) SET autovacuum = off FOR TABLE table_name;
+Правильный ответ: a
+
+20. Какой параметр autovacuum можно настроить на уровне таблицы?
+a) Все основные параметры через ALTER TABLE
+b) Только autovacuum_enabled
+c) Только пороговые значения
+d) Только стоимость VACUUM
+Правильный ответ: a
+
+21. Как посмотреть прогресс выполнения VACUUM?
+a) pg_stat_progress_vacuum
+b) pg_vacuum_progress
+c) pg_cleanup_status
+d) vacuum_progress_info
+Правильный ответ: a
+
+22. Что происходит при выполнении VACUUM без указания таблицы?
+a) Очищаются все таблицы текущей базы данных
+b) Очищается вся кластер баз данных
+c) Ничего не происходит
+d) Выводится справка по команде
+Правильный ответ: a
+
+23. Какой параметр управляет объемом памяти для операций VACUUM?
+a) maintenance_work_mem
+b) work_mem
+c) shared_buffers
+d) vacuum_work_mem
+Правильный ответ: a
+
+24. Как перестроить индекс для таблицы в другом табличном пространстве?
+a) REINDEX с указанием TABLESPACE
+b) Сначала переместить таблицу, затем перестроить
+c) Создать новый индекс и удалить старый
+d) Использовать REINDEX CONCURRENTLY
+Правильный ответ: c
+
+25. Какой параметр определяет масштабный фактор для autovacuum?
+a) autovacuum_vacuum_scale_factor
+b) autovacuum_scale
+c) vacuum_scale_threshold
+d) autovacuum_factor
+Правильный ответ: a
+
+26. Как выполнить VACUUM только для индексов таблицы?
+a) Такой команды не существует
+b) VACUUM INDEX table_name;
+c) REINDEX TABLE table_name;
+d) VACUUM (INDEX_CLEANUP) table_name;
+Правильный ответ: a
+
+27. Что такое "freeze" в контексте VACUUM?
+a) Отметка транзакций как "замороженных"
+b) Остановка всех операций с таблицей
+c) Сжатие данных
+d) Создание резервной копии
+Правильный ответ: a
+
+28. Какой параметр определяет максимальное количество autovacuum workers?
+a) autovacuum_max_workers
+b) max_autovacuum_processes
+c) autovacuum_worker_limit
+d) max_vacuum_workers
+Правильный ответ: a
+
+29. Как выполнить ANALYZE для всей базы данных?
+a) ANALYZE;
+b) ANALYZE DATABASE;
+c) ANALYZE ALL;
+d) UPDATE STATISTICS;
+Правильный ответ: a
+
+30. Что происходит при достижении autovacuum_max_workers?
+a) Новые таблицы ставятся в очередь
+b) Autovacuum останавливается
+c) Запускаются дополнительные workers
+d) Выполняется аварийный VACUUM
+Правильный ответ: a
+
+31. Какой тип блокировки использует VACUUM FULL?
+a) AccessExclusiveLock
+b) ShareUpdateExclusiveLock
+c) RowExclusiveLock
+d) ShareLock
+Правильный ответ: a
+
+32. Как посмотреть статистику по autovacuum операциям?
+a) pg_stat_user_tables
+b) pg_autovacuum_stats
+c) pg_vacuum_info
+d) SHOW AUTOVACUUM STATS
+Правильный ответ: a
+
+33. Какой параметр управляет стоимостью задержки autovacuum?
+a) autovacuum_vacuum_cost_delay
+b) vacuum_cost_delay
+c) autovacuum_delay_cost
+d) vacuum_autodelay
+Правильный ответ: a
+
+34. Как перестроить системные каталоги?
+a) REINDEX SYSTEM;
+b) REINDEX SCHEMA pg_catalog;
+c) REINDEX CATALOG;
+d) REINDEX DATABASE SYSTEM;
+Правильный ответ: a
+
+35. Что такое "anti-wraparound VACUUM"?
+a) Агрессивный VACUUM для предотвращения wraparound
+b) Обычный autovacuum
+c) VACUUM в фоновом режиме
+d) VACUUM с параметром FREEZE
+Правильный ответ: a
+
+36. Как выполнить VACUUM без блокировки таблиц?
+a) VACUUM (SKIP_LOCKED);
+b) VACUUM NONBLOCKING;
+c) VACUUM (NOWAIT);
+d) VACUUM ASYNC;
+Правильный ответ: a
+
+37. Какой параметр определяет возраст транзакции для принудительного autovacuum?
+a) autovacuum_freeze_max_age
+b) vacuum_freeze_min_age
+c) vacuum_freeze_table_age
+d) autovacuum_freeze_min_age
+Правильный ответ: a
+
+38. Как перестроить все индексы в базе данных?
+a) REINDEX DATABASE database_name;
+b) REINDEX ALL;
+c) REINDEX *;
+d) REFRESH ALL INDEXES;
+Правильный ответ: a
+
+39. Какой параметр управляет порогом для autovacuum ANALYZE?
+a) autovacuum_analyze_threshold
+b) autovacuum_analyze_scale_factor
+c) autovacuum_analyze_limit
+d) analyze_threshold
+Правильный ответ: a
+
+40. Как выполнить VACUUM только для определенного индекса?
+a) Такой команды не существует
+b) VACUUM INDEX index_name;
+c) REINDEX INDEX index_name;
+d) VACUUM (INDEX) index_name;
+Правильный ответ: a
+
+41. Что такое "visibility map" в контексте VACUUM?
+a) Битовая карта страниц без мертвых кортежей
+b) Карта видимых кортежей в таблице
+c) Карта доступности данных для чтения
+d) Индекс видимости кортежей
+Правильный ответ: a
+
+42. Какой параметр определяет время между запусками autovacuum?
+a) autovacuum_naptime
+b) autovacuum_vacuum_threshold
+c) autovacuum_analyze_threshold
+d) autovacuum_vacuum_cost_delay
+Правильный ответ: a
+
+43. Как выполнить принудительную заморозку транзакций в таблице?
+a) VACUUM FREEZE table_name;
+b) VACUUM (FREEZE) table_name;
+c) FREEZE TABLE table_name;
+d) VACUUM FORCE FREEZE table_name;
+Правильный ответ: a
+
+44. Как мониторить эффективность autovacuum?
+a) Через pg_stat_user_tables
+b) Через pg_autovacuum_stats
+c) Через SHOW AUTOVACUUM STATS
+d) Через системные логи
+Правильный ответ: a
+
+45. Что делает команда VACUUM (DISABLE_PAGE_SKIPPING)?
+a) Запрещает пропуск страниц по visibility map
+b) Отключает проверку страниц
+c) Включает полное сканирование
+d) Отключает использование индексов
+Правильный ответ: a
+
+46. Какой параметр управляет количеством страниц, обрабатываемых за цикл?
+a) vacuum_cost_limit
+b) autovacuum_work_mem
+c) maintenance_work_mem
+d) vacuum_work_limit
+Правильный ответ: a
+
+47. Как перестроить индексы для таблицы без блокировки?
+a) REINDEX CONCURRENTLY TABLE table_name;
+b) REINDEX TABLE CONCURRENTLY table_name;
+c) REINDEX (CONCURRENT) TABLE table_name;
+d) REINDEX NONBLOCKING TABLE table_name;
+Правильный ответ: a
+
+48. Какой параметр определяет задержку при превышении стоимости VACUUM?
+a) vacuum_cost_delay
+b) autovacuum_delay
+c) vacuum_delay_cost
+d) autovacuum_cost_delay
+Правильный ответ: a
+
+49. Как выполнить VACUUM для всех баз данных?
+a) vacuumdb --all
+b) VACUUM ALL DATABASES;
+c) vacuumdb --cluster
+d) VACUUM ENTIRE CLUSTER;
+Правильный ответ: a
+
+50. Что происходит с bloat после выполнения VACUUM FULL?
+a) Bloat полностью устраняется
+b) Bloat уменьшается частично
+c) Bloat переносится в системные таблицы
+d) Bloat архивируется
+Правильный ответ: a

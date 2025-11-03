@@ -1,0 +1,350 @@
+Вопросы по администрированию PostgreSQL
+1. Какой файл конфигурации отвечает за параметры аутентификации и подключения клиентов?
+a) postgresql.conf
+b) pg_hba.conf
+c) pg_ident.conf
+d) postgresql.auto.conf
+Правильный ответ: b
+
+2. Какая системная функция используется для принудительного завершения работы серверного процесса (backend process)?
+a) pg_cancel_backend()
+b) pg_reload_conf()
+c) pg_terminate_backend()
+d) pg_shutdown()
+Правильный ответ: c
+
+3. Какой параметр в postgresql.conf определяет каталог, где кластер баз данных хранит все свои данные?
+a) data_directory
+b) config_file
+c) hba_file
+d) cluster_directory
+Правильный ответ: a
+
+4. Какая команда используется для создания резервной копии одной базы данных в виде plain-text SQL скрипта?
+a) pg_dumpall
+b) pg_basebackup
+c) pg_dump
+d) psql -c "BACKUP DATABASE"
+Правильный ответ: c
+
+5. Что делает команда pg_basebackup?
+a) Создает логическую резервную копию одной таблицы.
+b) Создает физическую резервную копию всего кластера баз данных.
+c) Восстанавливает базу данных из архива WAL.
+d) Создает резервную копию конфигурационных файлов.
+Правильный ответ: b
+
+6. Какой тип репликации в PostgreSQL по умолчанию является синхронным?
+a) Логическая репликация (Logical Replication)
+b) Физическая репликация (Streaming Replication) без указания режима
+c) По умолчанию используется асинхронный режим
+d) Репликация на основе слотов (Replication Slots)
+Правильный ответ: c
+
+7. Для чего используется слот репликации (replication slot)?
+a) Для ускорения выполнения запросов.
+b) Для предотвращения удаления WAL-файлов, пока они не будут получены репликой.
+c) Для шифрования передаваемых данных.
+d) Для автоматического создания реплик.
+Правильный ответ: b
+
+8. Какой параметр необходимо изменить, чтобы включить архивирование WAL-файлов?
+a) wal_level = replica
+b) archive_mode = on
+c) max_wal_senders = 10
+d) hot_standby = on
+Правильный ответ: b
+
+9. Какое представление позволяет посмотреть информацию о текущих блокировках в базе данных?
+a) pg_stat_activity
+b) pg_locks
+c) pg_stat_database
+d) pg_blocks
+Правильный ответ: b
+
+10. Какой командой можно "заморозить" (freeze) транзакции в таблице для борьбы с wraparound?
+a) VACUUM FREEZE table_name;
+b) VACUUM (FREEZE) table_name;
+c) ANALYZE FREEZE table_name;
+d) VACUUM (ANALYZE) table_name;
+Правильный ответ: b
+
+11. Что такое "autovacuum" в PostgreSQL?
+a) Процесс для автоматического удаления старых данных.
+b) Процесс для автоматического обновления статистики и очистки "мертвых" кортежей.
+c) Процесс для автоматического создания резервных копий.
+d) Процесс для автоматического перезапуска сервера.
+Правильный ответ: b
+
+12. Какая утилита используется для выполнения запросов к базе данных из командной строки?
+a) pg_dump
+b) pg_ctl
+c) psql
+d) postgres
+Правильный ответ: c
+
+13. Какой параметр postgresql.conf контролирует объем разделяемой памяти, который использует PostgreSQL?
+a) work_mem
+b) maintenance_work_mem
+c) shared_buffers
+d) temp_buffers
+Правильный ответ: c
+
+14. Как остановить работающий кластер PostgreSQL, используя утилиту pg_ctl?
+a) pg_ctl stop
+b) pg_ctl kill
+c) pg_ctl restart
+d) pg_ctl shutdown
+Правильный ответ: a
+
+15. Какое максимальное количество подключений разрешено по умолчанию?
+a) 50
+b) 100
+c) 500
+d) Определяется параметром max_connections
+Правильный ответ: b
+
+16. Какой тип данных лучше всего подходит для хранения полного дампа базы данных в одном бинарном файле?
+a) plain
+b) directory
+c) custom
+d) tar
+Правильный ответ: c
+
+17. Какое представление показывает текущие выполняемые запросы?
+a) pg_queries
+b) pg_stat_activity
+c) pg_processlist
+d) pg_running_queries
+Правильный ответ: b
+
+18. Какой параметр необходимо установить на реплике, чтобы разрешить выполнение запросов на чтение?
+a) archive_mode = on
+b) hot_standby = on
+c) wal_receiver = on
+d) read_only = off
+Правильный ответ: b
+
+19. Что делает команда REINDEX?
+a) Перестраивает индексы для устранения фрагментации.
+b) Удаляет и заново создает индексы.
+c) Обновляет статистику по индексам.
+d) Изменяет тип индекса.
+Правильный ответ: a
+
+20. Как проверить целостность базы данных или таблицы?
+a) С помощью утилиты pg_check
+b) С помощью команды VACUUM
+c) С помощью функции pg_checksums 
+d) С помощью утилиты pg_catcheck
+Правильный ответ: c
+
+21. Какой процесс отвечает за запись изменений в WAL (Write-Ahead Log)?
+a) Checkpointer Process
+b) WAL Writer Process
+c) Background Writer Process
+d) Logger Process
+Правильный ответ: b
+
+22. Какой параметр определяет минимальный уровень журналирования для логической репликации?
+a) wal_level = minimal
+b) wal_level = replica
+c) wal_level = logical
+d) wal_level = archive
+Правильный ответ: c
+
+23. Как создать пользователя (роль) с правом входа в систему?
+a) CREATE USER user_name;
+b) CREATE ROLE user_name WITH LOGIN;
+c) ADD USER user_name;
+d) CREATE LOGIN user_name;
+Правильный ответ: a, b
+
+24. Какая команда используется для восстановления базы данных из резервной копии, созданной pg_dump?
+a) pg_restore
+b) psql
+c) pg_recover
+d) restore_db
+Правильный ответ: b (для plain-формата). pg_restore для custom, directory, tar.
+
+25. Что такое Tablespace в PostgreSQL?
+a) Пространство имен для таблиц.
+b) Физическое расположение на диске, где хранятся объекты базы данных.
+c) Тип данных для хранения таблиц.
+d) Логическая группировка таблиц.
+Правильный ответ: b
+
+26. Как посмотреть размер базы данных?
+a) SELECT pg_size_pretty(pg_database_size('db_name'));
+b) SELECT size FROM pg_database WHERE datname='db_name';
+c) \l+ в psql
+d) Оба варианта a и c верны.
+Правильный ответ: d
+
+27. Какой процесс выполняет контрольную точку (checkpoint)?
+a) WAL Writer
+b) Checkpointer
+c) Background Writer
+d) Autovacuum Launcher
+Правильный ответ: b
+
+28. Какая команда принудительно запускает сборку мусора (VACUUM) для таблицы?
+a) CLEAN TABLE table_name;
+b) VACUUM table_name;
+c) DELETE DEAD TUPLES FROM table_name;
+d) MAINTAIN TABLE table_name;
+Правильный ответ: b
+
+29. Как добавить новый узел в конфигурацию HBA (Host-Based Authentication) для разрешения подключений?
+a) Изменить postgresql.conf и добавить host ...
+b) Изменить pg_hba.conf и добавить запись, например, host ... ... ... md5
+c) Выполнить SQL-команду ADD HBA ENTRY ...
+d) Использовать утилиту pg_hba
+Правильный ответ: b
+
+30. Какой параметр определяет, сколько времени "спит" процесс при простое?
+a) sleep_delay
+b) idle_in_transaction_session_timeout
+c) statement_timeout
+d) idle_timeout
+Правильный ответ: b
+
+31. Как перечитать конфигурационные файлы без перезагрузки сервера?
+a) SELECT pg_reload_conf();
+b) SELECT pg_restart_conf();
+c) Выполнить pg_ctl reload
+d) Оба варианта a и c верны.
+Правильный ответ: d
+
+32. Как посмотреть список всех баз данных в кластере?
+a) \l в psql
+b) SELECT * FROM pg_database;
+c) SHOW DATABASES;
+d) Оба варианта a и b верны.
+Правильный ответ: d
+
+33. Что такое TOAST в PostgreSQL?
+a) Метод сжатия больших атрибутов для хранения вне основной таблицы.
+b) Тип индекса.
+c) Процесс очистки временных файлов.
+d) Протокол репликации.
+Правильный ответ: a
+
+34. Какой параметр ограничивает максимальный размер WAL-файлов?
+a) max_wal_size
+b) wal_keep_segments (или wal_keep_size)
+c) checkpoint_segments (устарел)
+d) wal_size_limit
+Правильный ответ: a
+
+35. Какая системная функция показывает версию PostgreSQL?
+a) pg_version()
+b) version()
+c) SELECT VERSION();
+d) show server_version;
+Правильный ответ: c
+
+36. Как создать базу данных?
+a) CREATE DATABASE db_name;
+b) NEW DATABASE db_name;
+c) ADD DATABASE db_name;
+d) initdb db_name
+Правильный ответ: a
+
+37. Какой инструмент используется для инициализации (создания) нового кластера баз данных?
+a) pg_ctl
+b) initdb
+c) postgres --init
+d) createdb
+Правильный ответ: b
+
+38. Какая команда показывает план выполнения запроса без его реального выполнения?
+a) DESCRIBE query;
+b) SHOW PLAN FOR query;
+c) EXPLAIN query;
+d) ANALYZE QUERY query;
+Правильный ответ: c
+
+39. Какой параметр управляет объемом памяти для операций сортировки и хеширования, выполняемых одним запросом?
+a) shared_buffers
+b) work_mem
+c) maintenance_work_mem
+d) sort_mem
+Правильный ответ: b
+
+40. Как найти все активные длительные транзакции?
+a) Запрос к pg_stat_activity с фильтром по state и xact_start.
+b) Запрос к pg_long_transactions.
+c) Использовать утилиту pg_top.
+d) Посмотреть в файлы WAL.
+Правильный ответ: a
+
+41. Как удалить репликационный слот?
+a) DROP REPLICATION SLOT slot_name;
+b) SELECT pg_drop_replication_slot('slot_name');
+c) Удалить запись из pg_replication_slots.
+d) Остановить реплику, и слот удалится автоматически.
+Правильный ответ: b
+
+42. Что делает команда CHECKPOINT?
+a) Запускает немедленную контрольную точку.
+b) Проверяет целостность данных.
+c) Создает точку восстановления.
+d) Останавливает запись в WAL.
+Правильный ответ: a
+
+43. Как посмотреть список всех таблиц в текущей базе данных?
+a) \dt в psql
+b) SELECT * FROM pg_tables WHERE schemaname NOT IN ('pg_catalog', 'information_schema');
+c) SHOW TABLES;
+d) Оба варианта a и b верны.
+Правильный ответ: d
+
+44. Какой параметр postgresql.conf включает ведение журнала (логов) всех выполняемых SQL-запросов?
+a) logging_collector = on
+b) log_statement = 'all'
+c) log_destination = 'stderr'
+d) log_min_duration_statement = 0
+Правильный ответ: b
+
+45. Как изменить пароль пользователя (роли)?
+a) ALTER ROLE role_name WITH PASSWORD 'new_password';
+b) SET PASSWORD FOR role_name = 'new_password';
+c) UPDATE pg_authid SET rolpassword = 'new_password' WHERE rolname='role_name';
+d) CHANGE PASSWORD FOR role_name TO 'new_password';
+Правильный ответ: a
+
+46. Какая команда используется для логической репликации изменений одной таблицы?
+a) Создать публикацию (CREATE PUBLICATION) на мастере и подписку (CREATE SUBSCRIPTION) на реплике.
+b) Настроить wal_level=logical и создать реплику с помощью pg_basebackup.
+c) Использовать pg_logical extension.
+d) Выполнить START REPLICATION TABLE table_name;
+Правильный ответ: a
+
+47. Какой параметр определяет максимальное количество репликационных подключений?
+a) max_replication_slots
+b) max_wal_senders
+c) max_replication_connections
+d) max_logical_replication_workers
+Правильный ответ: b
+
+48. Как посмотреть список индексов для таблицы?
+a) \di в psql
+b) SELECT * FROM pg_indexes WHERE tablename = 'table_name';
+c) \d table_name в psql (показывает в том числе индексы)
+d) Оба варианта b и c верны.
+Правильный ответ: d
+
+49. Что такое "фазовая синхронизация" (Phase Sync) в контексте контрольных точек?
+a) Это не существует в PostgreSQL.
+b) Это процесс, ускоряющий выполнение контрольных точек.
+c) Это метод синхронизации реплик.
+d) Это механизм, предотвращающий фрагментацию WAL.
+Правильный ответ: a
+
+50. Какой инструмент используется для мониторинга и анализа логов PostgreSQL?
+a) pg_stat_statements
+b) pgBadger
+c) pg_top
+d) explain.depesz.com
+Правильный ответ: b

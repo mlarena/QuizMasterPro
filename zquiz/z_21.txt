@@ -1,0 +1,350 @@
+Вопросы по безопасности PostgreSQL
+1. Какой файл управляет аутентификацией подключений в PostgreSQL?
+a) pg_hba.conf
+b) postgresql.conf
+c) pg_ident.conf
+d) pg_auth.conf
+Правильный ответ: a
+
+2. Какой метод аутентификации считается наиболее безопасным?
+a) scram-sha-256
+b) md5
+c) password
+d) trust
+Правильный ответ: a
+
+3. Какая команда создает пользователя с возможностью входа?
+a) CREATE USER
+b) CREATE ROLE WITH LOGIN
+c) Оба варианта верны
+d) CREATE LOGIN USER
+Правильный ответ: c
+
+4. Какой параметр включает SSL соединения в PostgreSQL?
+a) ssl = on
+b) enable_ssl = true
+c) ssl_enabled = yes
+d) use_ssl = on
+Правильный ответ: a
+
+5. Что такое RLS (Row Level Security) в PostgreSQL?
+a) Безопасность на уровне строк
+b) Регистрация уровня безопасности
+c) Система логирования безопасности
+d) Уровень сервиса репликации
+Правильный ответ: a
+
+6. Как создать политику RLS для таблицы?
+a) CREATE POLICY
+b) ADD POLICY
+c) SET POLICY
+d) ENABLE POLICY
+Правильный ответ: a
+
+7. Какой параметр включает принудительное шифрование паролей?
+a) password_encryption
+b) encrypt_passwords
+c) password_security
+d) secure_passwords
+Правильный ответ: a
+
+8. Как посмотреть активные подключения к базе данных?
+a) pg_stat_activity
+b) pg_connections
+c) pg_active_sessions
+d) pg_current_connections
+Правильный ответ: a
+
+9. Какой параметр ограничивает количество подключений для пользователя?
+a) CONNECTION LIMIT
+b) MAX_CONNECTIONS
+c) SESSION_LIMIT
+d) USER_CONNECTIONS
+Правильный ответ: a
+
+10. Что такое pgcrypto расширение?
+a) Расширение для криптографических функций
+b) Шифрование всей базы данных
+c) Криптовалютные функции
+d) Генератор криптографических ключей
+Правильный ответ: a
+
+11. Как создать пользователя с ограниченным сроком действия пароля?
+a) CREATE USER name WITH PASSWORD 'pass' VALID UNTIL 'timestamp'
+b) CREATE USER name WITH PASSWORD 'pass' EXPIRE 'timestamp'
+c) CREATE USER name WITH PASSWORD 'pass' PASSWORD_LIFETIME interval
+d) CREATE USER name WITH PASSWORD 'pass' EXPIRATION 'timestamp'
+Правильный ответ: a
+
+12. Какой параметр включает логирование попыток подключения?
+a) log_connections
+b) connection_logging
+c) log_authentication
+d) auth_logging
+Правильный ответ: a
+
+13. Что такое SSL сертификат клиента в PostgreSQL?
+a) Сертификат для аутентификации клиента
+b) Сертификат сервера для клиента
+c) Сертификат для шифрования данных
+d) Сертификат подписи кода
+Правильный ответ: a
+
+14. Как отозвать привилегию у пользователя?
+a) REVOKE
+b) REMOVE
+c) DELETE
+d) DISABLE
+Правильный ответ: a
+
+15. Какой параметр включает SSL для репликации?
+a) ssl = on в postgresql.conf
+b) wal_level = logical
+c) max_wal_senders
+d) ssl_replication = on
+Правильный ответ: a
+
+16. Что такое атрибут SUPERUSER для роли?
+a) Дает полный доступ ко всем объектам и настройкам
+b) Делает пользователя администратором ОС
+c) Дает доступ только к системным каталогам
+d) Разрешает создание других пользователей
+Правильный ответ: a
+
+17. Как посмотреть привилегии для таблицы?
+a) \dp в psql
+b) \z в psql
+c) SHOW PRIVILEGES FOR TABLE
+d) Оба варианта a и b верны
+Правильный ответ: d
+
+18. Какой параметр включает шифрование данных на диске?
+a) Не поддерживается на уровне СУБД
+b) data_encryption = on
+c) encrypt_data = true
+d) storage_encryption = on
+Правильный ответ: a
+
+19. Что такое атрибут CREATEROLE для пользователя?
+a) Позволяет создавать других пользователей
+b) Создает роль автоматически
+c) Дает права на изменение ролей
+d) Разрешает создание групповых ролей
+Правильный ответ: a
+
+20. Как настроить аутентификацию через LDAP?
+a) Настроить pg_hba.conf с методом ldap
+b) Установить LDAP расширение
+c) Настроить postgresql.conf с ldap_server
+d) Создать LDAP пользователя
+Правильный ответ: a
+
+21. Какой параметр включает логирование выполнения всех запросов?
+a) log_statement = 'all'
+b) log_all_queries = on
+c) query_logging = true
+d) statement_log = all
+Правильный ответ: a
+
+22. Что такое SECURITY DEFINER для функции?
+a) Функция выполняется с правами создателя
+b) Функция определяет политики безопасности
+c) Функция проверяет безопасность
+d) Функция с повышенной безопасностью
+Правильный ответ: a
+
+23. Как запретить подключение к базе данных для пользователя?
+a) REVOKE CONNECT ON DATABASE dbname FROM username
+b) DENY CONNECT ON DATABASE dbname TO username
+c) ALTER USER username NOCONNECT
+d) SET USER username ACCESS = false
+Правильный ответ: a
+
+24. Какой параметр включает проверку SSL сертификатов?
+a) ssl_ca_file
+b) ssl_cert_file
+c) ssl_key_file
+d) ssl_verify_file
+Правильный ответ: a
+
+25. Что такое атрибут BYPASSRLS для роли?
+a) Обход политик RLS
+b) Обход ограничений безопасности
+c) Отключение RLS для таблицы
+d) Привилегия управления RLS
+Правильный ответ: a
+
+26. Как настроить аутентификацию через PAM?
+a) Настроить pg_hba.conf с методом pam
+b) Установить PAM расширение
+c) Настроить pam.conf для PostgreSQL
+d) Создать PAM службу
+Правильный ответ: a
+
+27. Какой параметр включает логирование неудачных попыток аутентификации?
+a) log_connections = on
+b) log_authentication_errors = on
+c) log_failed_attempts = on
+d) log_login_attempts = on
+Правильный ответ: a
+
+28. Что такое расширение pg_stat_statements?
+a) Расширение для отслеживания статистики запросов
+b) Расширение для аудита безопасности
+c) Расширение для мониторинга производительности
+d) Расширение для логирования операторов
+Правильный ответ: a
+
+29. Как создать пользователя только для чтения?
+a) GRANT SELECT ON TABLES TO username
+b) CREATE USER username WITH READONLY
+c) ALTER USER username SET read_only = true
+d) GRANT READ ONLY TO username
+Правильный ответ: a
+
+30. Какой параметр управляет временем ожидания аутентификации?
+a) authentication_timeout
+b) auth_timeout
+c) login_timeout
+d) connection_timeout
+Правильный ответ: a
+
+31. Что такое столбец с маскированием данных?
+a) Столбец с динамическим скрытием данных
+b) Столбец с шифрованием
+c) Столбец с ограниченным доступом
+d) Столбец с псевдонимом
+Правильный ответ: a
+
+32. Как настроить SSL с самоподписанным сертификатом?
+a) Сгенерировать сертификат и указать пути в postgresql.conf
+b) Использовать встроенный генератор сертификатов
+c) Настроить auto_ssl = on
+d) PostgreSQL не поддерживает самоподписанные сертификаты
+Правильный ответ: a
+
+33. Какой параметр включает принудительную проверку паролей?
+a) password_check_function
+b) password_validation
+c) validate_password
+d) password_policy
+Правильный ответ: a
+
+34. Что такое SE-PostgreSQL?
+a) Security-Enhanced PostgreSQL с SELinux
+b) Secure Edition PostgreSQL
+c) Super Encrypted PostgreSQL
+d) Security Extended PostgreSQL
+Правильный ответ: a
+
+35. Как посмотреть историю выполнения запросов?
+a) pg_stat_statements
+b) pg_query_history
+c) pg_statement_log
+d) pg_audit_log
+Правильный ответ: a
+
+36. Как настроить аутентификацию по сертификату?
+a) Настроить pg_hba.conf с методом cert
+b) Установить ssl_cert_file
+c) Настроить client_certificate = on
+d) Создать пользователя с сертификатом
+Правильный ответ: a
+
+37. Какой параметр управляет логированием изменений DDL?
+a) log_statement = 'ddl'
+b) ddl_logging = on
+c) log_ddl_commands = true
+d) audit_ddl = on
+Правильный ответ: a
+
+38. Что такое расширение pgaudit?
+a) Расширение для детального аудита
+b) Расширение для проверки безопасности
+c) Расширение для мониторинга доступа
+d) Расширение для логирования аутентификации
+Правильный ответ: a
+
+39. Как создать политику RLS для SELECT операций?
+a) CREATE POLICY name ON table FOR SELECT USING (expression)
+b) ADD POLICY name ON table FOR SELECT WITH (expression)
+c) SET POLICY name ON table FOR SELECT WHERE (expression)
+d) ENABLE POLICY name ON table FOR SELECT USING (expression)
+Правильный ответ: a
+
+40. Какой параметр включает шифрование WAL?
+a) Не поддерживается на уровне СУБД
+b) wal_encryption = on
+c) encrypt_wal = true
+d) wal_security = on
+Правильный ответ: a
+
+41. Что такое двухфакторная аутентификация в PostgreSQL?
+a) Комбинация методов аутентификации в pg_hba.conf
+b) Встроенная поддержка 2FA
+c) Расширение для SMS кодов
+d) Интеграция с аутентификаторами
+Правильный ответ: a
+
+42. Как настроить ограничение по IP адресам?
+a) В pg_hba.conf указать конкретные IP
+b) В postgresql.conf настроить allowed_ips
+c) Создать таблицу разрешенных IP
+d) Настроить фаервол ОС
+Правильный ответ: a
+
+43. Какой параметр управляет логированием прав доступа?
+a) log_file_mode
+b) log_permissions
+c) log_access_errors
+d) log_privilege_errors
+Правильный ответ: a
+
+44. Что такое столбец с шифрованием на уровне приложения?
+a) Данные шифруются перед вставкой в БД
+b) Автоматическое шифрование средствами СУБД
+c) Шифрование на уровне таблицы
+d) Прозрачное шифрование столбца
+Правильный ответ: a
+
+45. Как настроить автоматическое блокирование пользователя после неудачных попыток?
+a) Не поддерживается на уровне СУБД
+b) failed_login_attempts = 3
+c) lock_user_on_failure = on
+d) max_failed_attempts = 5
+Правильный ответ: a
+
+46. Какой параметр включает детальное логирование SSL?
+a) ssl_log_level
+b) log_ssl = on
+c) ssl_debug = true
+d) debug_ssl = on
+Правильный ответ: a
+
+47. Что такое VACUUM с точки зрения безопасности?
+a) Очистка старых версий строк может удалить чувствительные данные
+b) VACUUM шифрует данные
+c) VACUUM проверяет целостность безопасности
+d) VACUUM логирует операции безопасности
+Правильный ответ: a
+
+48. Как настроить разные методы аутентификации для разных баз данных?
+a) В pg_hba.conf указать разные строки для разных DB
+b) В postgresql.conf настроить per_database_auth
+c) Создать отдельные конфиги для каждой БД
+d) Настроить аутентификацию на уровне схемы
+Правильный ответ: a
+
+49. Какой параметр управляет логированием отказов доступа?
+a) log_denied_connections
+b) log_access_denied
+c) log_denials = on
+d) log_permission_denied
+Правильный ответ: a
+
+50. Что такое Transparent Data Encryption (TDE) в PostgreSQL?
+a) Прозрачное шифрование данных не поддерживается
+b) Встроенное шифрование таблиц
+c) Автоматическое шифрование WAL
+d) Шифрование на уровне табличного пространства
+Правильный ответ: a

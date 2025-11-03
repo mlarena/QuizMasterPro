@@ -1,0 +1,350 @@
+Вопросы по ролям, аутентификации и привилегиям
+1. Какая команда создает новую роль в PostgreSQL?
+a) CREATE ROLE
+b) CREATE USER
+c) ADD ROLE
+d) NEW ROLE
+Правильный ответ: a
+
+2. Чем отличается команда CREATE USER от CREATE ROLE?
+a) CREATE USER по умолчанию дает LOGIN, CREATE ROLE - нет
+b) CREATE USER создает системного пользователя
+c) CREATE ROLE не может иметь пароль
+d) Отличий нет
+Правильный ответ: a
+
+3. Какой атрибут роли позволяет ей подключаться к базе данных?
+a) LOGIN
+b) CONNECT
+c) ACCESS
+d) SESSION
+Правильный ответ: a
+
+4. Какой метод аутентификации считается наиболее безопасным в PostgreSQL?
+a) scram-sha-256
+b) md5
+c) password
+d) trust
+Правильный ответ: a
+
+5. Какая команда предоставляет привилегию SELECT на таблицу?
+a) GRANT SELECT ON table_name TO role_name
+b) ALLOW SELECT ON table_name TO role_name
+c) PERMIT SELECT ON table_name TO role_name
+d) ENABLE SELECT ON table_name FOR role_name
+Правильный ответ: a
+
+6. Какая предопределенная роль позволяет читать все мониторинговые представления?
+a) pg_monitor
+b) pg_read_all_stats
+c) pg_stat_reader
+d) pg_stats
+Правильный ответ: b
+
+7. Какой атрибут роли позволяет создавать другие роли?
+a) CREATEROLE
+b) CREATE_ROLE
+c) ROLE_CREATOR
+d) USER_CREATOR
+Правильный ответ: a
+
+8. Какой файл конфигурации управляет аутентификацией хостов?
+a) pg_hba.conf
+b) pg_ident.conf
+c) postgresql.conf
+d) pg_auth.conf
+Правильный ответ: a
+
+9. Какая привилегия позволяет выполнять функции?
+a) EXECUTE
+b) RUN
+c) CALL
+d) INVOKE
+Правильный ответ: a
+
+10. Какой атрибут роли устанавливает лимит подключений?
+a) CONNECTION LIMIT
+b) MAX_CONNECTIONS
+c) CONNECT_LIMIT
+d) SESSIONS
+Правильный ответ: a
+
+11. Какая команда изменяет пароль роли?
+a) ALTER ROLE role_name WITH PASSWORD 'new_password'
+b) CHANGE PASSWORD FOR role_name TO 'new_password'
+c) SET PASSWORD FOR role_name = 'new_password'
+d) UPDATE ROLE role_name SET PASSWORD 'new_password'
+Правильный ответ: a
+
+12. Какая предопределенная роль может читать все данные?
+a) pg_read_all_data
+b) pg_reader
+c) pg_select_all
+d) pg_data_reader
+Правильный ответ: a
+
+13. Какой метод аутентификации передает пароль в открытом виде?
+a) password
+b) md5
+c) scram-sha-256
+d) trust
+Правильный ответ: a
+
+14. Какая команда отзывает привилегии?
+a) REVOKE
+b) REMOVE
+c) DENY
+d) DISABLE
+Правильный ответ: a
+
+15. Какой атрибут роли позволяет наследовать привилегии групп?
+a) INHERIT
+b) INHERITS
+c) MEMBER
+d) GROUP
+Правильный ответ: a
+
+16. Какая предопределенная роль может писать все данные?
+a) pg_write_all_data
+b) pg_writer
+c) pg_modify_all
+d) pg_data_writer
+Правильный ответ: a
+
+17. Какой метод аутентификации не требует пароля?
+a) trust
+b) password
+c) md5
+d) scram-sha-256
+Правильный ответ: a
+
+18. Какая команда добавляет роль в группу?
+a) GRANT group_name TO user_name
+b) ADD USER user_name TO GROUP group_name
+c) ASSIGN user_name TO group_name
+d) INCLUDED user_name IN group_name
+Правильный ответ: a
+
+19. Какой атрибут роли дает права суперпользователя?
+a) SUPERUSER
+b) SUPER_USER
+c) ADMIN
+d) ROOT
+Правильный ответ: a
+
+20. Какая привилегия позволяет создавать объекты в схеме?
+a) CREATE
+b) BUILD
+c) CONSTRUCT
+d) MAKE
+Правильный ответ: a
+
+21. Какая команда показывает список ролей?
+a) \du в psql
+b) \dr в psql
+c) \dl в psql
+d) \dp в psql
+Правильный ответ: a
+
+22. Какой атрибут устанавливает срок действия пароля?
+a) VALID UNTIL 'timestamp'
+b) PASSWORD EXPIRE 'timestamp'
+c) EXPIRE 'timestamp'
+d) PASSWORD VALID 'timestamp'
+Правильный ответ: a
+
+23. Какая предопределенная роль может читать настройки конфигурации?
+a) pg_read_all_settings
+b) pg_config_reader
+c) pg_settings_reader
+d) pg_conf_reader
+Правильный ответ: a
+
+24. Какой файл управляет отображением пользователей ОС?
+a) pg_ident.conf
+b) pg_hba.conf
+c) postgresql.conf
+d) pg_map.conf
+Правильный ответ: a
+
+25. Какая привилегия позволяет использовать последовательности?
+a) USAGE
+b) USE
+c) ACCESS
+d) SELECT
+Правильный ответ: a
+
+26. Какой атрибут роли позволяет обходить RLS политики?
+a) BYPASSRLS
+b) BYPASS RLS
+c) SKIP RLS
+d) IGNORE RLS
+Правильный ответ: a
+
+27. Какая команда удаляет роль?
+a) DROP ROLE
+b) DELETE ROLE
+c) REMOVE ROLE
+d) DESTROY ROLE
+Правильный ответ: a
+
+28. Какой метод аутентификации использует MD5 хеш?
+a) md5
+b) password
+c) scram-sha-256
+d) trust
+Правильный ответ: a
+
+29. Какая привилегия позволяет подключаться к базе данных?
+a) CONNECT
+b) LOGIN
+c) ACCESS
+d) SESSION
+Правильный ответ: a
+
+30. Какой атрибут роли разрешает создание баз данных?
+a) CREATEDB
+b) CREATE_DATABASE
+c) DB_CREATOR
+d) DATABASE_CREATOR
+Правильный ответ: a
+
+31. Какая команда показывает привилегии таблицы?
+a) \dp table_name в psql
+b) \z table_name в psql
+c) \permissions table_name в psql
+d) Оба варианта a и b верны
+Правильный ответ: d
+
+32. Какая предопределенная роль не существует в PostgreSQL?
+a) pg_backup
+b) pg_monitor
+c) pg_read_all_data
+d) pg_write_all_data
+Правильный ответ: a
+
+33. Какой атрибут роли разрешает репликацию?
+a) REPLICATION
+b) REPLICATION_SLOT
+c) STANDBY
+d) COPY
+Правильный ответ: a
+
+34. Какая привилегия позволяет создавать временные таблицы?
+a) TEMP
+b) TEMPORARY
+c) CREATE TEMP TABLE
+d) TEMPORARY TABLE
+Правильный ответ: a
+
+35. Какая команда изменяет атрибуты роли?
+a) ALTER ROLE
+b) CHANGE ROLE
+c) MODIFY ROLE
+d) UPDATE ROLE
+Правильный ответ: a
+
+36. Какой параметр включает наследование привилегий по умолчанию?
+a) INHERIT
+b) NOINHERIT
+c) SET INHERIT
+d) Наследование всегда включено
+Правильный ответ: a
+
+37. Какая привилегия позволяет ссылаться на таблицу внешним ключом?
+a) REFERENCES
+b) FOREIGN KEY
+c) REFERENCE
+d) LINK
+Правильный ответ: a
+
+38. Какой атрибут нельзя установить для группы?
+a) LOGIN
+b) NOLOGIN
+c) INHERIT
+d) CREATEROLE
+Правильный ответ: a
+
+39. Какая команда создает роль с возможностью входа?
+a) CREATE USER
+b) CREATE ROLE WITH LOGIN
+c) Оба варианта верны
+d) CREATE LOGIN ROLE
+Правильный ответ: c
+
+40. Какой метод аутентификации использует GSSAPI?
+a) gss
+b) kerberos
+c) sspi
+d) Все перечисленные
+Правильный ответ: d
+
+41. Какая привилегия позволяет изменять схему таблицы?
+a) ALTER
+b) MODIFY
+c) CHANGE
+d) UPDATE
+Правильный ответ: a
+
+42. Какой атрибут роли устанавливается по умолчанию?
+a) NOLOGIN
+b) LOGIN
+c) INHERIT
+d) CREATEROLE
+Правильный ответ: a
+
+43. Какая системная функция проверяет привилегии?
+a) has_table_privilege()
+b) check_privilege()
+c) test_privilege()
+d) verify_privilege()
+Правильный ответ: a
+
+44. Какой параметр HBA позволяет SSL соединения?
+a) hostssl
+b) ssl
+c) host_ssl
+d) tls
+Правильный ответ: a
+
+45. Какая привилегия требуется для создания индексов?
+a) Не требуется отдельная привилегия
+b) CREATE INDEX
+c) INDEX
+d) ALTER TABLE
+Правильный ответ: a
+
+46. Какой атрибут запрещает наследование привилегий?
+a) NOINHERIT
+b) NOT INHERIT
+c) INHERIT FALSE
+d) NO INHERIT
+Правильный ответ: a
+
+47. Какая команда отображает членство в ролях?
+a) \dg в psql
+b) \dm в psql
+c) \dr в psql
+d) \du в psql
+Правильный ответ: a
+
+48. Какой метод аутентификации использует LDAP?
+a) ldap
+b) ldap-bind
+c) ldap-search
+d) Все перечисленные
+Правильный ответ: d
+
+49. Какая привилегия позволяет удалять таблицы?
+a) Не требуется отдельная привилегия
+b) DELETE TABLE
+c) DROP
+d) REMOVE
+Правильный ответ: c
+
+50. Какой атрибут роли нельзя изменить с ALTER ROLE?
+a) SYSID
+b) PASSWORD
+c) LOGIN
+d) CREATEDB
+Правильный ответ: a

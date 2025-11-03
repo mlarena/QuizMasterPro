@@ -1,0 +1,350 @@
+Вопросы по логической репликации и управлению
+1. Какой уровень wal_level необходим для логической репликации?
+a) logical
+b) replica
+c) minimal
+d) archive
+Правильный ответ: a
+
+2. Какая команда создает публикацию для логической репликации?
+a) CREATE PUBLICATION
+b) CREATE REPLICATION
+c) CREATE STREAM
+d) CREATE SYNC
+Правильный ответ: a
+
+3. Какая команда создает подписку для логической репликации?
+a) CREATE SUBSCRIPTION
+b) CREATE REPLICA
+c) CREATE FOLLOWER
+d) CREATE SYNC
+Правильный ответ: a
+
+4. Что такое публикация в логической репликации?
+a) Набор таблиц для репликации с мастера
+b) Публикация данных для внешних систем
+c) Объявление о доступности реплики
+d) Публикация метаданных базы данных
+Правильный ответ: a
+
+5. Что такое подписка в логической репликации?
+a) Подключение к публикации на мастере
+b) Подписка на уведомления об изменениях
+c) Регистрация реплики в системе
+d) Подписка на логи репликации
+Правильный ответ: a
+
+6. Какой параметр публикации включает репликацию всех таблиц?
+a) FOR ALL TABLES
+b) ALL TABLES
+c) *
+d) EVERYTHING
+Правильный ответ: a
+
+7. Как посмотреть статус подписок?
+a) pg_stat_subscription
+b) pg_replication_progress
+c) pg_logical_status
+d) pg_subscription_stats
+Правильный ответ: a
+
+8. Какой тип конфликта возникает при вставке дублирующего первичного ключа?
+a) Конфликт уникальности
+b) Конфликт внешнего ключа
+c) Конфликт проверки ограничения
+d) Конфликт блокировки
+Правильный ответ: a
+
+9. Как остановить подписку без удаления?
+a) ALTER SUBSCRIPTION subscription_name DISABLE
+b) STOP SUBSCRIPTION subscription_name
+c) PAUSE SUBSCRIPTION subscription_name
+d) DEACTIVATE SUBSCRIPTION subscription_name
+Правильный ответ: a
+
+10. Как возобновить работу подписки?
+a) ALTER SUBSCRIPTION subscription_name ENABLE
+b) START SUBSCRIPTION subscription_name
+c) RESUME SUBSCRIPTION subscription_name
+d) ACTIVATE SUBSCRIPTION subscription_name
+Правильный ответ: a
+
+11. Как добавить таблицу в существующую публикацию?
+a) ALTER PUBLICATION publication_name ADD TABLE table_name
+b) ADD TABLE table_name TO PUBLICATION publication_name
+c) UPDATE PUBLICATION publication_name ADD TABLE table_name
+d) MODIFY PUBLICATION publication_name ADD TABLE table_name
+Правильный ответ: a
+
+12. Какой параметр подписки управляет подключением к мастеру?
+a) CONNECTION
+b) CONNECTION_STRING
+c) MASTER_CONNECTION
+d) SOURCE_CONNECTION
+Правильный ответ: a
+
+13. Что такое слот логической репликации?
+a) Слот для отслеживания прогресса логической репликации
+b) Слот для физической репликации
+c) Слот для временного хранения данных
+d) Слот для управления подключениями
+Правильный ответ: a
+
+14. Как удалить публикацию?
+a) DROP PUBLICATION
+b) DELETE PUBLICATION
+c) REMOVE PUBLICATION
+d) DESTROY PUBLICATION
+Правильный ответ: a
+
+15. Как удалить подписку?
+a) DROP SUBSCRIPTION
+b) DELETE SUBSCRIPTION
+c) REMOVE SUBSCRIPTION
+d) DESTROY SUBSCRIPTION
+Правильный ответ: a
+
+16. Какой параметр публикации определяет, какие операции реплицировать?
+a) publish
+b) operations
+c) actions
+d) events
+Правильный ответ: a
+
+17. Какие операции можно публиковать по умолчанию?
+a) insert, update, delete
+b) только insert
+c) insert и update
+d) все DDL операции
+Правильный ответ: a
+
+18. Как создать публикацию только для определенных операций?
+a) CREATE PUBLICATION pub_name FOR TABLE table_name WITH (publish = 'insert,update')
+b) CREATE PUBLICATION pub_name FOR TABLE table_name OPERATIONS (insert, update)
+c) CREATE PUBLICATION pub_name FOR TABLE table_name INCLUDING (insert, update)
+d) CREATE PUBLICATION pub_name FOR TABLE table_name ALLOWING (insert, update)
+Правильный ответ: a
+
+19. Какой параметр подписки создает репликационный слот?
+a) create_slot
+b) make_slot
+c) slot_create
+d) replication_slot
+Правильный ответ: a
+
+20. Что происходит при конфликте логической репликации?
+a) Репликация останавливается
+b) Конфликт автоматически разрешается
+c) Данные пропускаются
+d) Запись в лог и продолжение
+Правильный ответ: a
+
+21. Как посмотреть информацию о публикациях?
+a) pg_publication
+b) pg_publications
+c) pg_pub_info
+d) pg_replication_publications
+Правильный ответ: a
+
+22. Как посмотреть информацию о подписках?
+a) pg_subscription
+b) pg_subscriptions
+c) pg_sub_info
+d) pg_replication_subscriptions
+Правильный ответ: a
+
+23. Какой параметр управляет применением изменений на реплике?
+a) apply_delay
+b) replication_delay
+c) sync_delay
+d) commit_delay
+Правильный ответ: a
+
+24. Что такое origin в логической репликации?
+a) Источник изменений (мастер или реплика)
+b) Начальная точка репликации
+c) Идентификатор источника данных
+d) Происхождение транзакции
+Правильный ответ: a
+
+25. Как настроить фильтрацию строк в публикации?
+a) WHERE условие в ADD TABLE
+b) FILTER BY условие
+c) WHERE условие в CREATE PUBLICATION
+d) Фильтрация строк не поддерживается
+Правильный ответ: d
+
+26. Какой механизм используется для обнаружения конфликтов?
+a) Сравнение версий строк
+b) Проверка ограничений
+c) Мониторинг ошибок применения
+d) Все перечисленные
+Правильный ответ: d
+
+27. Как разрешить конфликт вручную?
+a) Вмешаться и исправить данные на реплике
+b) Перезапустить подписку
+c) Пропустить конфликтующую транзакцию
+d) Откатить изменения на мастере
+Правильный ответ: a
+
+28. Какой параметр подписки управляет копированием исходных данных?
+a) copy_data
+b) initial_copy
+c) data_copy
+d) start_copy
+Правильный ответ: a
+
+29. Что такое worker процесса в логической репликации?
+a) Процесс, применяющий изменения на реплике
+b) Процесс, отслеживающий публикацию
+c) Процесс, управляющий подключением
+d) Процесс, разрешающий конфликты
+Правильный ответ: a
+
+30. Как посмотреть активные worker процессы?
+a) pg_stat_subscription
+b) pg_stat_activity с фильтром
+c) pg_stat_replication
+d) pg_stat_workers
+Правильный ответ: b
+
+31. Какой параметр управляет количеством worker процессов?
+a) max_logical_replication_workers
+b) max_replication_workers
+c) max_subscription_workers
+d) max_apply_workers
+Правильный ответ: a
+
+32. Что такое двухфазная фиксация в логической репликации?
+a) Поддержка подготовленных транзакций
+b) Фиксация изменений в два этапа
+c) Репликация с подтверждением
+d) Двойная запись изменений
+Правильный ответ: a
+
+33. Как настроить логическую репликацию между разными версиями PostgreSQL?
+a) Обе версии должны поддерживать логическую репликацию
+b) Только мастер должен быть новее
+c) Только реплика должна быть новее
+d) Версии должны быть одинаковыми
+Правильный ответ: a
+
+34. Какой инструмент помогает в мониторинге логической репликации?
+a) pg_stat_subscription
+b) pg_replication_slots
+c) pg_publication_tables
+d) Все перечисленные
+Правильный ответ: d
+
+35. Что происходит при обновлении первичного ключа?
+a) Выполняется DELETE и INSERT
+b) Обновление запрещено
+c) Обновление только если включена опция
+d) Зависит от настроек публикации
+Правильный ответ: a
+
+36. Как создать публикацию для нескольких таблиц?
+a) CREATE PUBLICATION pub_name FOR TABLE table1, table2, table3
+b) CREATE PUBLICATION pub_name FOR TABLES table1, table2, table3
+c) CREATE PUBLICATION pub_name INCLUDING table1, table2, table3
+d) CREATE PUBLICATION pub_name WITH TABLES table1, table2, table3
+Правильный ответ: a
+
+37. Какой параметр управляет синхронизацией данных при создании подписки?
+a) copy_data
+b) sync_data
+c) initial_sync
+d) data_sync
+Правильный ответ: a
+
+38. Что такое таблица репликационного идентитета?
+a) Столбцы, идентифицирующие строку для обновлений/удалений
+b) Таблица с информацией о репликации
+c) Таблица идентификаторов репликации
+d) Таблица для разрешения конфликтов
+Правильный ответ: a
+
+39. Как установить репликационный идентитет для таблицы?
+a) ALTER TABLE table_name REPLICA IDENTITY { DEFAULT | FULL | USING INDEX }
+b) SET REPLICA IDENTITY FOR TABLE table_name TO { DEFAULT | FULL | USING INDEX }
+c) MODIFY TABLE table_name REPLICA IDENTITY { DEFAULT | FULL | USING INDEX }
+d) CHANGE TABLE table_name REPLICA IDENTITY { DEFAULT | FULL | USING INDEX }
+Правильный ответ: a
+
+40. Какой репликационный идентитет обеспечивает наилучшую производительность?
+a) USING INDEX
+b) FULL
+c) DEFAULT
+d) NOTHING
+Правильный ответ: a
+
+41. Что происходит при изменении схемы таблицы на мастере?
+a) Репликация может сломаться
+b) Изменения автоматически применяются
+c) Репликация останавливается
+d) Изменения игнорируются
+Правильный ответ: a
+
+42. Как обновить определение таблицы на реплике?
+a) Вручную применить DDL изменения
+b) ALTER SUBSCRIPTION REFRESH
+c) Пересоздать подписку
+d) Автоматически при репликации
+Правильный ответ: a
+
+43. Какой вариант использования реплики для отчетов?
+a) Выполнение тяжелых запросов без нагрузки на мастер
+b) Резервное копирование
+c) Тестирование изменений
+d) Все перечисленные
+Правильный ответ: d
+
+44. Какой вариант использования реплики для тестирования?
+a) Тестирование производительности
+b) Тестирование миграций
+c) A/B тестирование
+d) Все перечисленные
+Правильный ответ: d
+
+45. Как настроить логическую репликацию для географического распределения?
+a) CREATE SUBSCRIPTION с удаленным подключением
+b) Использовать каскадную репликацию
+c) Настроить через промежуточный сервер
+d) Все перечисленные
+Правильный ответ: d
+
+46. Что такое каскадная логическая репликация?
+a) Реплика, которая сама публикует данные
+b) Репликация через несколько узлов
+c) Цепочка логических реплик
+d) Все перечисленные
+Правильный ответ: d
+
+47. Какой параметр управляет размером буфера применений?
+a) logical_decoding_work_mem
+b) logical_apply_mem
+c) replication_buffer
+d) apply_work_mem
+Правильный ответ: a
+
+48. Как посмотреть отставание логической репликации?
+a) pg_stat_subscription.apply_lag
+b) SELECT pg_replication_lag()
+c) SHOW logical_replication_lag
+d) pg_replication_status.lag
+Правильный ответ: a
+
+49. Что такое темпоральные таблицы в контексте репликации?
+a) Таблицы с временными метками для конфликтов
+b) Таблицы для истории изменений
+c) Таблицы с периодом действия
+d) Обычные таблицы с временными данными
+Правильный ответ: c
+
+50. Как настроить репликацию только новых данных?
+a) Использовать фильтрацию по времени в публикации
+b) Настроить точку старта репликации
+c) Использовать параметр copy_data = false
+d) Все перечисленные
+Правильный ответ: d

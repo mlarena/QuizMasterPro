@@ -1,0 +1,350 @@
+Вопросы по VACUUM в PostgreSQL
+1. Что такое основная цель выполнения VACUUM в PostgreSQL?
+a) Освобождение места на диске
+b) Удаление "мертвых" кортежей и обновление статистики
+c) Дефрагментация индексов
+d) Сжатие таблиц
+Правильный ответ: b
+
+2. Какие два основных типа VACUUM существуют в PostgreSQL?
+a) FULL и PARTIAL
+b) LAZY и AGGRESSIVE
+c) AUTOMATIC и MANUAL
+d) VACUUM и VACUUM FULL
+Правильный ответ: d
+
+3. Что происходит с дисковым пространством при выполнении обычного VACUUM?
+a) Пространство возвращается операционной системе
+b) Пространство становится доступным для переиспользования внутри PostgreSQL
+c) Пространство сжимается
+d) Создается новый файл без "мертвых" кортежей
+Правильный ответ: b
+
+4. Чем отличается VACUUM FULL от обычного VACUUM?
+a) VACUUM FULL требует эксклюзивной блокировки таблицы и возвращает пространство ОС
+b) VACUUM FULL работает быстрее
+c) VACUUM FULL не обновляет статистику
+d) VACUUM FULL не обрабатывает индексы
+Правильный ответ: a
+
+5. Что такое "мертвые" кортежи (dead tuples)?
+a) Кортежи, удаленные или обновленные транзакциями
+b) Кортежи с поврежденными данными
+c) Кортежи, к которым нет доступа
+d) Кортежи старше определенного возраста
+Правильный ответ: a
+
+6. Какой процесс отвечает за автоматический запуск VACUUM?
+a) autovacuum launcher
+b) background writer
+c) stats collector
+d) wal writer
+Правильный ответ: a
+
+7. Какой параметр включает/выключает autovacuum?
+a) autovacuum_enabled
+b) autovacuum
+c) autovacuum_mode
+d) enable_autovacuum
+Правильный ответ: b
+
+8. При каком условии autovacuum автоматически запускается для таблицы?
+a) При достижении порога dead tuples = autovacuum_vacuum_threshold + autovacuum_vacuum_scale_factor * число кортежей
+b) Каждые 5 минут
+c) При каждом UPDATE/DELETE
+d) При нехватке места в таблице
+Правильный ответ: a
+
+9. Что такое "freeze" в контексте VACUUM?
+a) Отметка транзакций как "замороженных" для предотвращения wraparound
+b) Остановка всех операций с таблицей
+c) Сжатие данных
+d) Создание резервной копии таблицы
+Правильный ответ: a
+
+10. Какой параметр определяет возраст транзакции, при котором кортежи замораживаются?
+a) vacuum_freeze_min_age
+b) vacuum_freeze_table_age
+c) autovacuum_freeze_max_age
+d) freeze_age_limit
+Правильный ответ: a
+
+11. Что такое "wraparound" в PostgreSQL?
+a) Переполнение 32-битного счетчика транзакций
+b) Циклическое выполнение VACUUM
+c) Ошибка переполнения буфера
+d) Зацикливание транзакций
+Правильный ответ: a
+
+12. Какой параметр определяет максимальный возраст транзакции перед принудительным autovacuum для предотвращения wraparound?
+a) autovacuum_freeze_max_age
+b) vacuum_freeze_min_age
+c) vacuum_freeze_table_age
+d) xid_stop_limit
+Правильный ответ: a
+
+13. Что происходит при достижении autovacuum_freeze_max_age?
+a) Запускается агрессивный VACUUM для предотвращения wraparound
+b) База данных переходит в режим read-only
+c) Выполняется автоматический VACUUM FULL
+d) Система останавливается
+Правильный ответ: a
+
+14. Как посмотреть количество "мертвых" кортежей в таблице?
+a) SELECT n_dead_tup FROM pg_stat_user_tables
+b) SELECT dead_tuples FROM pg_table_stats
+c) SHOW table_dead_tuples
+d) \d+ table_name в psql
+Правильный ответ: a
+
+15. Какой параметр управляет задержкой autovacuum между рабочими циклами?
+a) autovacuum_naptime
+b) autovacuum_sleep
+c) autovacuum_delay
+d) vacuum_sleep_time
+Правильный ответ: a
+
+16. Что делает параметр autovacuum_vacuum_cost_delay?
+a) Задержку для регулировки скорости VACUUM
+b) Максимальное время выполнения autovacuum
+c) Задержку между обработкой таблиц
+d) Таймаут для операций VACUUM
+Правильный ответ: a
+
+17. Какой механизм предотвращает чрезмерное влияние VACUUM на производительность?
+a) Cost-based vacuum delay
+b) Automatic throttling
+c) Priority scheduling
+d) Resource limiting
+Правильный ответ: a
+
+18. Что такое "visibility map" в контексте VACUUM?
+a) Битовая карта страниц, где все кортежи видимы всем транзакциям
+b) Карта видимых кортежей в таблице
+c) Карта доступности данных для чтения
+d) Индекс видимости кортежей
+Правильный ответ: a
+
+19. Как VACUUM использует visibility map?
+a) Для пропуска страниц, где нет мертвых кортежей
+b) Для определения видимых кортежей
+c) Для ускорения операций SELECT
+d) Для отслеживания измененных страниц
+Правильный ответ: a
+
+20. Что делает команда VACUUM (VERBOSE)?
+a) Выводит подробную информацию о процессе очистки
+b) Выполняет более тщательную очистку
+c) Включает отладку VACUUM
+d) Записывает дополнительные логи
+Правильный ответ: a
+
+21. Как выполнить VACUUM только для индексов таблицы?
+a) Такой команды не существует, индексы очищаются автоматически с таблицей
+b) VACUUM INDEX index_name
+c) REINDEX TABLE table_name
+d) VACUUM (INDEX_CLEANUP) table_name
+Правильный ответ: a
+
+22. Какой параметр autovacuum можно установить на уровне отдельной таблицы?
+a) Все параметры autovacuum через ALTER TABLE
+b) Только autovacuum_enabled
+c) Только пороговые значения
+d) Только стоимость VACUUM
+Правильный ответ: a
+
+23. Как отключить autovacuum для конкретной таблицы?
+a) ALTER TABLE table_name SET (autovacuum_enabled = false)
+b) ALTER TABLE table_name DISABLE AUTOVACUUM
+c) UPDATE pg_class SET relautovacuum = false
+d) SET autovacuum = off FOR TABLE table_name
+Правильный ответ: a
+
+24. Что происходит с блокировками при обычном VACUUM?
+a) Требует ShareUpdateExclusiveLock
+b) Требует AccessExclusiveLock
+c) Не требует блокировок
+d) Требует ExclusiveLock
+Правильный ответ: a
+
+25. Что происходит с блокировками при VACUUM FULL?
+a) Требует AccessExclusiveLock
+b) Требует ShareUpdateExclusiveLock
+c) Не требует блокировок
+d) Требует RowExclusiveLock
+Правильный ответ: a
+
+26. Какой параметр управляет объемом работы, которую VACUUM может выполнить за один цикл?
+a) vacuum_cost_limit
+b) autovacuum_work_mem
+c) maintenance_work_mem
+d) vacuum_work_limit
+Правильный ответ: a
+
+27. Для чего используется maintenance_work_mem в контексте VACUUM?
+a) Для хранения информации об индексах при очистке
+b) Для кэширования данных таблицы
+c) Для временного хранения мертвых кортежей
+d) Для операций сортировки при VACUUM
+Правильный ответ: a
+
+28. Что такое "autovacuum workers"?
+a) Процессы, выполняющие autovacuum для отдельных таблиц
+b) Помощники основного процесса autovacuum
+c) Фоновые процессы для мониторинга
+d) Процессы для управления памятью VACUUM
+Правильный ответ: a
+
+29. Какой параметр определяет максимальное количество одновременных autovacuum workers?
+a) autovacuum_max_workers
+b) max_autovacuum_processes
+c) autovacuum_worker_limit
+d) max_vacuum_workers
+Правильный ответ: a
+
+30. Что происходит при достижении autovacuum_max_workers?
+a) Новые таблицы ставятся в очередь на очистку
+b) Autovacuum останавливается
+c) Запускаются дополнительные workers
+d) Выполняется аварийный VACUUM
+Правильный ответ: a
+
+31. Как посмотреть прогресс выполнения VACUUM?
+a) Через представление pg_stat_progress_vacuum
+b) Через pg_vacuum_progress
+c) Через SHOW VACUUM STATUS
+d) Через системную функцию pg_vacuum_info()
+Правильный ответ: a
+
+32. Какая фаза VACUUM отображается в pg_stat_progress_vacuum как "scanning heap"?
+a) Сканирование кучи (таблицы) для поиска мертвых кортежей
+b) Очистка индексов
+c) Освобождение пространства
+d) Обновление статистики
+Правильный ответ: a
+
+33. Что делает VACUUM (ANALYZE)?
+a) Выполняет VACUUM и затем ANALYZE для обновления статистики
+b) Выполняет только анализ без очистки
+c) Выполняет расширенный анализ таблицы
+d) Анализирует эффективность VACUUM
+Правильный ответ: a
+
+34. Как выполнить VACUUM для всей базы данных?
+a) VACUUM;
+b) VACUUM DATABASE;
+c) VACUUM ALL;
+d) VACUUM FULL DATABASE;
+Правильный ответ: a
+
+35. Что такое "freeze" в системных колонках xmin?
+a) Установка специального бита, означающего, что кортеж видим всем транзакциям
+b) Физическое замораживание данных
+c) Остановка изменений в кортеже
+d) Создание копии кортежа
+Правильный ответ: a
+
+36. Как посмотреть возраст самой старой незамороженной транзакции в таблице?
+a) SELECT age(relfrozenxid) FROM pg_class WHERE relname = 'table_name'
+b) SELECT max_xid_age FROM pg_table_stats
+c) SHOW table_freeze_age
+d) SELECT pg_table_freeze_age('table_name')
+Правильный ответ: a
+
+37. Что такое "anti-wraparound VACUUM"?
+a) Агрессивный VACUUM, запускаемый для предотвращения wraparound
+b) Обычный autovacuum
+c) VACUUM в фоновом режиме
+d) VACUUM с параметром FREEZE
+Правильный ответ: a
+
+38. Какой параметр определяет, когда запускать VACUUM FREEZE для таблицы?
+a) vacuum_freeze_table_age
+b) autovacuum_freeze_max_age
+c) vacuum_freeze_min_age
+d) freeze_table_threshold
+Правильный ответ: a
+
+39. Что делает команда VACUUM (FREEZE)?
+a) Принудительно замораживает все кортежи в таблице
+b) Выполняет обычный VACUUM с заморозкой старых кортежей
+c) Создает замороженную копию таблицы
+d) Останавливает все транзакции для заморозки
+Правильный ответ: a
+
+40. Как мониторить эффективность autovacuum?
+a) Через pg_stat_user_tables (autovacuum_count, last_autovacuum)
+b) Через pg_autovacuum_stats
+c) Через SHOW AUTOVACUUM STATS
+d) Через системные логи
+Правильный ответ: a
+
+41. Что такое "bloat" в контексте PostgreSQL?
+a) Раздувание таблиц или индексов из-за неэффективного использования пространства
+b) Временные файлы VACUUM
+c) Избыточные данные в WAL
+d) Фрагментация диска
+Правильный ответ: a
+
+42. Как обнаружить bloat в таблицах?
+a) С помощью расширения pgstattuple или запросов к статистике
+b) Через pg_bloat_detector
+c) Командой SHOW TABLE BLOAT
+d) Автоматически через autovacuum
+Правильный ответ: a
+
+43. Как VACUUM обрабатывает индексы?
+a) Очищает индексы от ссылок на мертвые кортежи
+b) Перестраивает индексы полностью
+c) Дефрагментирует индексы
+d) Не затрагивает индексы
+Правильный ответ: a
+
+44. Что происходит с WAL-журналированием при VACUUM?
+a) VACUUM создает WAL-записи для своих действий
+b) VACUUM не создает WAL-записей
+c) Создаются только минимальные WAL-записи
+d) WAL-записи создаются только для VACUUM FULL
+Правильный ответ: a
+
+45. Как выполнить VACUUM без WAL-журналирования?
+a) Невозможно, VACUUM всегда журналируется
+b) VACUUM (WAL = false)
+c) SET wal_level = minimal перед VACUUM
+d) VACUUM в режиме recovery
+Правильный ответ: a
+
+46. Что такое "lazy VACUUM"?
+a) Старое название обычного VACUUM
+b) VACUUM с минимальным impact на производительность
+c) VACUUM только для неактивных таблиц
+d) VACUUM в фоновом режиме
+Правильный ответ: a
+
+47. Какой параметр управляет порогом для autovacuum ANALYZE?
+a) autovacuum_analyze_threshold
+b) autovacuum_analyze_scale_factor
+c) autovacuum_analyze_limit
+d) analyze_threshold
+Правильный ответ: a
+
+48. Что делает VACUUM (SKIP_LOCKED)?
+a) Пропускает таблицы, которые не может заблокировать
+b) Пропускает заблокированные кортежи
+c) Выполняет VACUUM без блокировок
+d) Игнорирует locked pages
+Правильный ответ: a
+
+49. Как выполнить VACUUM только для определенного индекса?
+a) Такой команды не существует
+b) VACUUM INDEX index_name
+c) REINDEX INDEX index_name
+d) VACUUM (INDEX) index_name
+Правильный ответ: a
+
+50. Что такое "vacuum truncation"?
+a) Освобождение пустых страниц в конце таблицы
+b) Усечение длинных кортежей
+c) Удаление пустых таблиц
+d) Очистка системных каталогов
+Правильный ответ: a

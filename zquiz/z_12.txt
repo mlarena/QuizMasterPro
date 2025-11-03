@@ -1,0 +1,350 @@
+Вопросы по базам данных, схемам и управлению объектами
+1. Какая команда создает новую базу данных в PostgreSQL?
+a) CREATE DATABASE
+b) NEW DATABASE
+c) ADD DATABASE
+d) MAKE DATABASE
+Правильный ответ: a
+
+2. Что такое шаблонная база данных (template database) в PostgreSQL?
+a) База-образец для создания новых баз данных
+b) База с шаблонами отчетов
+c) Системная база с эталонными данными
+d) Резервная копия базы данных
+Правильный ответ: a
+
+3. Какой параметр команды CREATE DATABASE указывает шаблон для создания базы?
+a) TEMPLATE
+b) USING
+c) FROM
+d) COPY
+Правильный ответ: a
+
+4. Какая системная база данных используется по умолчанию как шаблон?
+a) template1
+b) template0
+c) postgres
+d) default
+Правильный ответ: b
+
+5. Как создать схему в текущей базе данных?
+a) CREATE SCHEMA
+b) ADD SCHEMA
+c) NEW SCHEMA
+d) MAKE SCHEMA
+Правильный ответ: a
+
+6. Что такое search_path в PostgreSQL?
+a) Список схем для поиска объектов
+b) Путь к файлам базы данных
+c) Маршрут для сетевых подключений
+d) Путь поиска шаблонов
+Правильный ответ: a
+
+7. Какая схема всегда присутствует в search_path по умолчанию?
+a) pg_catalog
+b) information_schema
+c) public
+d) sys
+Правильный ответ: c
+
+8. Как посмотреть текущий search_path?
+a) SHOW search_path
+b) SELECT current_path()
+c) DISPLAY search_path
+d) GET search_path
+Правильный ответ: a
+
+9. Какая схема содержит системные каталоги PostgreSQL?
+a) pg_catalog
+b) information_schema
+c) public
+d) system
+Правильный ответ: a
+
+10. Как создать временную таблицу в PostgreSQL?
+a) CREATE TEMPORARY TABLE
+b) CREATE TEMP TABLE
+c) CREATE VOLATILE TABLE
+d) Любой из вариантов a или b
+Правильный ответ: d
+
+11. Где хранятся временные таблицы?
+a) В специальной временной схеме pg_temp
+b) В оперативной памяти
+c) В схеме public
+d) В отдельном табличном пространстве
+Правильный ответ: a
+
+12. Как удалить базу данных в PostgreSQL?
+a) DROP DATABASE
+b) DELETE DATABASE
+c) REMOVE DATABASE
+d) DESTROY DATABASE
+Правильный ответ: a
+
+13. Какая команда переименовывает базу данных?
+a) ALTER DATABASE RENAME TO
+b) RENAME DATABASE
+c) CHANGE DATABASE NAME
+d) MODIFY DATABASE NAME
+Правильный ответ: a
+
+14. Как изменить владельца базы данных?
+a) ALTER DATABASE OWNER TO
+b) CHANGE DATABASE OWNER
+c) SET DATABASE OWNER
+d) MODIFY DATABASE OWNER
+Правильный ответ: a
+
+15. Какая метакоманда psql показывает список баз данных?
+a) \l
+b) \d
+c) \c
+d) \s
+Правильный ответ: a
+
+16. Как подключиться к другой базе данных внутри psql?
+a) \c
+b) \connect
+c) \use
+d) Любой из вариантов a или b
+Правильный ответ: d
+
+17. Какая схема предоставляет стандартизированное представление системных каталогов?
+a) information_schema
+b) pg_catalog
+c) public
+d) std_schema
+Правильный ответ: a
+
+18. Как создать таблицу в определенной схеме?
+a) CREATE TABLE schema_name.table_name
+b) CREATE TABLE table_name IN SCHEMA schema_name
+c) CREATE TABLE table_name SCHEMA schema_name
+d) CREATE TABLE table_name USING SCHEMA schema_name
+Правильный ответ: a
+
+19. Как удалить схему с всеми объектами внутри?
+a) DROP SCHEMA CASCADE
+b) DELETE SCHEMA FORCE
+c) REMOVE SCHEMA WITH OBJECTS
+d) DESTROY SCHEMA ALL
+Правильный ответ: a
+
+20. Как переместить объект в другую схему?
+a) ALTER OBJECT SET SCHEMA
+b) MOVE OBJECT TO SCHEMA
+c) ALTER TABLE SET SCHEMA для таблиц
+d) CHANGE SCHEMA FOR OBJECT
+Правильный ответ: c
+
+21. Какая функция показывает текущую базу данных?
+a) current_database()
+b) current_db()
+c) active_database()
+d) get_database()
+Правильный ответ: a
+
+22. Как создать временную последовательность (sequence)?
+a) CREATE TEMPORARY SEQUENCE
+b) CREATE TEMP SEQUENCE
+c) CREATE VOLATILE SEQUENCE
+d) Любой из вариантов a или b
+Правильный ответ: d
+
+23. Что происходит с временными объектами при завершении сессии?
+a) Они автоматически удаляются
+b) Они сохраняются для следующих сессий
+c) Они архивируются
+d) Они перемещаются в схему public
+Правильный ответ: a
+
+24. Как посмотреть список всех схем в текущей базе данных?
+a) \dn в psql
+b) SELECT * FROM pg_schemas
+c) SHOW SCHEMAS
+d) LIST SCHEMAS
+Правильный ответ: a
+
+25. Как установить схему по умолчанию для текущей сессии?
+a) SET search_path TO schema_name
+b) ALTER SESSION SET SCHEMA schema_name
+c) USE SCHEMA schema_name
+d) CHANGE SCHEMA schema_name
+Правильный ответ: a
+
+26. Какая системная функция показывает текущую схему?
+a) current_schema()
+b) current_schema
+c) active_schema()
+d) get_schema()
+Правильный ответ: a
+
+27. Как создать базу данных с указанием владельца?
+a) CREATE DATABASE dbname OWNER username
+b) CREATE DATABASE dbname WITH OWNER username
+c) CREATE DATABASE dbname SET OWNER username
+d) CREATE DATABASE dbname FOR USER username
+Правильный ответ: a
+
+28. В чем отличие template1 от template0?
+a) template0 нельзя изменять, template1 можно
+b) template1 для системных баз, template0 для пользовательских
+c) template0 содержит больше объектов
+d) template1 используется для репликации
+Правильный ответ: a
+
+29. Как создать базу данных с другой кодировкой?
+a) CREATE DATABASE dbname ENCODING 'encoding'
+b) CREATE DATABASE dbname WITH ENCODING 'encoding'
+c) CREATE DATABASE dbname SET ENCODING 'encoding'
+d) CREATE DATABASE dbname CHARSET 'encoding'
+Правильный ответ: a
+
+30. Какая команда копирует базу данных?
+a) CREATE DATABASE newdb WITH TEMPLATE olddb
+b) COPY DATABASE olddb TO newdb
+c) CLONE DATABASE olddb AS newdb
+d) DUPLICATE DATABASE olddb TO newdb
+Правильный ответ: a
+
+31. Как посмотреть размер базы данных?
+a) SELECT pg_size_pretty(pg_database_size('dbname'))
+b) SHOW DATABASE SIZE 'dbname'
+c) SELECT size FROM pg_database_size WHERE datname='dbname'
+d) \db в psql
+Правильный ответ: a
+
+32. Как создать глобальную временную таблицу?
+a) CREATE GLOBAL TEMPORARY TABLE
+b) CREATE SHARED TEMPORARY TABLE
+c) CREATE PUBLIC TEMP TABLE
+d) В PostgreSQL нет глобальных временных таблиц
+Правильный ответ: d
+
+33. Какая команда изменяет ограничения на подключение к базе данных?
+a) ALTER DATABASE dbname CONNECTION LIMIT limit
+b) SET DATABASE CONNECTION LIMIT dbname TO limit
+c) MODIFY DATABASE dbname MAX_CONNECTIONS limit
+d) CHANGE DATABASE dbname CONNECTION_LIMIT limit
+Правильный ответ: a
+
+34. Как переименовать схему?
+a) ALTER SCHEMA name RENAME TO new_name
+b) RENAME SCHEMA name TO new_name
+c) CHANGE SCHEMA name TO new_name
+d) MODIFY SCHEMA name RENAME new_name
+Правильный ответ: a
+
+35. Какая схема используется по умолчанию при создании объектов без указания схемы?
+a) Первая схема в search_path
+b) Схема public
+c) Схема с именем пользователя
+d) Схема pg_catalog
+Правильный ответ: a
+
+36. Как создать представление (view) в определенной схеме?
+a) CREATE VIEW schema_name.view_name AS ...
+b) CREATE VIEW view_name IN SCHEMA schema_name AS ...
+c) CREATE VIEW view_name SCHEMA schema_name AS ...
+d) CREATE VIEW view_name USING SCHEMA schema_name AS ...
+Правильный ответ: a
+
+37. Как удалить все объекты в схеме без удаления самой схемы?
+a) DROP SCHEMA schema_name CASCADE затем CREATE SCHEMA schema_name
+b) DELETE ALL OBJECTS FROM SCHEMA schema_name
+c) CLEAN SCHEMA schema_name
+d) TRUNCATE SCHEMA schema_name
+Правильный ответ: a
+
+38. Какая команда показывает все таблицы в конкретной схеме?
+a) \dt schema_name.* в psql
+b) SHOW TABLES IN SCHEMA schema_name
+c) SELECT * FROM pg_tables WHERE schemaname = 'schema_name'
+d) Любой из вариантов a или c
+Правильный ответ: d
+
+39. Как изменить владельца схемы?
+a) ALTER SCHEMA schema_name OWNER TO new_owner
+b) CHANGE SCHEMA schema_name OWNER new_owner
+c) SET SCHEMA schema_name OWNER = new_owner
+d) MODIFY SCHEMA schema_name OWNER TO new_owner
+Правильный ответ: a
+
+40. Что такое табличное пространство (tablespace) в контексте баз данных?
+a) Физическое расположение на диске для хранения данных
+b) Пространство имен для таблиц
+c) Логическая группировка таблиц
+d) Квота на размер базы данных
+Правильный ответ: a
+
+41. Как создать базу данных в определенном табличном пространстве?
+a) CREATE DATABASE dbname TABLESPACE tspacename
+b) CREATE DATABASE dbname IN TABLESPACE tspacename
+c) CREATE DATABASE dbname WITH TABLESPACE = tspacename
+d) CREATE DATABASE dbname LOCATION tspacename
+Правильный ответ: a
+
+42. Какая команда создает шаблонную базу данных?
+a) Нельзя создать, можно только изменить существующую
+b) CREATE TEMPLATE DATABASE
+c) CREATE DATABASE ... WITH TEMPLATE
+d) ALTER DATABASE ... SET IS_TEMPLATE
+Правильный ответ: d
+
+43. Как временно изменить search_path для текущей транзакции?
+a) SET LOCAL search_path TO ...
+b) SET SESSION search_path TO ...
+c) ALTER TRANSACTION SET search_path ...
+d) BEGIN WITH search_path ...
+Правильный ответ: a
+
+44. Какая системная таблица содержит информацию о схемах?
+a) pg_namespace
+b) pg_schema
+c) pg_schemas
+d) information_schema.schemata
+Правильный ответ: a
+
+45. Как создать функцию в определенной схеме?
+a) CREATE FUNCTION schema_name.function_name ...
+b) CREATE FUNCTION function_name IN SCHEMA schema_name ...
+c) CREATE FUNCTION function_name SCHEMA schema_name ...
+d) CREATE FUNCTION function_name USING SCHEMA schema_name ...
+Правильный ответ: a
+
+46. Что происходит при попытке удалить базу данных, к которой есть подключения?
+a) Команда завершается ошибкой
+b) Подключения принудительно обрываются
+c) База помечается для удаления после отключения
+d) Удаляются только незанятые объекты
+Правильный ответ: a
+
+47. Как принудительно удалить базу данных с активными подключениями?
+a) Предварительно завершить все подключения
+b) DROP DATABASE FORCE
+c) DROP DATABASE CASCADE
+d) DELETE DATABASE WITH FORCE
+Правильный ответ: a
+
+48. Какая команда создает синоним (alias) для объекта в другой схеме?
+a) CREATE VIEW schema_name.view_name AS SELECT * FROM other_schema.table
+b) Синонимы не поддерживаются в PostgreSQL
+c) CREATE ALIAS schema_name.alias_name FOR other_schema.object_name
+d) CREATE SYNONYM schema_name.synonym_name FOR other_schema.object_name
+Правильный ответ: a
+
+49. Как импортировать данные в конкретную схему?
+a) Указать схему в команде COPY или \copy
+b) Использовать SET search_path перед импортом
+c) Оба варианта верны
+d) Импорт всегда идет в схему public
+Правильный ответ: c
+
+50. Какая команда показывает все базы данных кластера?
+a) \l в psql
+b) SELECT * FROM pg_database
+c) SHOW DATABASES
+d) Любой из вариантов a или b
+Правильный ответ: d

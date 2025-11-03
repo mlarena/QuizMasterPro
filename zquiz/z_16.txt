@@ -1,0 +1,350 @@
+Вопросы по мониторингу PostgreSQL: ОС, статистика, логи и внешние системы
+1. Какая утилита командной строки в Linux позволяет отслеживать использование диска PostgreSQL?
+a) df
+b) du
+c) iostat
+d) vmstat
+Правильный ответ: a
+
+2. Какое представление содержит накопительную статистику по базам данных?
+a) pg_stat_database
+b) pg_database_stats
+c) pg_db_stats
+d) pg_stat_db
+Правильный ответ: a
+
+3. Какой параметр определяет, куда записываются логи сервера PostgreSQL?
+a) log_destination
+b) log_directory
+c) log_file
+d) logging_collector
+Правильный ответ: a
+
+4. Какая внешняя система мониторинга часто используется с PostgreSQL?
+a) Prometheus
+b) Nagios
+c) Zabbix
+d) Все перечисленные
+Правильный ответ: d
+
+5. Какой инструмент ОС позволяет мониторить использование памяти процессами?
+a) top
+b) ps
+c) free
+d) vmstat
+Правильный ответ: a
+
+6. Какое представление показывает статистику по запросам?
+a) pg_stat_statements
+b) pg_query_stats
+c) pg_statement_stats
+d) pg_sql_stats
+Правильный ответ: a
+
+7. Какой параметр включает сбор статистики по запросам?
+a) shared_preload_libraries = 'pg_stat_statements'
+b) enable_statistics = on
+c) track_queries = on
+d) collect_query_stats = on
+Правильный ответ: a
+
+8. Какая команда ОС показывает активные подключения к PostgreSQL?
+a) netstat
+b) ss
+c) lsof
+d) Любая из перечисленных
+Правильный ответ: d
+
+9. Какое представление содержит информацию о текущих активностях?
+a) pg_stat_activity
+b) pg_activity
+c) pg_current_queries
+d) pg_running_processes
+Правильный ответ: a
+
+10. Какой формат логов позволяет легче парсить их автоматически?
+a) CSV
+b) JSON
+c) XML
+d) Любой из перечисленных
+Правильный ответ: a
+
+11. Какой инструмент ОС мониторит ввод-вывод на диске?
+a) iostat
+b) vmstat
+c) mpstat
+d) netstat
+Правильный ответ: a
+
+12. Какое представление показывает статистику по таблицам?
+a) pg_stat_all_tables
+b) pg_table_stats
+c) pg_stats
+d) pg_stat_tables
+Правильный ответ: a
+
+13. Какой параметр включает логирование медленных запросов?
+a) log_min_duration_statement
+b) slow_query_log
+c) log_slow_queries
+d) track_slow_queries
+Правильный ответ: a
+
+14. Какая утилита собирает и визуализирует метрики PostgreSQL?
+a) pgMonitor
+b) pgDash
+c) pgAdmin
+d) Любая из перечисленных
+Правильный ответ: d
+
+15. Какой инструмент ОС показывает использование CPU по процессам?
+a) pidstat
+b) top
+c) htop
+d) Любой из перечисленных
+Правильный ответ: d
+
+16. Какое представление содержит статистику по индексам?
+a) pg_stat_all_indexes
+b) pg_index_stats
+c) pg_index_usage
+d) pg_stat_indexes
+Правильный ответ: a
+
+17. Какой параметр определяет уровень детализации логов?
+a) log_min_messages
+b) log_level
+c) logging_level
+d) message_level
+Правильный ответ: a
+
+18. Какой дашборд популярен для визуализации метрик PostgreSQL?
+a) Grafana
+b) Kibana
+c) Tableau
+d) Power BI
+Правильный ответ: a
+
+19. Какая команда ОС показывает использование swap?
+a) free
+b) vmstat
+c) swapon
+d) Любая из перечисленных
+Правильный ответ: d
+
+20. Какое представление показывает информацию о блокировках?
+a) pg_locks
+b) pg_blocks
+c) pg_lock_info
+d) pg_current_locks
+Правильный ответ: a
+
+21. Какой параметр включает логирование ожидания блокировок?
+a) log_lock_waits
+b) lock_wait_logging
+c) log_deadlocks
+d) track_lock_waits
+Правильный ответ: a
+
+22. Какая система мониторинга использует SQL-запросы для сбора метрик?
+a) pgwatch2
+b) Prometheus
+c) Nagios
+d) Zabbix
+Правильный ответ: a
+
+23. Какой инструмент ОС показывает сетевую активность?
+a) netstat
+b) ss
+c) iftop
+d) Любой из перечисленных
+Правильный ответ: d
+
+24. Какое представление содержит статистику по репликации?
+a) pg_stat_replication
+b) pg_replication_stats
+c) pg_slave_status
+d) pg_streaming_stats
+Правильный ответ: a
+
+25. Какой параметр включает сбор статистики по вводу-выводу?
+a) track_io_timing
+b) io_statistics
+c) track_io_stats
+d) collect_io_timing
+Правильный ответ: a
+
+26. Какой экспортер метрик для Prometheus используется для PostgreSQL?
+a) postgres_exporter
+b) pg_exporter
+c) postgresql_exporter
+d) Любой из перечисленных
+Правильный ответ: a
+
+27. Какая команда ОС показывает контекстные переключения?
+a) pidstat
+b) vmstat
+c) mpstat
+d) Любая из перечисленных
+Правильный ответ: d
+
+28. Какое представление показывает прогресс выполнения VACUUM?
+a) pg_stat_progress_vacuum
+b) pg_vacuum_progress
+c) pg_cleanup_status
+d) vacuum_progress_info
+Правильный ответ: a
+
+29. Какой параметр определяет частоту ротации логов?
+a) log_rotation_age
+b) log_rotation_size
+c) Оба параметра
+d) log_retention
+Правильный ответ: c
+
+30. Какая система мониторинга входит в состав Stack от Timescale?
+a) TimescaleDB + Grafana
+b) TimescaleDB + Prometheus
+c) TimescaleDB + Nagios
+d) TimescaleDB + Zabbix
+Правильный ответ: a
+
+31. Какой инструмент ОС показывает использование файловых дескрипторов?
+a) lsof
+b) fuser
+c) lsfd
+d) filetop
+Правильный ответ: a
+
+32. Какое представление содержит статистику по функциям?
+a) pg_stat_user_functions
+b) pg_function_stats
+c) pg_proc_stats
+d) pg_stat_functions
+Правильный ответ: a
+
+33. Какой параметр включает логирование временных файлов?
+a) log_temp_files
+b) temp_file_logging
+c) track_temp_files
+d) log_temporary_files
+Правильный ответ: a
+
+34. Какой облачный сервис предлагает мониторинг PostgreSQL?
+a) Amazon CloudWatch
+b) Google Cloud Monitoring
+c) Azure Monitor
+d) Все перечисленные
+Правильный ответ: d
+
+35. Какая команда ОС показывает нагрузку на систему?
+a) uptime
+b) top
+c) htop
+d) Любая из перечисленных
+Правильный ответ: d
+
+36. Какое представление показывает статистику по WAL?
+a) pg_stat_wal
+b) pg_wal_stats
+c) pg_xlog_stats
+d) pg_transaction_log_stats
+Правильный ответ: a
+
+37. Какой параметр включает ведение лога контрольных точек?
+a) log_checkpoints
+b) checkpoint_log
+c) log_checkpoint_events
+d) checkpoint_debug
+Правильный ответ: a
+
+38. Какая утилита анализирует логи PostgreSQL?
+a) pgbadger
+b) pgfouine
+c) pg_log_analyzer
+d) Любая из перечисленных
+Правильный ответ: d
+
+39. Какой инструмент ОС показывает использование shared memory?
+a) ipcs
+b) pmap
+c) smem
+d) Любой из перечисленных
+Правильный ответ: d
+
+40. Какое представление содержит информацию о подготовленных транзакциях?
+a) pg_prepared_xacts
+b) pg_prepared_transactions
+c) pg_transaction_status
+d) pg_stat_transactions
+Правильный ответ: a
+
+41. Какой параметр определяет, какие операторы логируются?
+a) log_statement
+b) statement_logging
+c) track_statements
+d) log_sql
+Правильный ответ: a
+
+42. Какая система мониторинга использует агенты на каждом сервере?
+a) Zabbix
+b) Nagios
+c) Prometheus
+d) Все перечисленные
+Правильный ответ: d
+
+43. Какая команда ОС показывает статистику по сети?
+a) netstat -s
+b) ss -s
+c) nstat
+d) Любая из перечисленных
+Правильный ответ: d
+
+44. Какое представление показывает статистику по буферному кешу?
+a) pg_stat_bgwriter
+b) pg_buffercache
+c) pg_buffer_stats
+d) pg_cache_stats
+Правильный ответ: b
+
+45. Какой параметр включает сбор статистики по планировщику?
+a) track_activities
+b) track_counts
+c) track_functions
+d) Все перечисленные
+Правильный ответ: d
+
+46. Какой облачный провайдер предлагает managed PostgreSQL с мониторингом?
+a) Amazon RDS
+b) Google Cloud SQL
+c) Azure Database for PostgreSQL
+d) Все перечисленные
+Правильный ответ: d
+
+47. Какой инструмент ОС показывает распределение памяти процесса?
+a) pmap
+b) ps aux
+c) top
+d) htop
+Правильный ответ: a
+
+48. Какое представление содержит информацию о размерах объектов?
+a) pg_relation_size() функции
+b) pg_table_size() функции
+c) pg_total_relation_size() функции
+d) Все перечисленные
+Правильный ответ: d
+
+49. Какой параметр определяет формат временных меток в логах?
+a) log_line_prefix
+b) log_timestamp_format
+c) timestamp_format
+d) time_format
+Правильный ответ: a
+
+50. Какая система мониторинга использует push-модель сбора метрик?
+a) Graphite
+b) InfluxDB
+c) Prometheus
+d) Все перечисленные
+Правильный ответ: d

@@ -1,0 +1,350 @@
+Вопросы по утилите psql
+1. Как подключиться к базе данных mydb под пользователем myuser через psql?
+a) psql -d myuser -u mydb
+b) psql mydb myuser
+c) psql -U myuser -d mydb
+d) psql connect myuser/mydb
+Правильный ответ: c
+
+2. Какой метакоманда используется для вывода списка всех баз данных?
+a) \db
+b) \dn
+c) \l
+d) \list
+Правильный ответ: c
+
+3. Как вывести подробную информацию о структуре таблицы customers?
+a) \d customers
+b) \dt customers
+c) \d+ customers
+d) \describe customers
+Правильный ответ: c
+
+4. Как выполнить SQL-команду из файла script.sql в psql?
+a) \run script.sql
+b) \execute script.sql
+c) \i script.sql
+d) \f script.sql
+Правильный ответ: c
+
+5. Как переключиться на базу данных new_db внутри psql?
+a) \use new_db
+b) \connect new_db
+c) \c new_db
+d) \switch new_db
+Правильный ответ: c
+
+6. Как вывести список всех таблиц в текущей базе данных?
+a) \t
+b) \dt
+c) \lt
+d) \list tables
+Правильный ответ: b
+
+7. Как включить отображение времени выполнения каждого запроса?
+a) \timing
+b) \time
+c) \timing on
+d) \set timing on
+Правильный ответ: a
+
+8. Как выйти из psql?
+a) \exit
+b) \q
+c) \quit
+d) Ctrl+D
+Правильный ответ: b
+
+9. Как показать историю выполненных команд в текущей сессии psql?
+a) \history
+b) \h
+c) \s
+d) \hist
+Правильный ответ: c
+
+10. Как вывести список всех схем в текущей базе данных?
+a) \ds
+b) \dn
+c) \dl
+d) \db
+Правильный ответ: b
+
+11. Как сохранить результат выполнения запроса в файл output.csv?
+a) \o output.csv
+b) \f output.csv
+c) \export output.csv
+d) \copy output.csv
+Правильный ответ: a
+
+12. Как отобразить список всех представлений (views) в текущей базе данных?
+a) \dv
+b) \dw
+c) \dviews
+d) \dsv
+Правильный ответ: a
+
+13. Как выполнить команду операционной системы, не выходя из psql?
+a) \sys
+b) \sh
+c) \!
+d) \os
+Правильный ответ: c
+
+14. Как показать список всех последовательностей (sequences) в текущей базе данных?
+a) \ds
+b) \dS
+c) \seq
+d) \dsequences
+Правильный ответ: a
+
+15. Как установить переменную myvar в значение test внутри psql?
+a) \set myvar test
+b) \var myvar test
+c) SET myvar = 'test'
+d) \assign myvar test
+Правильный ответ: a
+
+16. Как вывести список всех функций в текущей базе данных?
+a) \df
+b) \df+
+c) \dfn
+d) \dfunctions
+Правильный ответ: a
+
+17. Как включить расширенный вывод с выравниванием для результатов запроса?
+a) \x on
+b) \a
+c) \x auto
+d) \format aligned
+Правильный ответ: c
+
+18. Как выполнить команду повторно каждые 2 секунды?
+a) \repeat 2
+b) \watch 2
+c) \loop 2
+d) \every 2
+Правильный ответ: b
+
+19. Как отобразить список всех индексов для таблицы products?
+a) \di products
+b) \d products (индексы показываются в общем описании)
+c) \indexes products
+d) \dI products
+Правильный ответ: b
+
+20. Как вывести подсказку по синтаксису SQL-команды SELECT?
+a) \? SELECT
+b) \h SELECT
+c) \help SELECT
+d) \syntax SELECT
+Правильный ответ: b
+
+21. Как показать текущие настройки параметров конфигурации - хуйня полная удалить
+a) \settings
+b) \show all
+c) \config
+d) SHOW ALL;
+Правильный ответ: b
+
+22. Как скопировать содержимое таблицы users в файл users.csv с разделителем-запятой?
+a) \copy users TO 'users.csv' WITH CSV
+b) \copy users TO 'users.csv' DELIMITER ','
+c) COPY users TO 'users.csv' WITH CSV
+d) \export users TO 'users.csv' CSV
+Правильный ответ: a
+
+23. Как отобразить список всех подключений к текущей базе данных?
+a) \conninfo
+b) \connections
+c) \whoami
+d) \dbinfo
+Правильный ответ: a
+
+24. Как изменить формат вывода результата на HTML?
+a) \format html
+b) \H
+c) \html on
+d) psql не поддерживает прямой вывод в HTML
+Правильный ответ: d
+
+25. Как показать информацию о текущем подключении (пользователь, база данных, хост)?
+a) \conninfo
+b) \status
+c) \info
+d) \connectinfo
+Правильный ответ: a
+
+26. Как вывести список всех операторов (operators) в базе данных?
+a) \do
+b) \dO
+c) \operators
+d) \dop
+Правильный ответ: a
+
+27. Как включить режим отладки с выводом выполняемых запросов?
+a) \set ECHO all
+b) \echo on
+c) \verbose on
+d) \debug on
+Правильный ответ: b
+
+28. Как отобразить только первые 10 строк результата запроса?
+a) \limit 10
+b) \g 10
+c) \head 10
+d) Добавить LIMIT 10 в сам SQL-запрос
+Правильный ответ: d
+
+29. Как показать план выполнения последнего выполненного запроса?
+a) \explain
+b) \plan
+c) \show plan
+d) Такой метакоманды нет
+Правильный ответ: d
+
+30. Как вывести список всех табличных пространств (tablespaces)?
+a) \db
+b) \dtablespaces
+c) \dT
+d) \tablespaces
+Правильный ответ: a
+
+31. Как выполнить транзакцию с началом, несколькими командами и коммитом в psql?
+a) \begin ... \commit
+b) START TRANSACTION; ... COMMIT; (обычными SQL-командами)
+c) \transaction begin ... \transaction commit
+d) \tx begin ... \tx commit
+Правильный ответ: b
+
+32. Как показать список всех ограничений (constraints) в текущей базе данных?
+a) \dc
+b) \dC
+c) \constraints
+d) Нет прямой метакоманды, смотреть через \d+ таблицы
+Правильный ответ: d
+
+33. Как изменить разделитель полей в выводе на точку с запятой?
+a) \set delimiter ';'
+b) \pset fieldsep ';'
+c) \f ;
+d) \separator ;
+Правильный ответ: c
+
+34. Как вывести информацию о размере таблицы orders?
+a) \size orders
+b) \dt+ orders
+c) \table_size orders
+d) \ds orders
+Правильный ответ: b
+
+35. Как отобразить список всех ролей (пользователей) в кластере?
+a) \du
+b) \dr
+c) \dU
+d) \users
+Правильный ответ: a
+
+36. Как включить вывод номера строки в результатах запроса?
+a) \linenumbers on
+b) \pset linenumber on
+c) \set linenumber
+d) \pset linestyle numbered
+Правильный ответ: b
+
+37. Как показать текущую схему поиска (search_path)?
+a) \show search_path
+b) SHOW search_path;
+c) \path
+d) \get search_path
+Правильный ответ: b
+
+38. Как вывести список всех внешних таблиц (foreign tables)?
+a) \dE
+b) \det
+c) \dft
+d) \foreign
+Правильный ответ: b
+
+39. Как очистить экран в psql?
+a) \clear
+b) \cls
+c) \! clear (зависит от ОС)
+d) \clean
+Правильный ответ: c
+
+40. Как показать список всех материализованных представлений?
+a) \dm
+b) \dM
+c) \dmv
+d) \dmatviews
+Правильный ответ: a
+
+41. Как изменить формат вывода даты и времени?
+a) \set datestyle to 'ISO'
+b) \pset dateformat 'ISO'
+c) SET datestyle = 'ISO, DMY';
+d) \dateformat ISO
+Правильный ответ: c
+
+42. Как вывести информацию о расширениях (extensions) в текущей базе данных?
+a) \de
+b) \dx
+c) \dX
+d) \extensions
+Правильный ответ: b
+
+43. Как показать список всех языков (procedural languages) в базе данных?
+a) \dL
+b) \dl
+c) \languages
+d) \pl
+Правильный ответ: a
+
+44. Как использовать значение переменной myvar в SQL-запросе?
+a) :myvar
+b) {{myvar}}
+c) $(myvar)
+d) &myvar
+Правильный ответ: a
+
+45. Как вывести список всех преобразований типов (casts)?
+a) \dC
+b) \dc
+c) \casts
+d) \dcasts
+Правильный ответ: a
+
+46. Как показать текущие настройки рабочей памяти (work_mem)?
+a) \show work_mem
+b) SHOW work_mem;
+c) \config work_mem
+d) \get work_mem
+Правильный ответ: b
+
+47. Как отобразить список всех доменов (domains) в текущей базе данных?
+a) \dd
+b) \dD
+c) \domains
+d) \d domains
+Правильный ответ: b
+
+48. Как включить/выключить вывод названий столбцов в результатах запроса?
+a) \headers on/off
+b) \pset tuples_only on/off
+c) \pset header on/off
+d) \column_names on/off
+Правильный ответ: b
+
+49. Как вывести информацию о размере всех баз данных в кластере?
+a) \l+
+b) \db+
+c) \databases+
+d) \size all
+Правильный ответ: a
+
+50. Как показать список всех текстовых поисковых конфигураций (text search configurations)?
+a) \dF
+b) \dFd
+c) \dFt
+d) \dFp
+Правильный ответ: a

@@ -1,0 +1,350 @@
+Вопросы по репликации PostgreSQL
+1. Какой тип репликации в PostgreSQL использует физическое копирование WAL-записей?
+a) Физическая репликация
+b) Логическая репликация
+c) Синхронная репликация
+d) Асинхронная репликация
+Правильный ответ: a
+
+2. Какой параметр определяет уровень журналирования WAL для репликации?
+a) wal_level
+b) replication_level
+c) wal_logging
+d) log_replication
+Правильный ответ: a
+
+3. Какой параметр включает режим горячего standby на реплике?
+a) hot_standby
+b) standby_mode
+c) replica_mode
+d) hot_replica
+Правильный ответ: a
+
+4. Какая команда переводит реплику в режим мастера?
+a) pg_ctl promote
+b) PROMOTE STANDBY
+c) ALTER SYSTEM PROMOTE
+d) SELECT pg_promote()
+Правильный ответ: a
+
+5. Какой уровень wal_level необходим для логической репликации?
+a) logical
+b) replica
+c) minimal
+d) archive
+Правильный ответ: a
+
+6. Какой файл настраивает параметры восстановления на реплике?
+a) standby.signal
+b) recovery.conf
+c) postgresql.auto.conf
+d) replica.conf
+Правильный ответ: a
+
+7. Какой параметр определяет имена standby серверов для синхронной репликации?
+a) synchronous_standby_names
+b) sync_replication
+c) synchronous_replicas
+d) sync_standby_list
+Правильный ответ: a
+
+8. Что такое каскадная репликация?
+a) Реплика, которая сама служит источником для других реплик
+b) Репликация с повышенной задержкой
+c) Репликация через промежуточный сервер
+d) Цепочка репликационных слотов
+Правильный ответ: a
+
+9. Какой параметр определяет максимальное количество WAL sender процессов?
+a) max_wal_senders
+b) max_replication_processes
+c) wal_max_senders
+d) max_wal_streams
+Правильный ответ: a
+
+10. Какой параметр управляет задержкой применения WAL на реплике?
+a) recovery_min_apply_delay
+b) wal_receiver_delay
+c) hot_standby_delay
+d) replication_lag
+Правильный ответ: a
+
+11. Что такое слот репликации?
+a) Объект, гарантирующий сохранение WAL до получения репликой
+b) Слот для репликационного соединения
+c) Ограничение на количество реплик
+d) Буфер для репликационных данных
+Правильный ответ: a
+
+12. Какой параметр определяет максимальное количество слотов репликации?
+a) max_replication_slots
+b) max_wal_slots
+c) replication_slot_limit
+d) wal_slot_max
+Правильный ответ: a
+
+13. Какой тип репликации позволяет реплицировать отдельные таблицы?
+a) Логическая репликация
+b) Физическая репликация
+c) Синхронная репликация
+d) Асинхронная репликация
+Правильный ответ: a
+
+14. Какой уровень wal_level необходим для физической репликации?
+a) replica
+b) logical
+c) minimal
+d) archive
+Правильный ответ: a
+
+15. Какой параметр включает синхронную репликацию?
+a) synchronous_commit
+b) sync_replication
+c) synchronous_mode
+d) replication_sync
+Правильный ответ: a
+
+16. Что такое физическая репликация в PostgreSQL?
+a) Байт-в-байт копирование WAL-записей
+b) Копирование SQL-операторов
+c) Репликация на уровне файловой системы
+d) Бинарное копирование данных
+Правильный ответ: a
+
+17. Какой инструмент создает физическую реплику?
+a) pg_basebackup
+b) pg_dump
+c) pg_replicate
+d) pg_clone
+Правильный ответ: a
+
+18. Какой параметр определяет таймаут для WAL sender процессов?
+a) wal_sender_timeout
+b) replication_timeout
+c) wal_stream_timeout
+d) replication_wal_timeout
+Правильный ответ: a
+
+19. Какой параметр определяет таймаут для WAL receiver процессов?
+a) wal_receiver_timeout
+b) wal_sender_timeout
+c) replication_timeout
+d) standby_timeout
+Правильный ответ: a
+
+20. Что такое логическая репликация?
+a) Репликация на уровне SQL-операторов
+b) Репликация логических томов
+c) Репликация с логическими слоты
+d) Репликация через логические соединения
+Правильный ответ: a
+
+21. Как создать публикацию для логической репликации?
+a) CREATE PUBLICATION
+b) CREATE REPLICATION
+c) CREATE STREAM
+d) CREATE SYNC
+Правильный ответ: a
+
+22. Как создать подписку для логической репликации?
+a) CREATE SUBSCRIPTION
+b) CREATE REPLICA
+c) CREATE FOLLOWER
+d) CREATE SYNC
+Правильный ответ: a
+
+23. Какой параметр synchronous_commit обеспечивает наибольшую надежность?
+a) remote_apply
+b) on
+c) remote_write
+d) local
+Правильный ответ: a
+
+24. Что такое QUORUM синхронная репликация?
+a) Подтверждение коммита от большинства реплик
+b) Подтверждение от всех реплик
+c) Подтверждение от одной реплики
+d) Подтверждение от произвольной реплики
+Правильный ответ: a
+
+25. Как посмотреть статус репликации?
+a) pg_stat_replication
+b) pg_replication_status
+c) pg_slave_status
+d) pg_streaming_stats
+Правильный ответ: a
+
+26. Какой параметр включает применение WAL на реплике?
+a) hot_standby
+b) wal_apply
+c) replica_apply
+d) standby_apply
+Правильный ответ: a
+
+27. Что такое лаг репликации?
+a) Отставание реплики от мастера
+b) Задержка сети
+c) Время применения WAL
+d) Размер очереди WAL
+Правильный ответ: a
+
+28. Как измерить лаг репликации?
+a) pg_stat_replication.write_lag
+b) pg_replication_lag()
+c) SHOW replication_lag
+d) SELECT lag FROM pg_replication
+Правильный ответ: a
+
+29. Какой параметр управляет размером WAL, сохраняемым для репликации?
+a) wal_keep_size
+b) max_wal_senders
+c) wal_keep_segments
+d) wal_retention_size
+Правильный ответ: a
+
+30. Что происходит при потере репликационного слота?
+a) WAL-файлы могут быть удалены до получения репликой
+b) Репликация останавливается
+c) Создается новый слот автоматически
+d) Реплика переходит в режим ожидания
+Правильный ответ: a
+
+31. Как удалить репликационный слот?
+a) SELECT pg_drop_replication_slot('slot_name')
+b) DROP REPLICATION SLOT slot_name
+c) DELETE REPLICATION SLOT slot_name
+d) REMOVE REPLICATION SLOT slot_name
+Правильный ответ: a
+
+32. Какой уровень wal_level используется по умолчанию?
+a) replica
+b) logical
+c) minimal
+d) archive
+Правильный ответ: a
+
+33. Какой параметр определяет минимальное количество синхронных реплик?
+a) synchronous_standby_names
+b) min_sync_replicas
+c) synchronous_min_replicas
+d) sync_replica_min
+Правильный ответ: a
+
+34. Что такое асинхронная репликация?
+a) Репликация без гарантии синхронности
+b) Репликация с задержкой
+c) Репликация по расписанию
+d) Репликация только изменений
+Правильный ответ: a
+
+35. Как создать физическую реплику с помощью pg_basebackup?
+a) pg_basebackup -D /path/to/replica -R
+b) pg_basebackup --create-replica -D /path/to/replica
+c) pg_replicate --physical -D /path/to/replica
+d) pg_clone --replica -D /path/to/replica
+Правильный ответ: a
+
+36. Какой параметр standby.signal включает режим standby?
+a) Файл существует
+b) standby_mode = on
+c) primary_conninfo
+d) restore_command
+Правильный ответ: a
+
+37. Что такое synchronous_commit = remote_write?
+a) Подтверждение при записи WAL на диск реплики
+b) Подтверждение при применении WAL на реплике
+c) Подтверждение при отправке WAL реплике
+d) Подтверждение при получении WAL репликой
+Правильный ответ: a
+
+38. Как посмотреть информацию о репликационных слотах?
+a) pg_replication_slots
+b) pg_slots
+c) pg_replication_slot_info
+d) pg_slot_status
+Правильный ответ: a
+
+39. Какой параметр управляет отставанием реплики при чтении?
+a) max_standby_streaming_delay
+b) recovery_apply_delay
+c) hot_standby_feedback
+d) wal_receiver_delay
+Правильный ответ: a
+
+40. Что такое hot_standby_feedback?
+a) Отправка информации о старейших активных транзакциях на мастер
+b) Отправка статистики использования на мастер
+c) Отправка лага репликации на мастер
+d) Отправка состояния реплики на мастер
+Правильный ответ: a
+
+41. Какой параметр определяет применение WAL во время восстановления?
+a) restore_command
+b) recovery_command
+c) wal_restore
+d) archive_restore
+Правильный ответ: a
+
+42. Что такое логический слот репликации?
+a) Слот для логической репликации
+b) Слот с логическим именем
+c) Слот для логических томов
+d) Слот с логической структурой
+Правильный ответ: a
+
+43. Как остановить логическую репликацию?
+a) ALTER SUBSCRIPTION subscription_name DISABLE
+b) STOP SUBSCRIPTION subscription_name
+c) DROP SUBSCRIPTION subscription_name
+d) PAUSE SUBSCRIPTION subscription_name
+Правильный ответ: a
+
+44. Какой параметр управляет конфликтами репликации?
+a) max_standby_archive_delay
+b) max_standby_streaming_delay
+c) conflict_resolution
+d) replica_conflict_handler
+Правильный ответ: a
+
+45. Что такое триггер файл для промоута реплики?
+a) Файл, создание которого инициирует промоут
+b) Файл с триггерами для промоута
+c) Файл конфигурации промоута
+d) Файл статуса промоута
+Правильный ответ: a
+
+46. Как посмотреть прогресс логической репликации?
+a) pg_stat_subscription
+b) pg_replication_progress
+c) pg_logical_status
+d) pg_subscription_stats
+Правильный ответ: a
+
+47. Какой параметр определяет режим работы реплики после промоута?
+a) Файл standby.signal удаляется автоматически
+b) promote_trigger_file
+c) recovery_target_timeline
+d) primary_conninfo
+Правильный ответ: a
+
+48. Что такое timeline в контексте репликации?
+a) Линия времени для различения историй WAL
+b) Временная метка репликации
+c) График применения WAL
+d) Ось времени для восстановления
+Правильный ответ: a
+
+49. Как создать репликацию только для чтения?
+a) Настроить hot_standby = on
+b) Установить readonly_mode = on
+c) Настроить read_only = on в postgresql.conf
+d) Создать реплику с доступом только для чтения
+Правильный ответ: a
+
+50. Какой параметр управляет автоматическим созданием слотов при настройке реплики?
+a) -R в pg_basebackup
+b) --create-slot
+c) --slot в pg_basebackup
+d) primary_slot_name в postgresql.conf
+Правильный ответ: a
