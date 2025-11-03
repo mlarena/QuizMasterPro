@@ -7,18 +7,26 @@
         <p><strong>Score:</strong> {{ result.score }}%</p>
         <p><strong>Correct Answers:</strong> {{ quiz_results.correct_count }} / {{ quiz_results.total_questions }}</p>
         <p><strong>Incorrect Answers:</strong> {{ quiz_results.incorrect_count }}</p>
-        
+       
         <h3>Detailed Results</h3>
+        
+        <!-- ФИЛЬТР: Кнопки для фильтра по корректности -->
+        <div id="filterButtons" class="flex flex-center mt-2 mb-3">
+            <button class="btn btn-primary btn-sm filter-btn active" data-filter="all">All</button>
+            <button class="btn btn-secondary btn-sm filter-btn ml-1" data-filter="correct">Correct</button>
+            <button class="btn btn-error btn-sm filter-btn ml-1" data-filter="incorrect">Incorrect</button>
+        </div>
+        
         {% for detail in quiz_results.results %}
             <div class="card question-card {% if not detail.is_correct %}border-left-error{% else %}border-left-success{% endif %}">
                 <div class="card-content">
                     <h4>Question {{ loop.index }}: {{ detail.question_text }}</h4>
-                    <p><strong>Status:</strong> 
+                    <p><strong>Status:</strong>
                         <span class="{% if detail.is_correct %}text-success{% else %}text-error{% endif %}">
                             {% if detail.is_correct %}Correct{% else %}Incorrect{% endif %}
                         </span>
                     </p>
-                    
+                   
                     {% if detail.user_answers %}
                         <p><strong>Your Answers:</strong></p>
                         <ul class="mt-1">
@@ -29,14 +37,14 @@
                     {% else %}
                         <p class="text-warning">No answer selected</p>
                     {% endif %}
-                    
+                   
                     <p><strong>Correct Answers:</strong></p>
                     <ul class="mt-1">
                         {% for ans_text in detail.correct_answers_text %}
                             <li class="text-success">{{ ans_text }}</li>
                         {% endfor %}
                     </ul>
-                    
+                   
                     {% if not detail.is_correct %}
                         <div class="mt-2 p-2" style="background-color: rgba(220, 53, 69, 0.1); border-radius: 4px; border-left: 4px solid var(--error);">
                             <p><strong>Explanation:</strong> Your selection didn't match the correct answers.</p>
@@ -45,10 +53,68 @@
                 </div>
             </div>
         {% endfor %}
-        
+       
         <div class="text-right mt-3">
             <a href="{{ url_for('quiz.list_quizzes') }}" class="btn btn-primary">Back to Quizzes</a>
         </div>
     </div>
 </div>
+
+<style>
+    /* Стили для фильтра (добавь в material.css для глобальности) */
+    .filter-btn {
+        transition: background-color 250ms ease;
+        border-radius: 4px;
+    }
+    .filter-btn.active {
+        background-color: var(--primary-dark) !important;
+        color: white;
+    }
+    .question-card.filtered {
+        display: none;
+    }
+    @media (max-width: 768px) {
+        #filterButtons {
+            flex-direction: column;
+            align-items: stretch;
+        }
+        .filter-btn.ml-1 {
+            margin-left: 0;
+            margin-top: 0.5rem;
+        }
+    }
+</style>
+{% endblock %}
+
+{% block scripts %}
+<script>
+    // JS для фильтра по корректности (vanilla, без зависимостей)
+    document.addEventListener('DOMContentLoaded', function() {
+        const filterBtns = document.querySelectorAll('.filter-btn');
+        const questionCards = document.querySelectorAll('.question-card');
+        
+        filterBtns.forEach(btn => {
+            btn.addEventListener('click', function() {
+                const filter = this.dataset.filter;
+                
+                // Убираем active с всех кнопок
+                filterBtns.forEach(b => b.classList.remove('active'));
+                // Добавляем active на текущую
+                this.classList.add('active');
+                
+                // Фильтруем cards
+                questionCards.forEach(card => {
+                    card.classList.remove('filtered');
+                    
+                    if (filter === 'correct' && !card.classList.contains('border-left-success')) {
+                        card.classList.add('filtered');
+                    } else if (filter === 'incorrect' && !card.classList.contains('border-left-error')) {
+                        card.classList.add('filtered');
+                    }
+                    // Для 'all' — ничего не добавляем
+                });
+            });
+        });
+    });
+</script>
 {% endblock %}
