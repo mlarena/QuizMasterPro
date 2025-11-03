@@ -33,3 +33,6 @@ logs/
 promt.txt
 z_load_q.py
 zquiz/
+structure_and_files.txt
+print_directory_structure.py
+print_directory_structure_and_files_to_file.py

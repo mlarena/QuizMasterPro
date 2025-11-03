@@ -72,27 +72,29 @@ def submit_quiz(quiz_id):
                 'correct_answers': correct_a_ids
             })
         
-        # Save result
+        # Save result — ИСПРАВЛЕНО: сохраняем полный dict, а не только list
+        full_results = {
+            'total_questions': total,
+            'correct_count': correct,
+            'incorrect_count': total - correct,
+            'results': results  # list of {'question_id': ..., 'is_correct': ..., 'user_answers': [...], 'correct_answers': [...]}
+        }
         result = QuizResult(
             user_id=current_user.id,
             quiz_id=quiz_id,
-            score=correct/total * 100 if total > 0 else 0,
-            details=json.dumps(results, ensure_ascii=False)
+            score=correct / total * 100 if total > 0 else 0,
+            details=json.dumps(full_results, ensure_ascii=False)
         )
         db.session.add(result)
         db.session.commit()
         
         logger.info(f'User {current_user.username} completed quiz {quiz_id} with score {correct}/{total}')
         
-        return jsonify({
-            'total_questions': total,
-            'correct_count': correct,
-            'incorrect_count': total - correct,
-            'results': results
-        })
+        return jsonify(full_results)  # Возвращаем то же для frontend
     except Exception as e:
         logger.error(f'Error submitting quiz {quiz_id} for user {current_user.username}: {str(e)}')
         return jsonify({'success': False, 'message': str(e)}), 500
+
 
 @quiz_bp.route('/<int:quiz_id>/result')
 @login_required
@@ -103,6 +105,28 @@ def quiz_result(quiz_id):
         flash('No result found for this quiz', 'error')
         return redirect(url_for('quiz.list_quizzes'))
     
-    quiz_results = json.loads(result.details)
+    quiz_results = json.loads(result.details)  # Теперь dict: {'total_questions': ..., 'results': [...]}
+    
+    # Загружаем вопросы и ответы для сопоставления ID с текстами
+    questions = Question.query.filter_by(quiz_id=quiz_id).order_by(Question.order).all()
+    all_answers = Answer.query.filter(Answer.question_id.in_([q.id for q in questions])).all()
+    answers_dict = {}  # {question_id: {answer_id: text}}
+    for a in all_answers:
+        if a.question_id not in answers_dict:
+            answers_dict[a.question_id] = {}
+        answers_dict[a.question_id][a.id] = a.text
+    
+    # Обогащаем results (список внутри dict)
+    for detail in quiz_results['results']:
+        q_id = detail['question_id']
+        question = next((q for q in questions if q.id == q_id), None)
+        if question:
+            detail['question_text'] = question.text
+            detail['user_answers_text'] = [answers_dict.get(q_id, {}).get(a_id, f'Unknown ({a_id})') for a_id in detail['user_answers']]
+            detail['correct_answers_text'] = [answers_dict.get(q_id, {}).get(a_id, f'Unknown ({a_id})') for a_id in detail['correct_answers']]
+    
     logger.info(f'User {current_user.username} viewed result for quiz {quiz_id}')
-    return render_template('quiz/result.html', quiz=Quiz.query.get(quiz_id), result=result, quiz_results=quiz_results)
+    return render_template('quiz/result.html', 
+                          quiz=Quiz.query.get(quiz_id), 
+                          result=result, 
+                          quiz_results=quiz_results)  # Передаем dict напрямую

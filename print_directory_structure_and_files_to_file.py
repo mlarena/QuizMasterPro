@@ -54,12 +54,13 @@ def print_directory_structure(path, indent="", output_file=None, is_last=True, i
 
     # Исключаем каталоги
     excluded_dirs = {"__pycache__", "venv", "migrations", "logs", ".git", ".idea", 
-                    "node_modules", "bin", "obj", "SRTM", ".vscode", "__pycache__"}
+                    "node_modules", "bin", "obj", "SRTM", ".vscode", "__pycache__", "zquiz"}
     # Исключаем файлы
     excluded_files = {".gitignore", ".env", ".env.local", "config.py", "settings.py", 
                      "*.log", "*.pyc", "*.pyo", "*.pyd", "quizmaster.db", "info.txt", 
                      "info_q.md", "promt.txt", "requirements.txt", "Dockerfile",
-                     "*.db", "*.sqlite", "*.sqlite3", "*.jpg", "*.png", "*.gif"}
+                     "*.db", "*.sqlite", "*.sqlite3", "*.jpg", "*.png", "*.gif", "*.gif", 
+                     "print_directory_structure_and_files_to_file.py", "print_directory_structure.py", "promt.txt", "z_load_q.py", "quizmaster.db"}
 
     # Проверяем, не исключен ли текущий элемент
     if should_exclude(path, excluded_dirs, excluded_files):
@@ -158,7 +159,7 @@ if __name__ == "__main__":
     if len(sys.argv) > 1:
         directory_path = sys.argv[1]
     else:
-        directory_path = "C:\\dev\\FloodSimulationApp"
+        directory_path = "C:\\_ExamCollection\\QuizMasterPro"
     
     # Проверяем существование пути
     if not os.path.exists(directory_path):
