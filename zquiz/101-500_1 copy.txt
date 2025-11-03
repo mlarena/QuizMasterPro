@@ -1,0 +1,615 @@
+What is the first program that is usually started, at boot time, by the Linux kernel when using SysV init?
+Какая программа обычно запускается первой во время загрузки ядром Linux при использовании SysV init?
+A. /lib/init.so
+B. /sbin/init
+C. /etc/rc.d/rcinit
+D. /proc/sys/kernel/init
+E. /boot/init
+Правильный ответ: B
+
+
+During a system boot cycle, what is the program that is run after the BIOS completes its tasks?
+Какая программа запускается во время цикла загрузки системы после того, как BIOS завершает свои задачи?
+A. The bootloader
+B. The inetd program
+C. The init program
+D. The kernel
+Правильный ответ: A
+
+
+You are having some trouble with a disk partition and you need to do maintenance on this partition but your users home directories are on it and several are logged in. 
+Which command would disconnect the users and allow you to safely execute maintenance tasks?
+У вас возникли проблемы с разделом диска, и вам нужно выполнить его обслуживание, но домашние каталоги ваших пользователей находятся на нём, и несколько из них вошли в систему. 
+Какая команда отключит пользователей и позволит вам безопасно выполнить задачи по обслуживанию?
+A. telinit 1
+B. shutdown -r now
+C. killall -9 inetd
+D. /bin/netstop --maint
+E. /etc/rc.d/init.d/network stop
+Правильный ответ: A
+
+
+Which of the following commands will write a message to the terminals of all logged in users?
+Какая из следующих команд запишет сообщение на терминалы всех вошедших в систему пользователей?
+A. bcast
+B. mesg
+C. print
+D. wall
+E. yell
+Правильный ответ: D
+
+
+Which of the following information is stored within the BIOS? (Choose TWO correct answers.)
+Какая из следующих данных хранится в BIOS? (Выберите ДВА правильных ответа.)
+A. Boot device order
+B. Linux kernel version
+C. Timezone
+D. Hardware configuration
+E. The system's hostname
+Правильный ответ: AD
+
+
+The message "Hard Disk Error" is displayed on the screen during Stage 1 of the GRUB boot process. What does this indicate?
+На первом этапе загрузки GRUB на экране отображается сообщение «Ошибка жёсткого диска». Что это означает?
+A. The kernel was unable to execute /bin/init
+B. The next Stage cannot be read from the hard disk because GRUB was unable to determine the size and geometry of the disk
+C. One or more of the filesystems on the hard disk has errors and a filesystem check should be run
+D. The BIOS was unable to read the necessary data from the Master Boot Record to begin the boot process
+Правильный ответ: B
+
+
+Which of the following are init systems used within Linux systems? (Choose THREE correct answers.)
+Какие из перечисленных ниже систем инициализации используются в системах Linux? (Выберите ТРИ правильных ответа.)
+A. startd
+B. systemd
+C. Upstart
+D. SysInit
+E. SysV init
+Правильный ответ: BCE
+
+
+Which of the following commands lists the dependencies of a given dpkg package?
+Какая из следующих команд выводит список зависимостей данного пакета dpkg?
+A. apt-cache depends-onpackage
+B. apt-cache dependencies package
+C. apt-cache depends package
+D. apt-cache requires package
+Правильный ответ: C
+
+
+To what environment variable will you assign or append a value if you need to tell the dynamic linker to look in a build directory for some of a program's shared libraries?
+Какой переменной среды вы присвоите или добавите значение, если вам нужно указать динамическому компоновщику искать в каталоге сборки некоторые общие библиотеки программы?
+A. LD_LOAD_PATH
+B. LD_LIB_PATH
+C. LD_LIBRARY_PATH
+D. LD_SHARE_PATH
+E. LD_RUN_PATH
+Правильный ответ: C
+
+
+Which of the following commands overwrites the bootloader located on /dev/sda without overwriting the partition table or any data following it?
+A. dd if=/dev/zero of=/dev/sda bs=512
+B. dd if=/dev/zero of=/dev/sda bs=512 count=1
+C. dd if=/dev/zero of=/dev/sda bs=440 count=1
+D. dd if=/dev/zero of=/dev/sda bs=440
+Правильный ответ: C
+
+
+What is the difference between the --remove and the --purge action with the dpkg command?
+A. --remove removes the program, --purge also removes the config files
+B. --remove only removes the program, --purge only removes the config files
+C. --remove removes a package, --purge also removes all packages dependent on it
+D. --remove removes only the package file itself, --purge removes all files related to the package
+Правильный ответ: A
+
+
+Which of the following apt-get commands will install the newest versions of all currently installed packages without removing any packages or installing new
+packages that are not already installed?
+A. auto-update
+B. upgrade
+C. dist-upgrade
+D. install
+E. update
+Правильный ответ: B
+
+
+When removing a package, which of the following dpkg options will completely remove the files including configuration files?
+При удалении пакета, какой из следующих параметров dpkg полностью удалит файлы, включая файлы конфигурации?
+A. --clean
+B. --delete
+C. --purge
+D. –remove
+Правильный ответ: C
+
+
+You want to preview where the package file, apache-xml.i386.rpm, will install its files before installing it. What command do you issue?
+Вы хотите предварительно посмотреть, куда пакетный файл apache-xml.i386.rpm установит свои файлы, прежде чем устанавливать его. Какую команду вы выполните?
+A. rpm -qp apache-xml.i386.rpm
+B. rpm -qv apache-xml.i386.rpm
+C. rpm -ql apache-xml.i386.rpm
+D. rpm -qpl apache-xml.i386.rpm
+Правильный ответ: D
+
+
+Which of the following commands updates the linker cache of shared libraries?
+Какая из следующих команд обновляет кеш компоновщика общих библиотек?
+A. mkcache
+B. soconfig
+C. mkldconfig
+D. lddconfig
+E. ldconfig
+Правильный ответ: E
+
+
+When given the following command line. echo "foo bar" | tee bar | cat
+Which of the following output is created?
+При выполнении следующей командной строки: echo "foo bar" | tee bar | cat
+Какой из следующих выводов будет создан?
+A. cat
+B. foo bar
+C. tee bar
+D. bar
+E. foo
+Правильный ответ: B
+
+
+Which of the following commands determines the type of a file by using a definition database file which contains information about all common file types?
+Какая из следующих команд определяет тип файла, используя файл базы данных определений, который содержит информацию обо всех распространенных типах файлов?
+A. magic
+B. type
+C. file
+D. pmagic
+E. hash
+Правильный ответ: C
+
+
+What command will generate a list of user names from /etc/passwd along with their login shell?
+Какая команда сгенерирует список имен пользователей из /etc/passwd вместе с их оболочкой входа?
+A. column -s : 1,7 /etc/passwd
+B. chop -c 1,7 /etc/passwd
+C. colrm 1,7 /etc/passwd
+D. cut -d: -f1,7 /etc/passwd
+Правильный ответ: D
+
+
+Which of the following commands prints a list of usernames (first column) and their primary group (fourth column) from the /etc/passwd file?
+Какая из следующих команд выводит список имен пользователей (первый столбец) и их основной группы (четвертый столбец) из файла /etc/passwd?
+A. fmt -f 1,4 /etc/passwd
+B. split -c 1,4 /etc/passwd
+C. cut -d : -f 1,4 /etc/passwd
+D. paste -f 1,4 /etc/passwd
+Правильный ответ: C
+
+
+Which of the following commands replaces each occurrence of 'bob' in the file letter with 'Bob' and writes the result to the file newletter?
+Какая из следующих команд заменяет каждое вхождение 'bob' в файле letter на 'Bob' и записывает результат в файл newletter?
+A. sed '/bob/Bob' letter > newletter
+B. sed s/bob/Bob/ letter < newletter
+C. sed's/bob/Bob' letter > newletter
+D. sed 's/bob/Bob/g' letter > newletter
+E. sed 's/bob, Bob/' letter > newletter
+Правильный ответ: D
+
+
+Which of the following commands prints all files and directories within the /tmp directory or its subdirectories which are also owned by the user root? (Choose TWO correct answers.)
+Какая из следующих команд выводит все файлы и каталоги внутри каталога /tmp или его подкаталогов, которые также принадлежат пользователю root? (Выберите ДВА правильных ответа.)
+A. find /tmp -uid root -print
+B. find -path /tmp -uid root
+C. find /tmp -user root -print
+D. find /tmp -user root
+E. find -path /tmp -user root –print
+Правильный ответ: C D
+
+
+Which of the following commands can be used to create a USB storage media from a disk image?
+Какая из следующих команд может быть использована для создания USB-носителя из образа диска?
+A. gdisk
+B. dd
+C. cc
+D. fdisk
+E. mount
+Правильный ответ: B
+
+
+Which of the following explanations are valid reasons to run a command in the background of your shell?
+Какие из следующих объяснений являются вескими причинами для выполнения команды в фоновом режиме вашей оболочки?
+A. The command does not need to execute immediately.
+B. The command has to run immediately but the user needs to log out.
+C. The system is being shut down and the command needs to restart execution immediately after the reboot.
+D. The command can run at a lower priority than normal commands run on the command line.
+Правильный ответ: B
+
+
+A user accidentally created the subdirectory \dir in his home directory. Which of the following commands will remove that directory?
+Пользователь случайно создал подкаталог \dir в своем домашнем каталоге. Какая из следующих команд удалит этот каталог?
+A. rmdir '~/\dir'
+B. rmdir "~/\dir"
+C. rmdir ~/'dir'
+D. rmdir ~/\dir
+E. rmdir ~/\dir
+Правильный ответ: E
+
+
+Regarding the command: nice -5 /usr/bin/prog
+Which of the following statements is correct?
+Относительно команды: nice -5 /usr/bin/prog
+Какое из следующих утверждений верно?
+A. /usr/bin/prog is executed with a nice level of -5.
+B. /usr/bin/prog is executed with a nice level of 5.
+C. /usr/bin/prog is executed with a priority of -5.
+D. /usr/bin/prog is executed with a priority of 5.
+Правильный ответ: B
+
+
+Immediately after deleting 3 lines of text in vi and moving the cursor to a different line, which single character command will insert the deleted content below the current line?
+Сразу после удаления 3 строк текста в vi и перемещения курсора на другую строку, какая команда из одного символа вставит удаленное содержимое ниже текущей строки?
+A. i (lowercase)
+B. P (uppercase)
+C. p (lowercase)
+D. U (uppercase)
+E. u (lowercase)
+Правильный ответ: C
+
+
+What is the default action of the split command on an input file?
+Какое действие по умолчанию выполняет команда split на входном файле?
+A. It will break the file into new files of 1,024 byte pieces each.
+B. It will break the file into new files of 1,000 line pieces each.
+C. It will break the file into new files of 1,024 kilobyte pieces each.
+D. It will break the file into new files that are no morethan 5% of the size of the original file.
+Правильный ответ: B
+
+
+Which of the following commands will produce the following output?
+Какая из следующих команд выдаст следующий вывод?
+A. jobs
+B. proclist
+C. netstat
+D. ps
+Правильный ответ: D
+
+
+What does the command mount -a do?
+Что делает команда mount -a?
+A. It mounts all available filesystems onto the current directory.
+B. It shows all mounted filesystems.
+C. It mounts all user mountable filesystems for thecurrent user.
+D. It mounts all filesystems listed in /etc/fstab which have the option auto set.
+E. It mounts all filesystems listed in /etc/fstab which have the option noauto set.
+Правильный ответ: D
+
+
+Which of the following commands prints a list of available package updates when using RPM-based package management?
+Какая из следующих команд выводит список доступных обновлений пакетов при использовании управления пакетами на основе RPM?
+A. dpkg list
+B. yum list
+C. dpkg check-update
+D. yum check-update
+E. yum list-update
+Правильный ответ: D
+
+
+Which command is used to query information about the available packages on a Debian system?
+Какая команда используется для запроса информации о доступных пакетах в системе Debian?
+A. apt-cache
+B. apt-get
+C. apt-search
+D. dpkg
+E. dpkg-search
+Правильный ответ: A
+
+36.
+Which of the following options must be passed to a filesystem’s entry in /etc/fstab in order to mount the file system without root privileges?
+Какой из следующих параметров должен быть передан записи файловой системы в /etc/fstab, чтобы монтировать файловую систему без прав root?
+A. auto
+B. norestrict
+C. noauto
+D. user
+Правильный ответ: D
+
+37.
+Which command reads and displays the current contents of the Kernel Ring Buffer on the command line? (Specify ONLY the command without any path or parameters.)
+Какая команда читает и отображает текущее содержимое кольцевого буфера ядра в командной строке? (Укажите ТОЛЬКО команду без пути или параметров.)
+A. Mastered
+B. Not Mastered
+Правильный ответ: A
+Explanation:
+dmesg
+
+38.
+Which of the following commands will change the quota for a specific user?
+Какая из следующих команд изменит квоту для конкретного пользователя?
+A. edquota
+B. repquota
+C. quota -e
+D. quota
+Правильный ответ: A
+
+39.
+When using regular expressions, which of the following characters match the beginning of a line?
+При использовании регулярных выражений, какой из следующих символов соответствует началу строки?
+A. ^
+B. ?
+C. *
+D. +
+E. $
+Правильный ответ: A
+
+40.
+Which of the following commands will mount an already inserted CD-ROM in /dev/sr0 onto an existing directory /mnt/cdrom when issued with root privileges?
+Какая из следующих команд смонтирует уже вставленный CD-ROM в /dev/sr0 в существующий каталог /mnt/cdrom при выполнении с правами root?
+A. mount /dev/cdrom /mnt/cdrom
+B. mount /dev/sr0 /mnt/cdrom
+C. mount –t cdrom /dev/sr0 /mnt/cdrom
+D. mount –l cdrom /dev/sr0 /mnt/cdrom
+E. mount –f /dev/sr0/mnt/cdrom
+Правильный ответ: C
+
+41.
+Which permissions and ownership should the file /etc/passwd have?
+Какие права доступа и владение должен иметь файл /etc/passwd?
+A. -rw-------1 rootroot531 Jun 5 22:45 /etc/passwd
+B. -rw-r--r--1 rootroot531 Jun 5 22:45 /etc/passwd
+C. -rw-r--r--1 11531 Jun 5 22:45 /etc/passwd
+D. -rw-------1 11531 Jun 5 22:45 /etc/passwd
+Правильный ответ: B
+
+42.
+When planning a partition scheme, which of the following directories could be considered for separate partitions? (Choose three.)
+При планировании схемы разделов, какие из следующих каталогов можно рассматривать для отдельных разделов? (Выберите три.)
+A. /etc
+B. /home
+C. /var
+D. /lib
+E. /opt
+Правильный ответ: B C E
+
+43.
+Which of the following partition types is used for Linux swap spaces when partitioning hard disk drives?
+Какой из следующих типов разделов используется для подкачки Linux при разделении жестких дисков?
+A. 82
+B. 83
+C. 8e
+D. fd
+E. 7
+Правильный ответ: A
+
+44.
+Which of the following shell commands makes the already defined variable TEST visible to new child processes? (Choose two.)
+Какая из следующих команд оболочки делает уже определенную переменную TEST видимой для новых дочерних процессов? (Выберите два.)
+A. visible TEST
+B. declare +x TEST
+C. declare –x TEST
+D. export TEST
+E. export –v TEST
+Правильный ответ: C D
+
+45.
+What does the command grub-install /dev/sda do?
+Что делает команда grub-install /dev/sda?
+A. GRUB creates partitions on the device/dev/sdato be used with Linux.
+B. GRUB sets the default BIOS boot device to/dev/sda.
+C. GRUB installs all required files and configures the boot loader on device/dev/sda.
+D. GRUB recompiles the Linux Kernel and installs it on the Master Boot Record of device/dev/sda.
+Правильный ответ: C
+
+46.
+Which signal is sent by the kill command by default?
+Какой сигнал отправляется командой kill по умолчанию?
+A. SIGHUP(1)
+B. SIGQUIT(3)
+C. SIGKILL(9)
+D. SIGTERM(15)
+Правильный ответ: D
+
+47.
+How is a symbolic link called bar.conf pointing to foo.conf created?
+Как создается символическая ссылка с именем bar.conf, указывающая на foo.conf?
+A. ln –s foo.conf bar.conf
+B. ln foo.conf bar.conf
+C. ln –s bar.conf foo.conf
+D. ln bar.conffoo.conf
+Правильный ответ: A
+
+48.
+Which of the following is true for hard linked files? (Choose three.)
+Что из перечисленного верно для жестко связанных файлов? (Выберите три.)
+A. The output ofstatwill reporthardinstead ofregular file.
+B. The hard linked files have the same permissions and owner.
+C. The hard linked files share the same inode.
+D. The hard linked files are indicated by a -> when listed withls -1.
+E. The hard linked files must be on the same filesystem.
+Правильный ответ: B C E
+
+49.
+Which of the following commands print the current working directory when using a Bash shell? (Choose two.)
+Какие из следующих команд выводят текущий рабочий каталог при использовании оболочки Bash? (Выберите два.)
+A. echo “${PWD}”
+B. echo “${WD}”
+C. pwd
+D. printwd
+E. echo “${pwd}”
+Правильный ответ: A C
+
+50.
+Which chown command will change the ownership to dave and the group to staff on a file named data.txt?
+Какая команда chown изменит владельца на dave и группу на staff для файла с именем data.txt?
+A. chown dave/staff data.txt
+B. chown –u dave –g staff data.txt
+C. chown --user dave --group staff data.txt
+D. chown dave:staff data.txt
+Правильный ответ: D
+
+51.
+Which of the following apt-get commands will install the newest versions of all currently installed packages?
+Какая из следующих команд apt-get установит самые новые версии всех установленных в данный момент пакетов?
+A. auto-update
+B. full-upgrade
+C. dist-upgrade
+D. install
+E. update
+Правильный ответ: C
+
+52.
+Which of the following are modes of the vi editor? (Choose two.)
+Какие из следующих режимов являются режимами редактора vi? (Выберите два.)
+A. edit mode
+B. insert mode
+C. change mode
+D. review mode
+E. command mode
+Правильный ответ: B E
+
+53.
+After running the command umount /mnt, the following error message is displayed: umount: /mnt: device is busy.
+What is a common reason for this message?
+После выполнения команды umount /mnt появляется следующее сообщение об ошибке: umount: /mnt: device is busy.
+Какова распространенная причина этого сообщения?
+A. The kernel has not finished flushing disk writes to themounted device.
+B. A user has a file open in the /mnt directory.
+C. Another file system still contains a symlink to a file inside /mnt.
+D. The files in /mnt have been scanned and added to the locate database.
+E. The kernel thinks that a process is about toopen a file in /mnt for reading.
+Правильный ответ: B
+
+54.
+Which of the following commands are common Linux commands for file management? (Choose three correct answers.)
+Какие из следующих команд являются распространенными командами Linux для управления файлами? (Выберите три правильных ответа.)
+A. copy
+B. mv
+C. move
+D. cp
+E. mkdir
+Правильный ответ: B D E
+
+55.
+Which of the following file permissions belong to a symbolic link?
+Какие из следующих прав доступа к файлу принадлежат символической ссылке?
+A. -rwxrwxrwx
+B. +rwxrwxrwx
+C. lrwxrwxrwx
+D. srwxrwxrwx
+Правильный ответ: C
+
+56.
+When considering the use of hard links, what are valid reasons not to use hard links?
+Рассматривая использование жестких ссылок, какие существуют веские причины не использовать их?
+A. Hard links are not available on all Linux systems because traditional filesystems, such as ext4, do not support them
+B. Each hard link has individual ownership, permissions and ACLs which can lead to unintended disclosure of file content
+C. Hard links are specific to one filesystem and cannot point to files on another filesystem
+D. If users other than root should be able to create hard links, suln has to be installed and configured
+E. When a hard linked file is changed, a copy of the file is created and consumes additional space
+Правильный ответ: C
+
+57.
+Consider the following directory:
+drwxrwxr-x 2 root sales 4096 Jan 1 15:21 sales
+Which command ensures new files created within the directory sales are owned by the group sales? (Choose two.)
+Рассмотрим следующий каталог:
+drwxrwxr-x 2 root sales 4096 Jan 1 15:21 sales
+Какая команда гарантирует, что новые файлы, созданные в каталоге sales, будут принадлежать группе sales? (Выберите два.)
+A. chmod g+s sales
+B. setpol –R newgroup=sales sales
+C. chgrp –p sales sales
+D. chown --persistent *.sales sales
+E. chmod 2775 sales
+Правильный ответ: A E
+
+58.
+Which of the following commands displays the path to the executable file that would be executed when the command foo is invoked?
+Какая из следующих команд отображает путь к исполняемому файлу, который будет выполнен при вызове команды foo?
+A. lsattr foo
+B. apropos foo
+C. locate foo
+D. whatis foo
+E. which foo
+Правильный ответ: E
+
+59.
+Which of the following are valid stream redirection operators within Bash? (Choose two.)
+Какие из следующих операторов перенаправления потоков действительны в Bash? (Выберите два.)
+A. <
+B. #>
+C. %>
+D. >>>
+E. 2>&1
+Правильный ответ: A E
+
+60.
+A faulty kernel module is causing issues with a network interface card. Which of the following actions ensures that this module is not loaded automatically when the system boots?
+Неисправный модуль ядра вызывает проблемы с сетевой картой. Какое из следующих действий гарантирует, что этот модуль не будет загружаться автоматически при загрузке системы?
+A. Using lsmod --remove --autoclean without specifying the name of a specific module
+B. Using modinfo –k followed by the name of the offending module
+C. Using modprobe –r followed by the name of the offending module
+D. Adding a blacklist line including the name of the offending module to the file/etc/modprobe.d/blacklist.conf
+E. Deleting the kernel module’s directory from the file system and recompiling the kernel, including its modules
+Правильный ответ: D
+
+61.
+Which of the following properties of a Linux system should be changed when a virtual machine is cloned? (Choose two.)
+Какие из следующих свойств системы Linux должны быть изменены при клонировании виртуальной машины? (Выберите два.)
+A. The partitioning scheme
+B. The file system
+C. The D-Bus Machine ID
+D. The permissions of /root/
+E. The SSH host keys
+Правильный ответ: C E
+
+62.
+When is the content of the kernel ring buffer reset? (Choose two.)
+Когда содержимое кольцевого буфера ядра сбрасывается? (Выберите два.)
+A. When the ring buffer is explicitly reset using the command dmesg --clear
+B. When the ring buffer is read using dmesg without any additional parameters
+C. When a configurable amount of time, 15 minutes by default, has passed
+D. When the kernel loads a previously unloaded kernel module
+E. When the system is shut down or rebooted
+Правильный ответ: A E
+
+63.
+Which of the following apt-get subcommands installs the newest versions of all currently installed packages?
+Какой из следующих подкоманд apt-get устанавливает самые новые версии всех установленных в данный момент пакетов?
+A. auto-update
+B. dist-upgrade
+C. full-upgrade
+D. install
+E. update
+Правильный ответ: B
+
+64.
+Which command displays the current disk space usage for all mounted file systems? (Specify ONLY the command without any path or parameters.)
+Какая команда отображает текущее использование дискового пространства для всех смонтированных файловых систем? (Укажите ТОЛЬКО команду без пути или параметров.)
+A. Mastered
+B. Not Mastered
+Правильный ответ: A
+Explanation:
+df
+
+65.
+When redirecting the output of find to the xargs command, what option to find is useful if the filenames contain spaces?
+При перенаправлении вывода find в команду xargs, какой параметр find полезен, если имена файлов содержат пробелы?
+A. –rep-space
+B. -printnul
+C. -nospace
+D. –ignore-space
+E. –print0
+Правильный ответ: E
+
+66.
+Which is the default percentage of reserved space for the root user on new ext4 filesystems?
+Какой процент зарезервированного пространства по умолчанию для пользователя root в новых файловых системах ext4?
+A. 10%
+B. 3%
+C. 15%
+D. 0%
+E. 5%
+Правильный ответ: E
+
+67.
+Which of the following files, located in a user’s home directory, contains the Bash history?
+Какой из следующих файлов, расположенных в домашнем каталоге пользователя, содержит историю Bash?
+A. .bashrc_history
+B. .bash_histfile
+C. .history
+D. .bash_history
+E. .history_bash
+Правильный ответ: D

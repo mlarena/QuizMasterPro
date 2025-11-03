@@ -1,0 +1,440 @@
+During a system boot cycle, what is the program that is run after the BIOS completes its tasks?
+A. The bootloader
+B. The inetd program
+C. The init program
+D. The kernel
+Answer: A
+NEW QUESTION 3
+- (Exam Topic 1)
+Which SysV init configuration file should be modified to disable the ctrl-alt-delete key combination?
+A. /etc/keys
+B. /proc/keys
+C. /etc/inittab
+D. /proc/inittab
+E. /etc/reboot
+Answer: C
+NEW QUESTION 4
+- (Exam Topic 2)
+What is the name of the main configuration file for GNU GRUB? (Specify the file name only without any path.)
+A. Mastered
+B. Not Mastered
+Answer: A
+Explanation:
+menu.lst, grub.conf, grub.cfg
+NEW QUESTION 5
+- (Exam Topic 2)
+Which option to the yum command will update the entire system? (Specify ONLY the option name without any additional parameters.)
+A. Mastered
+B. Not Mastered
+Answer: A
+Explanation:
+update, upgrade
+NEW QUESTION 6
+- (Exam Topic 2)
+Which of the following environment variables overrides or extends the list of directories holding shared libraries?
+A. LD_LOAD_PATH
+B. LD_LIB_PATH
+C. LD_LIBRARY_PATH
+D. LD_SHARE_PATH
+E. LD_RUN_PATH
+Answer: C
+NEW QUESTION 7
+- (Exam Topic 2)
+What is the difference between the --remove and the --purge action with the dpkg command?
+A. --remove removes the program, --purge also removes the config files
+B. --remove only removes the program, --purge only removes the config files
+Your Partner of IT Exam visit - https://www.exambible.com
+We recommend you to try the PREMIUM 101-500 Dumps From Exambible
+https://www.exambible.com/101-500-exam/ (243 Q&As)
+C. --remove removes a package, --purge also removes all packages dependent on it
+D. --remove removes only the package file itself, --purge removes all files related to the package
+Answer: A
+NEW QUESTION 8
+- (Exam Topic 2)
+Which function key is used to start Safe Mode in Windows NT?
+A. F10
+B. F8
+C. F6
+D. Windows NT does not support Safe Mode
+Answer: D
+NEW QUESTION 9
+- (Exam Topic 2)
+Which of the following commands can be used to perform a full text search on all available packages on a Debian system?
+A. apt
+B. apt-cache
+C. apt-get
+D. apt-search
+E. dpkg
+Answer: B
+NEW QUESTION 10
+- (Exam Topic 3)
+When given the following command line. echo "foo bar" | tee bar | cat
+Which of the following output is created?
+A. cat
+B. foo bar
+C. tee bar
+D. bar
+E. foo
+Answer: B
+NEW QUESTION 10
+- (Exam Topic 3)
+Which of the following commands will print the last 10 lines of a text file to the standard output?
+A. cat -n 10 filename
+B. dump -n 10 filename
+C. head -n 10 filename
+D. tail -n 10 filename
+Answer: D
+NEW QUESTION 11
+- (Exam Topic 3)
+What is the difference between the i and a commands of the vi editor?
+A. i (interactive) requires the user to explicitly switch between vi modes whereas a (automatic) switches modesautomatically.
+B. i (insert) inserts text before the current cursor position whereas a (append) inserts text after the cursor.
+C. i (independent rows) starts every new line at the first character whereas a (aligned rows) keeps the indentation of the previous line.
+D. i (interrupt) temporarily suspends editing of a file to the background whereas a (abort) terminates editing.
+Answer: B
+NEW QUESTION 16
+- (Exam Topic 3)
+Which of the following commands displays the contents of a gzip compressed tar archive?
+A. gzip archive.tgz | tar xvf -
+B. tar ztf archive.tgz
+C. gzip -d archive.tgz | tar tvf -
+D. tar cf archive.tgz
+Answer: B
+NEW QUESTION 18
+- (Exam Topic 3)
+Which of the following files, located in the user home directory, is used to store the Bash history?
+A. .bash_history
+B. .bash_histfile
+C. .history
+D. .bashrc_history
+E. .history_bash
+Answer: A
+NEW QUESTION 19
+- (Exam Topic 3)
+Which of the following commands replaces each occurrence of 'bob' in the file letter with 'Bob' and writes the result to the file newletter?
+A. sed '/bob/Bob' letter > newletter
+B. sed s/bob/Bob/ letter < newletter
+C. sed's/bob/Bob' letter > newletter
+D. sed 's/bob/Bob/g' letter > newletter
+E. sed 's/bob, Bob/' letter > newletter
+Answer: D
+NEW QUESTION 20
+- (Exam Topic 3)
+Which command displays a list of all background tasks running in the current shell? (Specify ONLY the command without any path or parameters.)
+A. Mastered
+B. Not Mastered
+Answer: A
+Explanation:
+jobs
+NEW QUESTION 22
+- (Exam Topic 3)
+Which of the following commands can be used to create a USB storage media from a disk image?
+A. gdisk
+B. dd
+C. cc
+D. fdisk
+E. mount
+Answer: B
+NEW QUESTION 25
+- (Exam Topic 3)
+When running the command
+sed -e "s/a/b/" /tmp/file >/tmp/file
+While /tmp/file contains data, why is /tmp/file empty afterwards?
+A. The file order is incorrec
+B. The destination file must be mentioned before the command to ensure redirection.
+C. The command sed did not match anything in that file therefore the output is empty.
+D. When the shell establishes the redirection it overwrites the target file before the redirected command starts and opens itfor reading.
+E. Redirection for shell commands do not work using the > characte
+F. It only works using the | character instead.
+Answer: C
+NEW QUESTION 27
+- (Exam Topic 3)
+From a Bash shell, which of the following commands directly executes the instruction from the file
+/usr/local/bin/runme.sh without starting a subshell? (Please select TWO answers.)
+A. source /usr/local/bin/runme.sh
+B. . /usr/local/bin/runme.sh
+C. /bin/bash /usr/local/bin/runme.sh
+D. /usr/local/bin/runme.sh
+E. run /usr/local/bin/runme.sh
+Answer: AB
+NEW QUESTION 32
+- (Exam Topic 3)
+Regarding the command: nice -5 /usr/bin/prog
+Which of the following statements is correct?
+A. /usr/bin/prog is executed with a nice level of -5.
+B. /usr/bin/prog is executed with a nice level of 5.
+C. /usr/bin/prog is executed with a priority of -5.
+D. /usr/bin/prog is executed with a priority of 5.
+Answer: B
+NEW QUESTION 33
+- (Exam Topic 3)
+What is the default action of the split command on an input file?
+A. It will break the file into new files of 1,024 byte pieces each.
+B. It will break the file into new files of 1,000 line pieces each.
+C. It will break the file into new files of 1,024 kilobyte pieces each.
+D. It will break the file into new files that are no morethan 5% of the size of the original file.
+Answer: B
+NEW QUESTION 34
+- (Exam Topic 3)
+Which of the following commands kills the process with the PID 123 but allows the process to "clean up" before exiting?
+A. kill -PIPE 123
+B. kill -KILL 123
+C. kill -STOP 123
+D. kill -TERM 123
+Answer: D
+NEW QUESTION 37
+- (Exam Topic 3)
+Which of the following command sets the Bash variable named TEST with the content FOO?
+A. set TEST="FOO"
+B. TEST = "FOO"
+C. var TEST="FOO"
+D. TEST="FOO"
+Answer: D
+NEW QUESTION 42
+- (Exam Topic 3)
+Which character, added to the end of a command, runs that command in the background as a child process of the current shell?
+A. !
+B. +
+C. &
+D. %
+E. #
+Answer: C
+NEW QUESTION 43
+- (Exam Topic 4)
+Following the Filesystem Hierarchy Standard (FHS), where should binaries that have been compiled by the system administrator be placed in order to be made
+available to all users on the system?
+A. Mastered
+B. Not Mastered
+Answer: A
+Explanation:
+/usr/local/bin/
+NEW QUESTION 48
+- (Exam Topic 4)
+Which of the following statements describes a difference between GNU GRUB Legacy and GRUB 2?
+A. GRUB 2 no longer requires a configuration file.
+B. Partition numbers start at 0 in GRUB Legacy and1in GRUB 2.
+C. grub-mkconfigonly works with GRUB Legacy if the--version 1option is used.
+D. The configuration filemenu.lst(andgrub.conf) have been replaced withgrub.config.
+
+Answer: B
+NEW QUESTION 51
+- (Exam Topic 4)
+Which of the following settings for umask ensures that new files have the default permissions -rw-r----- ?
+A. 0017
+B. 0640
+C. 0038
+D. 0027
+Answer: D
+NEW QUESTION 53
+- (Exam Topic 4)
+After successfully creating a hard link called bar to the ordinary file foo, foo is deleted from the filesystem. Which of the following describes the resulting situation?
+A. foo and bar would both be removed.
+B. foo would be removed while bar would remain accessible.
+C. foo would be remove
+D. bar would still exist but would be unusable.
+E. Both foo and bar would remain accessible.
+F. The user is prompted whether bar should be removed, too.
+Answer: B
+NEW QUESTION 57
+- (Exam Topic 4)
+Which of the following commands set the sticky bit for the directory /tmp? (Choose TWO correct answers.)
+A. chmod +s /tmp
+B. chmod +t /tmp
+C. chmod 1775 /tmp
+D. chmod 4775 /tmp
+E. chmod 2775 /tmp
+Answer: BC
+NEW QUESTION 60
+- (Exam Topic 4)
+Which SysV init configuration file is commonly used to set the default run level? (Specify the full name of the file, including path.)
+A. Mastered
+B. Not Mastered
+Answer: A
+Explanation:
+inittab
+NEW QUESTION 61
+- (Exam Topic 4)
+Which of the following commands will print important system information such as the kernel version and machine hardware architecture?
+A. sysinfo
+B. uname
+C. lspci
+D. arch
+E. info
+Answer: B
+NEW QUESTION 64
+- (Exam Topic 4)
+Which of the following commands will change the quota for a specific user?
+A. edquota
+B. repquota
+C. quota -e
+D. quota
+Answer: A
+NEW QUESTION 66
+- (Exam Topic 4)
+Which permissions and ownership should the file /etc/passwd have?
+A. -rw-------1 rootroot531 Jun 5 22:45 /etc/passwd
+B. -rw-r--r--1 rootroot531 Jun 5 22:45 /etc/passwd
+C. -rw-r--r--1 11531 Jun 5 22:45 /etc/passwd
+D. -rw-------1 11531 Jun 5 22:45 /etc/passwd
+Answer: B
+NEW QUESTION 71
+- (Exam Topic 4)
+The system configuration file named _____ is commonly used to set the default runlevel. (Please provide the file name with full path information)
+A. Mastered
+B. Not Mastered
+Answer: A
+Explanation:
+/etc/inittab
+NEW QUESTION 73
+- (Exam Topic 4)
+Instead of supplying an explicit device in /etc/fstab for mounting, what other options may be used to identify the intended partition? (Choose TWO correct
+answers.)
+A. FIND
+B. ID
+C. LABEL
+D. NAME
+E. UUID
+Answer: CE
+NEW QUESTION 74
+- (Exam Topic 4)
+Pressing the Ctrl-C combination on the keyboard while a command is executing in the foreground sends which of the following signal codes?
+A. 1(SIGHUP)
+B. 2(SIGINT)
+C. 3(SIGQUIT)
+D. 9(SIGKILL)
+E. 15(SIGTERM)
+Answer: B
+NEW QUESTION 77
+- (Exam Topic 4)
+Which chown command will change the ownership to dave and the group to staff on a file named data.txt?
+A. chown dave/staff data.txt
+B. chown –u dave –g staff data.txt
+C. chown --user dave --group staff data.txt
+D. chown dave:staff data.txt
+Answer: D
+NEW QUESTION 80
+- (Exam Topic 4)
+In the vi editor, what vi command will copy (but not paste) from the current line at the cursor and the following 16 lines (17 lines total)? Specify the correct vi
+command without spaces.
+A. Mastered
+B. Not Mastered
+Answer: A
+Explanation:
+17yy
+NEW QUESTION 82
+- (Exam Topic 4)
+Which command shows all shared libraries required by a binary executable or another shared library? (Specify ONLY the command without any path or
+parameters.)
+A. Mastered
+B. Not Mastered
+Answer: A
+Explanation:
+ldd
+NEW QUESTION 86
+- (Exam Topic 4)
+Which of the following file permissions belong to a symbolic link?
+A. -rwxrwxrwx
+B. +rwxrwxrwx
+C. lrwxrwxrwx
+D. srwxrwxrwx
+Answer: C
+NEW QUESTION 87
+- (Exam Topic 4)
+Which of the following is the device file name for the second partition on the only SCSI drive?
+A. /dev/hda1
+B. /dev/sda2
+C. /dev/sd0a2
+D. /dev/sd1p2
+Answer: B
+NEW QUESTION 89
+- (Exam Topic 5)
+Which of the following commands displays the path to the executable file that would be executed when the command foo is invoked?
+A. lsattr foo
+B. apropos foo
+C. locate foo
+D. whatis foo
+E. which foo
+Answer: A
+NEW QUESTION 94
+- (Exam Topic 5)
+Which program runs a command in specific intervals and refreshes the display of the program’s output? (Specify ONLY the command without any path or
+parameters.)
+A. Mastered
+B. Not Mastered
+Answer: A
+Explanation:
+watch
+NEW QUESTION 99
+- (Exam Topic 5)
+When is the content of the kernel ring buffer reset? (Choose two.)
+A. When the ring buffer is explicitly reset using the command dmesg --clear
+B. When the ring buffer is read using dmesg without any additional parameters
+C. When a configurable amount of time, 15 minutes by default, has passed
+D. When the kernel loads a previously unloaded kernel module
+E. When the system is shut down or rebooted
+Answer: AE
+NEW QUESTION 104
+- (Exam Topic 5)
+What output will be displayed when the user fred executes the following command? echo ‘fred $USER’
+A. fred fred
+B. fred /home/fred/
+C. ‘fred $USER’
+D. fred $USER
+E. ‘fred fred’
+Answer: A
+NEW QUESTION 108
+- (Exam Topic 5)
+Given a log file loga.log with timestamps of the format DD/MM/YYYY:hh:mm:ss, which command filters out all log entries in the time period between 8:00 am and
+8:59 am?
+A. grep –E ‘:08:[09]+:[09]+’ loga.log
+B. grep –E ‘:08:[00]+’ loga.log
+C. grep –E loga.log ‘:08:[0-9]+:[0-9]+’
+D. grep loga.log ‘:08:[0-9]:[0-9]’
+E. grep –E ‘:08:[0-9]+:[0-9]+’ loga.log
+Answer: E
+NEW QUESTION 110
+- (Exam Topic 5)
+Which of the following commands changes all CR-LF line breaks in the text file userlist.txt to Linux standard LF line breaks and stores the result in newlist.txt?
+A. tr –d ‘\r’ < userlist.txt > newlist.txt
+B. tr –c ‘\n\r’ ‘’ <newlist.txt> userlist.txt
+C. tr ‘\r\n’ ‘’ <userlist.txt> newlist.txt
+D. tr ‘\r’ ‘\n’ userlist.txt newlist.txt
+E. tr –s ‘/^M/^J/’ userlist.txt newlist.txt
+Answer: A
+NEW QUESTION 114
+- (Exam Topic 5)
+Which of the following commands list all files and directories within the /tmp/ directory and its subdirectories which are owned by the user root? (Choose two.)
+A. find /tmp –user root -print
+B. find –path /tmp –uid root
+C. find /tmp –uid root -print
+D. find /tmp –user root
+E. find –path /tmp –user root -print
+Answer: AE
+NEW QUESTION 116
+- (Exam Topic 5)
+Which command uninstalls a package but keeps its configuration files in case the package is re-installed?
+A. dpkg –s pkgname
+B. dpkg –L pkgname
+C. dpkg –P pkgname
+D. dpkg –v pkgname
+E. dpkg –r pkgname
+Answer: E
+NEW QUESTION 121
+- (Exam Topic 5)
+What is true regarding the configuration of yum? (Choose two.)
+A. Changes to the repository configuration become active after running yum confupdate
+B. Changes to the yum configuration become active after restarting the yumd service
+C. The configuration of package repositories can be divided into multiple files
+D. Repository configurations can include variables such as $basearch or $releasever
+E. In case /etc/yum.repos.d/ contains files, /etc/yum.conf is ignored
+Answer: DE
+NEW QUESTION 124
+- (Exam Topic 5)
+Which wildcards will match the following filenames? (Choose two.) ttyS0
+ttyS1 ttyS2
+A. ttyS[1-5]
+B. tty?[0-5]
+C. tty*2
+D. tty[A-Z][012]
+E. tty[Ss][02]
+Answer: BD
