@@ -10,7 +10,9 @@ quiz_bp = Blueprint('quiz', __name__, template_folder='../../templates/quiz')
 @quiz_bp.route('/')
 @login_required
 def list_quizzes():
-    quizzes = Quiz.query.filter_by(is_active=True).order_by(Quiz.created_at.desc()).all()
+    #Quiz.query.all()
+    #quizzes = Quiz.query.filter_by(is_active=True).order_by(Quiz.created_at.desc()).all()
+    quizzes = Quiz.query.all()
     logger.info(f'User {current_user.username} accessed quiz list')
     return render_template('quiz/list.html', quizzes=quizzes)
 
