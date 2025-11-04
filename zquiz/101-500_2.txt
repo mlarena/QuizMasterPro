@@ -4,8 +4,8 @@ B. The inetd program
 C. The init program
 D. The kernel
 Answer: A
-NEW QUESTION 3
-- (Exam Topic 1)
+
+
 Which SysV init configuration file should be modified to disable the ctrl-alt-delete key combination?
 A. /etc/keys
 B. /proc/keys
@@ -13,24 +13,8 @@ C. /etc/inittab
 D. /proc/inittab
 E. /etc/reboot
 Answer: C
-NEW QUESTION 4
-- (Exam Topic 2)
-What is the name of the main configuration file for GNU GRUB? (Specify the file name only without any path.)
-A. Mastered
-B. Not Mastered
-Answer: A
-Explanation:
-menu.lst, grub.conf, grub.cfg
-NEW QUESTION 5
-- (Exam Topic 2)
-Which option to the yum command will update the entire system? (Specify ONLY the option name without any additional parameters.)
-A. Mastered
-B. Not Mastered
-Answer: A
-Explanation:
-update, upgrade
-NEW QUESTION 6
-- (Exam Topic 2)
+
+
 Which of the following environment variables overrides or extends the list of directories holding shared libraries?
 A. LD_LOAD_PATH
 B. LD_LIB_PATH
@@ -38,27 +22,24 @@ C. LD_LIBRARY_PATH
 D. LD_SHARE_PATH
 E. LD_RUN_PATH
 Answer: C
-NEW QUESTION 7
-- (Exam Topic 2)
+
+
 What is the difference between the --remove and the --purge action with the dpkg command?
 A. --remove removes the program, --purge also removes the config files
 B. --remove only removes the program, --purge only removes the config files
-Your Partner of IT Exam visit - https://www.exambible.com
-We recommend you to try the PREMIUM 101-500 Dumps From Exambible
-https://www.exambible.com/101-500-exam/ (243 Q&As)
 C. --remove removes a package, --purge also removes all packages dependent on it
 D. --remove removes only the package file itself, --purge removes all files related to the package
 Answer: A
-NEW QUESTION 8
-- (Exam Topic 2)
+
+
 Which function key is used to start Safe Mode in Windows NT?
 A. F10
 B. F8
 C. F6
 D. Windows NT does not support Safe Mode
 Answer: D
-NEW QUESTION 9
-- (Exam Topic 2)
+
+
 Which of the following commands can be used to perform a full text search on all available packages on a Debian system?
 A. apt
 B. apt-cache
@@ -66,8 +47,8 @@ C. apt-get
 D. apt-search
 E. dpkg
 Answer: B
-NEW QUESTION 10
-- (Exam Topic 3)
+
+
 When given the following command line. echo "foo bar" | tee bar | cat
 Which of the following output is created?
 A. cat
@@ -76,32 +57,32 @@ C. tee bar
 D. bar
 E. foo
 Answer: B
-NEW QUESTION 10
-- (Exam Topic 3)
+
+
 Which of the following commands will print the last 10 lines of a text file to the standard output?
 A. cat -n 10 filename
 B. dump -n 10 filename
 C. head -n 10 filename
 D. tail -n 10 filename
 Answer: D
-NEW QUESTION 11
-- (Exam Topic 3)
+
+
 What is the difference between the i and a commands of the vi editor?
 A. i (interactive) requires the user to explicitly switch between vi modes whereas a (automatic) switches modesautomatically.
 B. i (insert) inserts text before the current cursor position whereas a (append) inserts text after the cursor.
 C. i (independent rows) starts every new line at the first character whereas a (aligned rows) keeps the indentation of the previous line.
 D. i (interrupt) temporarily suspends editing of a file to the background whereas a (abort) terminates editing.
 Answer: B
-NEW QUESTION 16
-- (Exam Topic 3)
+
+
 Which of the following commands displays the contents of a gzip compressed tar archive?
 A. gzip archive.tgz | tar xvf -
 B. tar ztf archive.tgz
 C. gzip -d archive.tgz | tar tvf -
 D. tar cf archive.tgz
 Answer: B
-NEW QUESTION 18
-- (Exam Topic 3)
+
+
 Which of the following files, located in the user home directory, is used to store the Bash history?
 A. .bash_history
 B. .bash_histfile
@@ -109,8 +90,8 @@ C. .history
 D. .bashrc_history
 E. .history_bash
 Answer: A
-NEW QUESTION 19
-- (Exam Topic 3)
+
+
 Which of the following commands replaces each occurrence of 'bob' in the file letter with 'Bob' and writes the result to the file newletter?
 A. sed '/bob/Bob' letter > newletter
 B. sed s/bob/Bob/ letter < newletter
@@ -118,16 +99,7 @@ C. sed's/bob/Bob' letter > newletter
 D. sed 's/bob/Bob/g' letter > newletter
 E. sed 's/bob, Bob/' letter > newletter
 Answer: D
-NEW QUESTION 20
-- (Exam Topic 3)
-Which command displays a list of all background tasks running in the current shell? (Specify ONLY the command without any path or parameters.)
-A. Mastered
-B. Not Mastered
-Answer: A
-Explanation:
-jobs
-NEW QUESTION 22
-- (Exam Topic 3)
+
 Which of the following commands can be used to create a USB storage media from a disk image?
 A. gdisk
 B. dd
@@ -135,8 +107,7 @@ C. cc
 D. fdisk
 E. mount
 Answer: B
-NEW QUESTION 25
-- (Exam Topic 3)
+
 When running the command
 sed -e "s/a/b/" /tmp/file >/tmp/file
 While /tmp/file contains data, why is /tmp/file empty afterwards?
