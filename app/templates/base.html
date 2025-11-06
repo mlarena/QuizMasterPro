@@ -15,6 +15,7 @@
             {% if current_user.is_authenticated %}
                 {% if current_user.is_admin %}
                     <a href="{{ url_for('admin.dashboard') }}" class="navbar-item">Admin Dashboard</a>
+                    <a href="{{ url_for('admin.results_overview') }}" class="navbar-item">Test Results</a>
                 {% endif %}
                 <a href="{{ url_for('quiz.list_quizzes') }}" class="navbar-item">Quizzes</a>
                 <a href="{{ url_for('auth.logout') }}" class="navbar-item">Logout</a>
@@ -27,7 +28,7 @@
             {% endif %}
         </div>
     </nav>
-    
+   
     <div class="container">
         {% with messages = get_flashed_messages(with_categories=true) %}
             {% if messages %}
@@ -36,11 +37,11 @@
                 {% endfor %}
             {% endif %}
         {% endwith %}
-        
+       
         {% block content %}
         {% endblock %}
     </div>
-    
+   
     {% block scripts %}
     {% endblock %}
 </body>

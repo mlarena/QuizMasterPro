@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+{% block title %}Test Results Overview{% endblock %}
+{% block content %}
+<div class="card">
+    <div class="card-content">
+        <h2>Test Results Overview</h2>
+        <a href="{{ url_for('admin.dashboard') }}" class="btn btn-secondary mb-3">Back to Dashboard</a>
+        <h3>All Test Results</h3>
+        {% if results %}
+            <div class="table-responsive">
+                <table class="table table-bordered table-hover">
+                    <thead>
+                        <tr>
+                            <th>Quiz Title</th>
+                            <th>Username</th>
+                            <th>Score (%)</th>
+                            <th style="white-space: nowrap;">Completed At</th>
+                            <th style="min-width: 120px;">Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for res in results %}
+                        <tr>
+                            <td><strong>{{ res.title }}</strong></td>
+                            <td>{{ res.username }}</td>
+                            <td>{{ "%.1f"|format(res.score) }}%</td>
+                            <td style="white-space: nowrap;">{{ res.completed_at[:16] }}</td>
+                            <td>
+                                <a href="{{ url_for('admin.quiz_result_details', result_id=res.id) }}" class="btn btn-primary btn-sm" style="white-space: nowrap;">View Details</a>
+                            </td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        {% else %}
+            <p>No test results available.</p>
+        {% endif %}
+    </div>
+</div>
+{% endblock %}

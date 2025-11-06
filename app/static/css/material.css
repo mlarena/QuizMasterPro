@@ -437,3 +437,33 @@ h3 { font-size: 1.25rem; }
 .card-content .table-responsive:last-child {
     margin-bottom: 0;
 }
+
+/* Стили для admin result details */
+.border-left-error { 
+    border-left: 4px solid var(--error); 
+}
+
+.border-left-success { 
+    border-left: 4px solid var(--success); 
+}
+
+.text-success { 
+    color: var(--success); 
+}
+
+.text-error { 
+    color: var(--error); 
+}
+
+.text-warning { 
+    color: var(--warning); 
+}
+
+.explanation-box {
+    background-color: rgba(220, 53, 69, 0.1); 
+    border-radius: 4px; 
+    border-left: 4px solid var(--error);
+    padding: 1rem;
+}
+
+

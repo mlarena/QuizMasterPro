@@ -1,0 +1,170 @@
+{% extends "base.html" %}
+{% block title %}Quiz Result Details: {{ quiz.title }} - {{ user.username }}{% endblock %}
+{% block content %}
+<div class="card">
+    <div class="card-content">
+        <h2>Quiz Result Details: {{ quiz.title }}</h2>
+        <p><strong>User:</strong> {{ user.username }}</p>
+        <p><strong>Score:</strong> {{ "%.1f"|format(result.score) }}%</p>
+        <p><strong>Completed At:</strong> {{ result.completed_at.strftime('%Y-%m-%d %H:%M') if result.completed_at else 'N/A' }}</p>
+        <a href="{{ url_for('admin.results_overview') }}" class="btn btn-secondary mb-3">Back to Results Overview</a>
+     
+        <h3>Detailed Results</h3>
+        
+        {% if not quiz_results %}
+            <div class="card mt-3">
+                <div class="card-content text-center">
+                    <p class="text-warning">No question details available for this result.</p>
+                    <p>Possible reasons: Empty test, data corruption, or parsing error. Check logs.</p>
+                </div>
+            </div>
+        {% else %}
+            <!-- ФИЛЬТР: Кнопки для фильтра по корректности -->
+            <div id="filterButtons" class="flex flex-center mt-2 mb-3">
+                <button class="btn btn-primary btn-sm filter-btn active" data-filter="all">All</button>
+                <button class="btn btn-secondary btn-sm filter-btn ml-1" data-filter="correct">Correct</button>
+                <button class="btn btn-error btn-sm filter-btn ml-1" data-filter="incorrect">Incorrect</button>
+            </div>
+            
+            {% for detail in quiz_results %}
+                <div class="card question-card {% if not detail.is_correct %}border-left-error{% else %}border-left-success{% endif %} filtered-{{ 'incorrect' if not detail.is_correct else 'correct' }}">
+                    <div class="card-content">
+                        <h4>Question: {{ detail.question_text }}</h4>
+                        <p><strong>Status:</strong>
+                            <span class="{% if detail.is_correct %}text-success{% else %}text-error{% endif %}">
+                                {% if detail.is_correct %}Correct{% else %}Incorrect{% endif %}
+                            </span>
+                        </p>
+                     
+                        {% if detail.user_answers_text %}
+                            <p><strong>User's Answers:</strong></p>
+                            <ul class="mt-1">
+                                {% for ans_text in detail.user_answers_text %}
+                                    <li class="{% if detail.is_correct %}text-success{% else %}text-error{% endif %}">{{ ans_text }}</li>
+                                {% endfor %}
+                            </ul>
+                        {% else %}
+                            <p class="text-warning">No answer selected</p>
+                        {% endif %}
+                     
+                        <p><strong>Correct Answers:</strong></p>
+                        <ul class="mt-1">
+                            {% for ans_text in detail.correct_answers_text %}
+                                <li class="text-success">{{ ans_text }}</li>
+                            {% endfor %}
+                        </ul>
+                     
+                        {% if not detail.is_correct %}
+                            <div class="mt-2 p-2 explanation-box">
+                                <p><strong>Explanation:</strong> User's selection didn't match the correct answers.</p>
+                            </div>
+                        {% endif %}
+                    </div>
+                </div>
+            {% endfor %}
+        {% endif %}
+    </div>
+</div>
+
+<style>
+    /* Стили для фильтра (добавь в material.css для глобальности) */
+   /* Стили для фильтра и выделения в result.html */
+.filter-btn {
+    transition: background-color 250ms ease;
+    border-radius: 4px;
+}
+
+.filter-btn.active {
+    background-color: var(--primary-dark) !important;
+    color: white;
+}
+
+.question-card.filtered {
+    display: none;
+}
+
+.question-card.filtered-correct {
+    display: block;
+}
+
+.question-card.filtered-incorrect {
+    display: block;
+}
+
+.border-left-error { 
+    border-left: 4px solid var(--error); 
+}
+
+.border-left-success { 
+    border-left: 4px solid var(--success); 
+}
+
+.text-success { 
+    color: var(--success); 
+}
+
+.text-error { 
+    color: var(--error); 
+}
+
+.text-secondary { 
+    color: var(--text-secondary); 
+}
+
+.explanation-box {
+    background-color: rgba(220, 53, 69, 0.1); 
+    border-radius: 4px; 
+    border-left: 4px solid var(--error);
+}
+
+@media (max-width: 768px) {
+    #filterButtons {
+        flex-direction: column;
+        align-items: stretch;
+    }
+    
+    .filter-btn.ml-1 {
+        margin-left: 0;
+        margin-top: 0.5rem;
+    }
+}
+</style>
+{% endblock %}
+
+{% block scripts %}
+<script>
+    // JS для фильтра по корректности в admin quiz_result_details.html
+    document.addEventListener('DOMContentLoaded', function() {
+        const filterBtns = document.querySelectorAll('.filter-btn');
+        const questionCards = document.querySelectorAll('.question-card');
+       
+        filterBtns.forEach(btn => {
+            btn.addEventListener('click', function() {
+                const filter = this.dataset.filter;
+               
+                // Убираем active с всех кнопок
+                filterBtns.forEach(b => b.classList.remove('active'));
+                // Добавляем active на текущую
+                this.classList.add('active');
+               
+                // Фильтруем cards
+                questionCards.forEach(card => {
+                    card.classList.remove('filtered-correct', 'filtered-incorrect');
+                    card.classList.add('filtered');
+                   
+                    if (filter === 'all') {
+                        card.classList.remove('filtered');
+                        card.classList.add(`filtered-${card.classList.contains('border-left-success') ? 'correct' : 'incorrect'}`);
+                    } else if (filter === 'correct' && card.classList.contains('border-left-success')) {
+                        card.classList.remove('filtered');
+                        card.classList.add('filtered-correct');
+                    } else if (filter === 'incorrect' && card.classList.contains('border-left-error')) {
+                        card.classList.remove('filtered');
+                        card.classList.add('filtered-incorrect');
+                    }
+                });
+            });
+        });
+    });
+</script>
+{% endblock %}
