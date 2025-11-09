@@ -59,8 +59,8 @@ def parse_questions_file_simple(filename):
     return quiz_title, questions
 
 # Настройки
-db_path = 'C:\\dev\\_QuizMasterPro\\quizmaster.db'
-input_file = 'C:\\dev\\_QuizMasterPro\\zquiz\\z_22.txt'
+db_path = 'C:\\_ExamCollection\\QuizMasterPro\\quizmaster.db'
+input_file = 'C:\\_ExamCollection\\QuizMasterPro\\zquiz\\psg_pro.txt'
 
 print("Загрузка вопросов...")
 
