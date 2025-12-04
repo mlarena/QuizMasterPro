@@ -1,0 +1,210 @@
+Управление файловыми системами в Astra Linux
+1. Какая архитектура подсистемы хранения данных используется в современных Linux-системах, включая Astra Linux?
+a) Монолитная архитектура
+b) Многоуровневая архитектура с абстракциями: устройства, разделы, ФС, точки монтирования
+c) Сетевая архитектура
+d) Облачная архитектура
+Правильный ответ: b
+
+2. Как в Linux обычно именуется первый SATA/SCSI диск?
+a) /dev/hda
+b) /dev/sda
+c) /dev/vda
+d) /dev/xda
+Правильный ответ: b
+
+3. Какая файловая система является стандартной и рекомендуемой для корневого раздела в Astra Linux?
+a) XFS
+b) Btrfs
+c) ext4
+d) FAT32
+Правильный ответ: c
+
+4. Какой командой создать раздел на диске /dev/sdb в интерактивном режиме?
+a) fdisk /dev/sdb
+b) mkfs /dev/sdb
+c) parted /dev/sdb
+d) gdisk /dev/sdb
+Правильный ответ: a
+
+5. Какой командой отформатировать раздел /dev/sdb1 в файловую систему ext4?
+a) format /dev/sdb1 -t ext4
+b) mkfs.ext4 /dev/sdb1
+c) mke2fs -t ext4 /dev/sdb1
+d) Варианты b и c верны
+Правильный ответ: d
+
+6. Какой файл содержит информацию о автоматически монтируемых файловых системах при загрузке?
+a) /etc/mount.conf
+b) /etc/fstab
+c) /etc/mtab
+d) /proc/mounts
+Правильный ответ: b
+
+7. Какой командой вручную смонтировать раздел /dev/sdb1 в каталог /mnt/data?
+a) mount /dev/sdb1 /mnt/data
+b) mount /mnt/data /dev/sdb1
+c) umount /dev/sdb1 /mnt/data
+d) attach /dev/sdb1 /mnt/data
+Правильный ответ: a
+
+8. Какая команда покажет информацию о свободном и использованном пространстве на всех смонтированных ФС?
+a) df -h
+b) du -sh
+c) lsblk
+d) fdisk -l
+Правильный ответ: a
+
+9. Какой параметр монтирования в /etc/fstab включает выполнение проверки файловой системы при загрузке?
+a) auto
+b) defaults
+c) fsck
+d) Последнее поле (pass)
+Правильный ответ: d
+
+10. Какой командой проверить целостность файловой системы ext4 на разделе /dev/sdb1?
+a) fsck /dev/sdb1
+b) fsck.ext4 /dev/sdb1
+c) e2fsck /dev/sdb1
+d) Любой из перечисленных
+Правильный ответ: d
+
+11. Какой командой размонтировать файловую систему, смонтированную в /mnt/data?
+a) umount /mnt/data
+b) unmount /mnt/data
+c) mount -u /mnt/data
+d) detach /mnt/data
+Правильный ответ: a
+
+12. Какая файловая система поддерживает снапшоты (снимки состояния) и сжатие "на лету"?
+a) ext4
+b) XFS
+c) Btrfs
+d) NTFS
+Правильный ответ: c
+
+13. Какой командой просмотреть информацию о разделах на всех дисках?
+a) fdisk -l
+b) lsblk
+c) parted -l
+d) Все перечисленные
+Правильный ответ: d
+
+14. Какой параметр монтирования позволяет выполнять запись в файловую систему?
+a) ro
+b) rw
+c) sync
+d) async
+Правильный ответ: b
+
+15. Какой командой изменить метку файловой системы ext4 на разделе /dev/sdb1?
+a) tune2fs -L NEWLABEL /dev/sdb1
+b) e2label /dev/sdb1 NEWLABEL
+c) label /dev/sdb1 NEWLABEL
+d) Варианты a и b верны
+Правильный ответ: d
+
+16. Какая файловая система используется для CD/DVD дисков?
+a) FAT32
+b) NTFS
+c) ISO9660
+d) HFS+
+Правильный ответ: c
+
+17. Какой командой создать файловую систему XFS на разделе /dev/sdb2?
+a) mkfs.xfs /dev/sdb2
+b) mkfs -t xfs /dev/sdb2
+c) xfs_mkfs /dev/sdb2
+d) Варианты a и b верны
+Правильный ответ: d
+
+18. Какой параметр в /etc/fstab позволяет монтировать файловую систему по UUID?
+a) UUID=...
+b) LABEL=...
+c) DEVNAME=...
+d) PARTUUID=...
+Правильный ответ: a
+
+19. Какой командой узнать UUID раздела /dev/sdb1?
+a) blkid /dev/sdb1
+b) ls -l /dev/disk/by-uuid/
+c) tune2fs -l /dev/sdb1 | grep UUID
+d) Все перечисленные
+Правильный ответ: d
+
+20. Какая команда позволяет увеличить размер файловой системы ext4 "на лету" (без размонтирования)?
+a) resize2fs
+b) extendfs
+c) growfs
+d) expandfs
+Правильный ответ: a
+
+21. Какой командой смонтировать ISO-образ image.iso в каталог /mnt/iso?
+a) mount -o loop image.iso /mnt/iso
+b) mount image.iso /mnt/iso
+c) mount -t iso9660 -o loop image.iso /mnt/iso
+d) Варианты a и c верны
+Правильный ответ: d
+
+22. Какая команда покажет детальную информацию о файловой системе ext4 на /dev/sdb1?
+a) tune2fs -l /dev/sdb1
+b) dumpe2fs /dev/sdb1
+c) fsck -N /dev/sdb1
+d) Варианты a и b верны
+Правильный ответ: d
+
+23. Какой параметр монтирования улучшает производительность для флеш-накопителей?
+a) sync
+b) async
+c) noatime
+d) defaults
+Правильный ответ: c
+
+24. Какая команда создает swap-раздел на /dev/sdb3?
+a) mkswap /dev/sdb3
+b) swapon /dev/sdb3
+c) mkfs.swap /dev/sdb3
+d) format /dev/sdb3 swap
+Правильный ответ: a
+
+25. Какой командой включить подкачку на swap-разделе /dev/sdb3?
+a) swapon /dev/sdb3
+b) swapadd /dev/sdb3
+c) mount -t swap /dev/sdb3
+d) swap -a /dev/sdb3
+Правильный ответ: a
+
+26. Какой инструмент позволяет создавать и управлять программными RAID-массивами?
+a) mdadm
+b) lvm
+c) raidtool
+d) diskraid
+Правильный ответ: a
+
+27. Какой командой перемонтировать корневую файловую систему в режиме чтения-записи?
+a) mount -o remount,rw /
+b) mount -o rw /
+c) remount /
+d) mount -o update /
+Правильный ответ: a
+
+28. Какая команда покажет, какие файловые системы поддерживает ядро?
+a) cat /proc/filesystems
+b) ls /lib/modules/$(uname -r)/kernel/fs/
+c) modprobe -l | grep fs
+d) Все перечисленные
+Правильный ответ: a
+
+29. Какой параметр в /etc/fstab указывает на резервное копирование файловой системы утилитой dump?
+a) Первое поле (spec)
+b) Второе поле (mount point)
+c) Четвертое поле (options)
+d) Пятое поле (dump)
+Правильный ответ: d
+
+30. Какая команда позволяет проверить и исправить ошибки в файловой системе Btrfs?
+a) btrfs check /dev/sdb1
+b) fsck.btrfs /dev/sdb1
+c) btrfsck /dev/sdb1
+d) btrfs scrub start /dev/sdb1
+Правильный ответ: a

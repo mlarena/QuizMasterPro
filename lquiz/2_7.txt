@@ -1,0 +1,210 @@
+Запуск заданий по расписанию в Astra Linux
+1. Какая служба отвечает за выполнение периодических заданий по расписанию в Linux?
+a) crond
+b) anacron
+c) atd
+d) systemd-timed
+Правильный ответ: a
+
+2. Какой командой отредактировать задания cron для текущего пользователя?
+a) crontab -e
+b) crontab -l
+c) edit-cron
+d) cronedit
+Правильный ответ: a
+
+3. Какой формат записи времени в crontab для выполнения задания каждый день в 14:30?
+a) 30 14 * * *
+b) 14 30 * * *
+c) * * 14 30 *
+d) 30/14 * * * *
+Правильный ответ: a
+
+4. Какая служба предназначена для выполнения отложенных одноразовых заданий?
+a) cron
+b) anacron
+c) atd
+d) systemd-run
+Правильный ответ: c
+
+5. Какой командой запланировать выполнение команды backup.sh на 02:00 завтра?
+a) at 02:00 tomorrow -f backup.sh
+b) echo "backup.sh" | at 02:00
+c) at -f backup.sh 02:00
+d) Любой из перечисленных
+Правильный ответ: d
+
+6. Какой инструмент используется для выполнения периодических заданий на системах, которые не работают круглосуточно?
+a) cron
+b) anacron
+c) systemd.timer
+d) launchd
+Правильный ответ: b
+
+7. Какой файл содержит системные задания cron?
+a) /etc/crontab
+b) /etc/cron.d/
+c) /var/spool/cron/crontabs/
+d) Все перечисленные
+Правильный ответ: d
+
+8. Какой командой запустить одноразовую задачу через systemd, которая выполнится через 5 минут?
+a) systemd-run --on-calendar='now+5min' /path/to/command
+b) systemd-run --timer=5min /path/to/command
+c) systemd-run --on-active=300 /path/to/command
+d) systemctl run --delay=5min /path/to/command
+Правильный ответ: c
+
+9. Какой командой просмотреть список запланированных заданий at?
+a) atq
+b) at -l
+c) ls /var/spool/at/
+d) Любой из перечисленных
+Правильный ответ: d
+
+10. Какой параметр в crontab позволяет выполнять задание каждые 10 минут?
+a) */10 * * * *
+b) 10/* * * * *
+c) 0-59/10 * * * *
+d) Варианты a и c верны
+Правильный ответ: d
+
+11. Какой каталог содержит скрипты, выполняемые ежечасно через cron?
+a) /etc/cron.hourly/
+b) /etc/cron.d/hourly/
+c) /etc/crontab.hourly/
+d) /var/spool/cron/hourly/
+Правильный ответ: a
+
+12. Какой командой удалить запланированное задание at с номером 3?
+a) atrm 3
+b) at -d 3
+c) at -r 3
+d) Любой из перечисленных
+Правильный ответ: d
+
+13. Какой формат записи anacron для выполнения задания каждые 7 дней?
+a) 7
+b) weekly
+c) @weekly
+d) 7d
+Правильный ответ: a
+
+14. Какой командой создать systemd-таймер для периодического выполнения службы?
+a) Создать файлы myjob.service и myjob.timer в /etc/systemd/system/
+b) systemctl create-timer myjob
+c) systemd-timer-create myjob.service
+d) timedctl enable myjob
+Правильный ответ: a
+
+15. Какой файл конфигурации anacron является основным?
+a) /etc/anacrontab
+b) /etc/anacron.conf
+c) /etc/cron.d/anacron
+d) /var/spool/anacron/
+Правильный ответ: a
+
+16. Какой командой перечислить все таймеры systemd?
+a) systemctl list-timers
+b) systemctl --type=timer
+c) systemctl list-timers --all
+d) Все перечисленные
+Правильный ответ: d
+
+17. Какой параметр crontab указывает на выполнение задания при перезагрузке системы?
+a) @reboot
+b) @boot
+c) @startup
+d) @systemd
+Правильный ответ: a
+
+18. Какой командой активировать и запустить systemd-таймер?
+a) systemctl enable --now myjob.timer
+b) systemctl start myjob.timer
+c) systemctl enable myjob.timer
+d) Любой из перечисленных, в зависимости от требуемого действия
+Правильный ответ: d
+
+19. Какой каталог содержит задания cron для конкретных пользователей?
+a) /var/spool/cron/crontabs/
+b) /etc/cron.d/users/
+c) /home/*/.cron/
+d) /etc/crontab.users
+Правильный ответ: a
+
+20. Какой командой проверить синтаксис crontab файла?
+a) crontab -v
+b) cron-check
+c) Не существует прямой команды, только через crontab -e
+d) crontab -l | grep -v "^#" | awk '{print $1,$2,$3,$4,$5}'
+Правильный ответ: c
+
+21. Какой командой запустить задание через systemd с ограничением по времени выполнения?
+a) systemd-run --property=RuntimeMaxSec=300 /path/to/command
+b) systemctl run --timeout=5min /path/to/command
+c) systemd-run --timeout 300 /path/to/command
+d) systemd-timer --max-runtime=300 /path/to/command
+Правильный ответ: a
+
+22. Какой файл журнала содержит записи о выполнении заданий cron?
+a) /var/log/cron
+b) /var/log/syslog (в Debian-based)
+c) /var/log/crontab
+d) Варианты a и b верны
+Правильный ответ: d
+
+23. Какой командой отключить выполнение всех заданий cron для текущего пользователя?
+a) crontab -r
+b) crontab -d
+c) crontab --disable
+d) systemctl stop cron
+Правильный ответ: a
+
+24. Какой командой запланировать выполнение команды через systemd на определенное календарное время?
+a) systemd-run --on-calendar="2023-12-31 23:59:59" /path/to/command
+b) systemctl start-on --date="2023-12-31 23:59:59" myjob.service
+c) systemd-calendar --run="2023-12-31 23:59:59" /path/to/command
+d) systemd-run --calendar="yearly" /path/to/command
+Правильный ответ: a
+
+25. Какой параметр anacron определяет задержку перед выполнением задания после запуска?
+a) STARTUP_DELAY
+b) DELAY
+c) RANDOM_DELAY
+d) SLEEP
+Правильный ответ: c
+
+26. Какой командой просмотреть последние выполненные задания cron?
+a) grep CRON /var/log/syslog
+b) journalctl -u cron
+c) systemctl status cron
+d) Все перечисленные
+Правильный ответ: d
+
+27. Какой командой создать задание anacron для выполнения каждые 5 дней?
+a) Добавить строку в /etc/anacrontab: 5 10 job.name /path/to/command
+b) anacron -d 5 /path/to/command
+c) echo "5 /path/to/command" > /etc/anacron.d/
+d) anacrontab -e
+Правильный ответ: a
+
+28. Какой командой принудительно запустить все задания из /etc/cron.hourly/?
+a) run-parts /etc/cron.hourly
+b) cron-run hourly
+c) systemctl start cron-hourly
+d) execute-cron hourly
+Правильный ответ: a
+
+29. Какой параметр в systemd-таймере указывает на активацию по календарю?
+a) OnCalendar=
+b) OnActiveSec=
+c) OnBootSec=
+d) OnUnitActiveSec=
+Правильный ответ: a
+
+30. Какой командой проверить, какие задания anacron должны были выполниться?
+a) anacron -T
+b) anacron -s
+c) anacron -d (режим отладки)
+d) cat /var/spool/anacron/*
+Правильный ответ: d

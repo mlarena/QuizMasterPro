@@ -1,0 +1,210 @@
+Управление устройствами и модулями ядра Astra Linux
+1. Где в системе Linux представлена псевдофайловая система sysfs?
+a) В каталоге /dev
+b) В каталоге /proc
+c) В каталоге /sys
+d) В каталоге /run
+Правильный ответ: c
+
+2. Какой демон отвечает за управление устройствами в современных дистрибутивах Linux, включая Astra Linux?
+a) devd
+b) systemd-udevd
+c) hald
+d) dbus-daemon
+Правильный ответ: b
+
+3. В каком каталоге хранятся правила udev, написанные администратором?
+a) /usr/lib/udev/rules.d/
+b) /etc/udev/rules.d/
+c) /lib/udev/rules.d/
+d) /run/udev/rules.d/
+Правильный ответ: b
+
+4. Какая команда позволяет просмотреть атрибуты устройства в sysfs?
+a) udevadm info --query=all --name=/dev/sda
+b) ls -la /sys/block/sda
+c) cat /sys/block/sda/device/model
+d) Все перечисленные
+Правильный ответ: d
+
+5. Какой командой загрузить модуль ядра usb_storage?
+a) insmod usb_storage
+b) modprobe usb_storage
+c) loadmodule usb_storage
+d) module-load usb_storage
+Правильный ответ: b
+
+6. Как с помощью udev правила изменить владельца USB-флешки, подключаемой с определенным VendorID и ProductID?
+a) ACTION=="add", SUBSYSTEM=="usb", ATTR{idVendor}=="1234", ATTR{idProduct}=="5678", OWNER="user"
+b) SUBSYSTEM=="block", ATTRS{idVendor}=="1234", ATTRS{idProduct}=="5678", OWNER="user"
+c) KERNEL=="sd*", ATTRS{idVendor}=="1234", ATTRS{idProduct}=="5678", OWNER:="user"
+d) DEVTYPE=="usb_device", ATTR{idVendor}=="1234", ATTR{idProduct}=="5678", RUN+="/bin/chown user %N"
+Правильный ответ: c
+
+7. Какой командой можно просмотреть все модули ядра, загруженные в данный момент?
+a) lsmod
+b) modprobe --show
+c) cat /proc/modules
+d) module --list
+Правильный ответ: a
+
+8. Какой файл содержит список модулей, которые должны быть загружены при запуске системы?
+a) /etc/modules
+b) /etc/modprobe.d/
+c) /etc/udev/modules.conf
+d) /proc/sys/kernel/modules
+Правильный ответ: a
+
+9. Какой командой можно "прогреть" устройство (trigger) для повторного применения правил udev?
+a) udevadm trigger
+b) udevadm control --reload-rules
+c) udevadm settle
+d) udevadm test
+Правильный ответ: a
+
+10. Как запретить загрузку модуля ядра floppy?
+a) Создать файл /etc/modprobe.d/blacklist.conf с blacklist floppy
+b) Добавить install floppy /bin/false в /etc/modprobe.d/blacklist.conf
+c) Выполнить modprobe -r floppy
+d) Варианты a и b верны
+Правильный ответ: d
+
+11. Какой командой можно получить информацию о PCI-устройствах в системе?
+a) lspci
+b) lsusb
+c) lscpu
+d) lsdev
+Правильный ответ: a
+
+12. Какой атрибут в правиле udev позволяет создать символьную ссылку на устройство?
+a) SYMLINK
+b) NAME
+c) LINK
+d) DEVNAME
+Правильный ответ: a
+
+13. Какой командой можно выгрузить модуль ядра, если он не используется?
+a) rmmod модуль
+b) modprobe -r модуль
+c) module-unload модуль
+d) Варианты a и b верны
+Правильный ответ: d
+
+14. Как с помощью udev правила запустить скрипт при подключении определенного устройства?
+a) ACTION=="add", RUN+="/путь/к/скрипту"
+b) SUBSYSTEM=="usb", RUN="/путь/к/скрипту"
+c) KERNEL=="sd*", EXEC="/путь/к/скрипту"
+d) DEVPATH=="/devices/...", COMMAND="/путь/к/скрипту"
+Правильный ответ: a
+
+15. Какой командой можно обновить initramfs после изменения настроек модулей ядра?
+a) update-initramfs -u
+b) mkinitramfs -o /boot/initrd.img-$(uname -r)
+c) dracut --force
+d) geninitrd
+Правильный ответ: a
+
+16. Какой файл определяет параметры загружаемого модуля ядра?
+a) Файлы в /etc/modprobe.d/
+b) /etc/modules.conf
+c) /proc/sys/kernel/modprobe
+d) /etc/sysctl.d/
+Правильный ответ: a
+
+17. Какой командой можно проверить синтаксис правила udev без его применения?
+a) udevadm test /sys/class/block/sda
+b) udevadm verify /etc/udev/rules.d/99-myrule.rules
+c) udevadm check /etc/udev/rules.d/99-myrule.rules
+d) Стандартной утилиты для проверки нет
+Правильный ответ: b
+
+18. Какой командой можно просмотреть зависимости модуля ядра (какие модули он требует)?
+a) modinfo модуль | grep depends
+b) modprobe --show-depends модуль
+c) lsmod | grep модуль
+d) Варианты a и b верны
+Правильный ответ: d
+
+19. Как в правиле udev обратиться к атрибуту родительского устройства?
+a) ATTR{attribute}
+b) ATTRS{attribute}
+c) PARENT{attribute}
+d) ENV{attribute}
+Правильный ответ: b
+
+20. Какой командой можно обновить базу данных модулей ядра?
+a) depmod
+b) modprobe --update
+c) update-modules
+d) mkinitramfs -u
+Правильный ответ: a
+
+21. Какой командой можно получить подробную информацию о модуле ядра ext4?
+a) modinfo ext4
+b) lsmod | grep ext4
+c) cat /sys/module/ext4/version
+d) module-info ext4
+Правильный ответ: a
+
+22. Как перезагрузить правила udev без перезагрузки системы?
+a) udevadm control --reload
+b) systemctl restart systemd-udevd
+c) udevadm trigger --type=subsystems --action=add
+d) Все перечисленные
+Правильный ответ: d
+
+23. Какой файл содержит информацию о загруженных модулях и их использовании?
+a) /proc/modules
+b) /sys/module/*/refcnt
+c) /var/log/modules.log
+d) /run/modules.status
+Правильный ответ: a
+
+24. Как с помощью udev правила изменить группу для устройства мыши?
+a) KERNEL=="mouse*", GROUP="input"
+b) SUBSYSTEM=="input", KERNEL=="mouse*", GROUP:="users"
+c) ACTION=="add", SUBSYSTEM=="input", GROUP="plugdev"
+d) Любой из перечисленных, в зависимости от требований
+Правильный ответ: d
+
+25. Какой командой можно посмотреть журнал событий udev?
+a) journalctl -u systemd-udevd
+b) udevadm monitor
+c) tail -f /var/log/udev
+d) dmesg | grep udev
+Правильный ответ: a
+
+26. Какой параметр модуля ядра можно изменить через sysfs после загрузки?
+a) Через файлы в /sys/module/имя_модуля/parameters/
+b) Через /proc/modules/имя_модуля
+c) Через modprobe -o параметр=значение
+d) Параметры можно менять только при загрузке
+Правильный ответ: a
+
+27. Как создать правило udev, которое будет создавать символьную ссылку /dev/myusb на первое подключаемое USB-хранилище?
+a) SUBSYSTEM=="block", SUBSYSTEMS=="usb", KERNEL=="sd[a-z]1", SYMLINK+="myusb"
+b) KERNEL=="sd[a-z]", ATTRS{idVendor}=="*", SYMLINK="myusb"
+c) ACTION=="add", SUBSYSTEM=="usb", DRIVER=="usb-storage", SYMLINK+="myusb"
+d) DEVTYPE=="disk", SUBSYSTEMS=="usb", KERNEL=="sd[a-z]", SYMLINK+="myusb"
+Правильный ответ: d
+
+28. Какой командой можно узнать, какие устройства обрабатываются демоном udev в реальном времени?
+a) udevadm monitor
+b) udevadm control --log-priority=debug
+c) journalctl -f -u systemd-udevd
+d) tail -f /sys/class/udev/log
+Правильный ответ: a
+
+29. Как добавить параметр при загрузке модуля ядра через конфигурационный файл?
+a) В файле /etc/modprobe.d/ добавить options имя_модуля параметр=значение
+b) В /etc/modules добавить имя_модуля параметр=значение
+c) В /etc/udev/rules.d/ добавить правило с MODPARAM
+d) В /etc/sysctl.conf добавить kernel.имя_модуля.параметр=значение
+Правильный ответ: a
+
+30. Какой командой можно получить список всех атрибутов устройства /dev/sda?
+a) udevadm info --query=all --path=/sys/block/sda
+b) udevadm info --attribute-walk --name=/dev/sda
+c) ls -la /sys/block/sda/
+d) Все перечисленные дают полезную информацию
+Правильный ответ: d

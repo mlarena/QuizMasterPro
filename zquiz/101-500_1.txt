@@ -87,7 +87,6 @@ A. LD_LOAD_PATH
 B. LD_LIB_PATH
 C. LD_LIBRARY_PATH
 D. LD_SHARE_PATH
-E. LD_RUN_PATH
 Правильный ответ: C
 
 10.
@@ -148,7 +147,6 @@ A. cat
 B. foo bar
 C. tee bar
 D. bar
-E. foo
 Правильный ответ: B
 
 Which of the following commands determines the type of a file by using a definition database file which contains information about all common file types?
@@ -156,8 +154,9 @@ A. magic
 B. type
 C. file
 D. pmagic
-E. hash
 Правильный ответ: C
+
+
 NEW QUESTION 36
 - (Exam Topic 3)
 What command will generate a list of user names from /etc/passwd along with their login shell?

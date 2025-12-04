@@ -1,0 +1,210 @@
+Система журналирования в Astra Linux SE
+1. Какая служба является основной для журналирования в Astra Linux SE, обеспечивающей сбор сообщений от ядра и демонов?
+a) rsyslog
+b) syslog-ng
+c) systemd-journald
+d) klogd
+Правильный ответ: b
+
+2. Где хранятся бинарные журналы systemd-journald по умолчанию?
+a) /var/log/journal/
+b) /var/log/syslog
+c) /run/log/journal/
+d) /etc/systemd/journald.conf
+Правильный ответ: a
+
+3. Какой командой просмотреть журнальные сообщения за последний час?
+a) journalctl --since "1 hour ago"
+b) journalctl -S "1 hour ago"
+c) tail -f /var/log/syslog
+d) Варианты a и b верны
+Правильный ответ: d
+
+4. Какой файл конфигурации syslog-ng является основным в Astra Linux SE?
+a) /etc/syslog-ng/syslog-ng.conf
+b) /etc/rsyslog.conf
+c) /etc/syslog.conf
+d) /etc/journald.conf
+Правильный ответ: a
+
+5. Какой командой включить постоянное хранение журналов systemd-journald?
+a) Создать каталог /var/log/journal и перезапустить journald
+b) Изменить параметр Storage=persistent в /etc/systemd/journald.conf
+c) Выполнить systemctl restart systemd-journald
+d) Все перечисленные шаги необходимы
+Правильный ответ: d
+
+6. Какой утилитой выполняется ротация лог-файлов в Astra Linux?
+a) logrotate
+b) syslog-ng-rotate
+c) journalctl --rotate
+d) logadm
+Правильный ответ: a
+
+7. Какой командой просмотреть журнальные сообщения только от службы SSH?
+a) journalctl -u ssh
+b) journalctl _SYSTEMD_UNIT=ssh.service
+c) cat /var/log/auth.log | grep ssh
+d) Все перечисленные
+Правильный ответ: d
+
+8. Какой параметр в syslog-ng определяет, куда отправлять сообщения определенного уровня?
+a) filter
+b) destination
+c) log
+d) source
+Правильный ответ: b
+
+9. Какой командой проверить конфигурацию syslog-ng на ошибки?
+a) syslog-ng --syntax-only
+b) syslog-ng-ctl verify
+c) systemctl status syslog-ng
+d) journalctl -u syslog-ng
+Правильный ответ: a
+
+10. Какой файл содержит настройки ротации для logrotate?
+a) /etc/logrotate.conf
+b) /etc/logrotate.d/
+c) /etc/cron.daily/logrotate
+d) Все перечисленные
+Правильный ответ: d
+
+11. Какой командой просмотреть только сообщения ядра (kernel) в журнале?
+a) journalctl -k
+b) dmesg
+c) cat /var/log/kern.log
+d) Все перечисленные
+Правильный ответ: d
+
+12. Какой уровень логирования syslog имеет наивысший приоритет?
+a) debug
+b) info
+c) emerg
+d) alert
+Правильный ответ: c
+
+13. Какой командой ограничить размер журналов systemd-journald?
+a) В файле /etc/systemd/journald.conf указать SystemMaxUse=
+b) journalctl --vacuum-size=
+c) systemd-journald --rotate
+d) Варианты a и b верны
+Правильный ответ: d
+
+14. Какой командой отобразить журнальные сообщения в реальном времени?
+a) journalctl -f
+b) tail -f /var/log/syslog
+c) syslog-ng -F
+d) Варианты a и b верны
+Правильный ответ: d
+
+15. Какой файл содержит журнал аутентификации в Astra Linux SE?
+a) /var/log/auth.log
+b) /var/log/secure
+c) /var/log/audit/audit.log
+d) /var/log/messages
+Правильный ответ: a
+
+16. Какой командой экспортировать журналы systemd-journald в текстовый файл?
+a) journalctl > journal.txt
+b) journalctl --output=export > journal.txt
+c) journalctl --no-pager > journal.txt
+d) Любой из перечисленных
+Правильный ответ: d
+
+17. Какой директивой в конфигурации syslog-ng задать источник сообщений?
+a) source
+b) destination
+c) filter
+d) log
+Правильный ответ: a
+
+18. Какой командой очистить все старые журналы systemd-journald?
+a) journalctl --vacuum-time=1s
+b) journalctl --vacuum-size=1
+c) rm -rf /var/log/journal
+d) Варианты a и b верны
+Правильный ответ: d
+
+19. Какой уровень логирования используется для отладки приложений?
+a) debug
+b) info
+c) notice
+d) warning
+Правильный ответ: a
+
+20. Какой командой перезапустить службу syslog-ng?
+a) systemctl restart syslog-ng
+b) service syslog-ng restart
+c) /etc/init.d/syslog-ng restart
+d) Все перечисленные
+Правильный ответ: d
+
+21. Какой файл содержит конфигурацию ротации для системных логов?
+a) /etc/logrotate.d/syslog-ng
+b) /etc/logrotate.conf
+c) /etc/syslog-ng/logrotate.conf
+d) /var/lib/logrotate/status
+Правильный ответ: a
+
+22. Какой командой просмотреть сообщения syslog-ng в реальном времени?
+a) tail -f /var/log/syslog
+b) syslog-ng -F
+c) journalctl -f
+d) Варианты a и c верны
+Правильный ответ: d
+
+23. Какой параметр в syslog-ng определяет условия отбора сообщений?
+a) filter
+b) destination
+c) source
+d) parser
+Правильный ответ: a
+
+24. Какой командой просмотреть журналы за конкретную дату?
+a) journalctl --since "2023-01-01" --until "2023-01-02"
+b) journalctl -S "2023-01-01" -U "2023-01-02"
+c) cat /var/log/syslog.1
+d) Варианты a и b верны
+Правильный ответ: d
+
+25. Какой файл содержит настройки тайм-аутов для logrotate?
+a) /etc/logrotate.conf
+b) /etc/logrotate.d/
+c) /etc/cron.daily/logrotate
+d) /etc/anacrontab
+Правильный ответ: a
+
+26. Какой командой проверить статус службы systemd-journald?
+a) systemctl status systemd-journald
+b) journalctl --status
+c) service journald status
+d) ps aux | grep journal
+Правильный ответ: a
+
+27. Какой уровень логирования соответствует критическим ошибкам системы?
+a) crit
+b) error
+c) emerg
+d) alert
+Правильный ответ: c
+
+28. Какой командой отфильтровать журнальные сообщения по идентификатору процесса (PID)?
+a) journalctl _PID=1234
+b) journalctl --pid=1234
+c) cat /var/log/syslog | grep "\[1234\]"
+d) Все перечисленные
+Правильный ответ: d
+
+29. Какой директивой в syslog-ng связать источник, фильтр и назначение?
+a) log
+b) chain
+c) pipe
+d) route
+Правильный ответ: a
+
+30. Какой командой увеличить уровень детализации логов syslog-ng для отладки?
+a) Изменить параметр level() в фильтрах
+b) Включить flags(debug) в конфигурации
+c) Перезапустить syslog-ng с ключом -d
+d) Все перечисленные
+Правильный ответ: d

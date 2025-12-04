@@ -1,0 +1,210 @@
+Резервное копирование и восстановление данных в Astra Linux
+1. Какой метод резервного копирования сохраняет только изменения с момента последней полной резервной копии?
+a) Полное резервное копирование (Full backup)
+b) Дифференциальное резервное копирование (Differential backup)
+c) Инкрементное резервное копирование (Incremental backup)
+d) Зеркальное резервное копирование (Mirror backup)
+Правильный ответ: c
+
+2. Какая команда rsync скопирует каталог /home/user/ на удаленный сервер с сохранением прав и атрибутов?
+a) rsync -avz /home/user/ user@remote:/backup/
+b) rsync -av /home/user/ user@remote:/backup/
+c) rsync -avz --delete /home/user/ user@remote:/backup/
+d) rsync -r /home/user/ user@remote:/backup/
+Правильный ответ: b
+
+3. Какой командой создать архив tar всего каталога /etc с сжатием gzip?
+a) tar -czf etc-backup.tar.gz /etc
+b) tar -xzf etc-backup.tar.gz /etc
+c) tar -cf etc-backup.tar /etc | gzip
+d) gzip /etc | tar -cf etc-backup.tar.gz
+Правильный ответ: a
+
+4. Какой метод резервного копирования требует наименьшего времени восстановления?
+a) Полное резервное копирование
+b) Дифференциальное резервное копирование
+c) Инкрементное резервное копирование
+d) Зеркальное копирование
+Правильный ответ: a
+
+5. Какой параметр rsync позволяет удалять файлы в приемнике, которых нет в источнике?
+a) --delete
+b) --remove-source-files
+c) --clean
+d) --purge
+Правильный ответ: a
+
+6. Какой командой восстановить архив tar из файла backup.tar.gz в текущий каталог?
+a) tar -xzf backup.tar.gz
+b) tar -xvf backup.tar.gz
+c) tar -tzf backup.tar.gz
+d) gunzip -c backup.tar.gz | tar -x
+Правильный ответ: a
+
+7. Какой инструмент использует алгоритм дельта-кодирования для эффективного резервного копирования?
+a) rsync
+b) tar
+c) cpio
+d) dd
+Правильный ответ: a
+
+8. Какой командой создать инкрементную резервную копию с помощью tar, используя файл списка?
+a) tar -g snapshot.file -czf backup.tar.gz /data
+b) tar --incremental -czf backup.tar.gz /data
+c) tar -czf backup.tar.gz --incremental /data
+d) tar -czf backup.tar.gz -N snapshot.file /data
+Правильный ответ: a
+
+9. Какой параметр rsync позволяет продолжить прерванную передачу?
+a) --partial
+b) --progress
+c) --continue
+d) --resume
+Правильный ответ: a
+
+10. Какой командой создать резервную копию с помощью cpio, включая подкаталоги?
+a) find /data -print | cpio -ov > backup.cpio
+b) cpio -iv < backup.cpio
+c) cpio -ov /data > backup.cpio
+d) cpio -create /data > backup.cpio
+Правильный ответ: a
+
+11. Какой метод резервного копирования занимает меньше всего места на носителе?
+a) Полное резервное копирование
+b) Дифференциальное резервное копирование
+c) Инкрементное резервное копирование
+d) Зеркальное копирование
+Правильный ответ: c
+
+12. Какой командой синхронизировать два каталога локально с помощью rsync?
+a) rsync -av /source/ /destination/
+b) rsync -av /source /destination
+c) rsync -av /source/* /destination/
+d) rsync -av /source /destination/
+Правильный ответ: a
+
+13. Какой параметр tar сохраняет права доступа и владельца файлов?
+a) -p или --preserve-permissions
+b) -f
+c) -z
+d) -v
+Правильный ответ: a
+
+14. Какой командой заархивировать файлы, измененные за последние 7 дней?
+a) find /data -mtime -7 -print | tar -czf backup.tar.gz -T -
+b) tar -czf backup.tar.gz --newer-mtime=7 /data
+c) tar -czf backup.tar.gz --after-date="7 days ago" /data
+d) find /data -mtime -7 | tar -czf backup.tar.gz
+Правильный ответ: a
+
+15. Какой инструмент лучше всего подходит для создания полной копии раздела диска?
+a) rsync
+b) tar
+c) dd
+d) cpio
+Правильный ответ: c
+
+16. Какой командой сжать архив tar с помощью утилиты bzip2?
+a) tar -cjf backup.tar.bz2 /data
+b) tar -czf backup.tar.bz2 /data
+c) tar -cJf backup.tar.bz2 /data
+d) tar -cf backup.tar.bz2 /data --bzip2
+Правильный ответ: a
+
+17. Какой параметр rsync позволяет ограничить скорость передачи?
+a) --bwlimit
+b) --limit-rate
+c) --speed-limit
+d) --throttle
+Правильный ответ: a
+
+18. Какой командой восстановить резервную копию cpio в указанный каталог?
+a) cpio -idv < backup.cpio
+b) cpio -iv < backup.cpio -D /restore/path
+c) cpio -extract -D /restore/path < backup.cpio
+d) Варианты b и c верны
+Правильный ответ: d
+
+19. Какой метод резервного копирования сохраняет все изменения с момента последней полной резервной копии?
+a) Полное резервное копирование
+b) Дифференциальное резервное копирование
+c) Инкрементное резервное копирование
+d) Зеркальное копирование
+Правильный ответ: b
+
+20. Какой командой проверить содержимое архива tar без его распаковки?
+a) tar -tzf backup.tar.gz
+b) tar -tf backup.tar.gz
+c) tar --list -f backup.tar.gz
+d) Все перечисленные
+Правильный ответ: d
+
+21. Какой параметр rsync позволяет выполнять копирование по SSH?
+a) -e ssh
+b) --rsh=ssh
+c) --ssh
+d) Варианты a и b верны
+Правильный ответ: d
+
+22. Какой командой создать резервную копию, исключив определенные файлы?
+a) tar -czf backup.tar.gz --exclude="*.tmp" /data
+b) tar -czf backup.tar.gz -X exclude.list /data
+c) rsync --exclude="*.tmp" /data/ /backup/
+d) Все перечисленные
+Правильный ответ: d
+
+23. Какой инструмент использует технологию жестких ссылок для экономии места?
+a) rsync с параметром --link-dest
+b) tar с параметром --hard-links
+c) cpio с параметром -l
+d) Все перечисленные
+Правильный ответ: a
+
+24. Какой командой создать полную резервную копию системы, исключая каталоги /proc, /sys, /tmp?
+a) tar -czf full-backup.tar.gz --exclude=/proc --exclude=/sys --exclude=/tmp /
+b) rsync -a --exclude={/proc,/sys,/tmp} / /backup/
+c) Обе команды имеют право на существование
+d) Ни одна из команд не подходит
+Правильный ответ: c
+
+25. Какой параметр dd позволяет создать образ диска?
+a) if=/dev/sda of=backup.img
+b) if=backup.img of=/dev/sda
+c) dd image=/dev/sda file=backup.img
+d) dd --input=/dev/sda --output=backup.img
+Правильный ответ: a
+
+26. Какой командой восстановить данные из архива tar в определенный каталог?
+a) tar -xzf backup.tar.gz -C /restore/path
+b) tar -xzf backup.tar.gz --directory=/restore/path
+c) cd /restore/path && tar -xzf /path/to/backup.tar.gz
+d) Все перечисленные
+Правильный ответ: d
+
+27. Какой параметр rsync показывает прогресс копирования?
+a) --progress
+b) -P (сочетание --progress и --partial)
+c) --stats
+d) Все перечисленные
+Правильный ответ: d
+
+28. Какой командой создать инкрементную резервную копию с помощью rsync, используя жесткие ссылки?
+a) rsync -a --link-dest=/previous/backup /source/ /new/backup/
+b) rsync -a --hard-links /source/ /backup/
+c) rsync -a --copy-links /source/ /backup/
+d) rsync -a --link /source/ /backup/
+Правильный ответ: a
+
+29. Какой инструмент лучше всего подходит для резервного копирования баз данных?
+a) rsync
+b) tar
+c) Специализированные утилиты СУБД (pg_dump, mysqldump)
+d) dd
+Правильный ответ: c
+
+30. Какой командой проверить целостность архива tar.gz?
+a) gunzip -t backup.tar.gz
+b) tar -tzf backup.tar.gz > /dev/null
+c) Обе команды проверяют целостность
+d) Ни одна из команд не проверяет целостность
+Правильный ответ: c

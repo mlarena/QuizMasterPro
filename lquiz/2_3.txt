@@ -1,0 +1,210 @@
+Управление программным обеспечением в Astra Linux
+1. Какой формат пакетов используется в Astra Linux?
+a) RPM
+b) DEB
+c) TGZ
+d) TXZ
+Правильный ответ: b
+
+2. Какой командой установить локальный пакет program.deb?
+a) apt install ./program.deb
+b) dpkg -i program.deb
+c) apt-get install program.deb
+d) Варианты a и b верны
+Правильный ответ: d
+
+3. Где находятся основные конфигурационные файлы менеджера пакетов APT?
+a) /etc/apt/
+b) /var/lib/apt/
+c) /usr/share/apt/
+d) /etc/dpkg/
+Правильный ответ: a
+
+4. Какой командой обновить список доступных пакетов из всех подключенных репозиториев?
+a) apt update
+b) apt upgrade
+c) apt dist-upgrade
+d) apt-get update
+Правильный ответ: a
+
+5. Какой файл содержит список всех подключенных репозиториев APT?
+a) /etc/apt/apt.conf
+b) /etc/apt/sources.list
+c) /etc/apt/preferences
+d) /var/lib/apt/lists/
+Правильный ответ: b
+
+6. Какой командой удалить пакет, оставив его конфигурационные файлы?
+a) apt remove package
+b) apt purge package
+c) dpkg -r package
+d) Варианты a и c верны
+Правильный ответ: d
+
+7. Какой компонент пакета DEB содержит контрольную информацию и скрипты установки?
+a) data.tar.*
+b) control.tar.*
+c) debian-binary
+d) metadata
+Правильный ответ: b
+
+8. Какой командой просмотреть информацию об установленном пакете nginx?
+a) apt show nginx
+b) dpkg -s nginx
+c) apt-cache show nginx
+d) Все перечисленные
+Правильный ответ: d
+
+9. Какой командой найти пакет, содержащий файл /usr/bin/python3?
+a) dpkg -S /usr/bin/python3
+b) apt-file search /usr/bin/python3
+c) apt search python3
+d) Варианты a и b верны
+Правильный ответ: d
+
+10. Какой командой добавить сторонний репозиторий, используя GPG-ключ?
+a) add-apt-repository ppa:user/ppa
+b) apt-add-repository 'deb [arch=amd64] http://repo.example.com/astra stable main'
+c) echo 'deb http://repo.example.com/astra stable main' | sudo tee /etc/apt/sources.list.d/custom.list
+d) Варианты b и c верны
+Правильный ответ: d
+
+11. Какой утилитой можно создать локальный репозиторий из набора DEB-пакетов?
+a) dpkg-scanpackages
+b) apt-ftparchive
+c) reprepro
+d) Любой из перечисленных
+Правильный ответ: d
+
+12. Какой командой установить все обновления безопасности?
+a) apt upgrade --security
+b) apt-get dist-upgrade
+c) unattended-upgrade
+d) apt safe-upgrade
+Правильный ответ: c
+
+13. Какой файл позволяет настроить приоритеты пакетов из разных репозиториев (pinning)?
+a) /etc/apt/apt.conf.d/01priority
+b) /etc/apt/preferences
+c) /etc/apt/sources.pref
+d) /etc/dpkg/origins/default
+Правильный ответ: b
+
+14. Какой командой просмотреть список установленных пакетов?
+a) dpkg -l
+b) apt list --installed
+c) aptitude search ~i
+d) Все перечисленные
+Правильный ответ: d
+
+15. Какой командой загрузить пакет и все его зависимости без установки?
+a) apt download package
+b) apt-get download package
+c) apt-get install --download-only package
+d) wget package.deb
+Правильный ответ: c
+
+16. Какой инструмент предоставляет графический интерфейс для управления пакетами?
+a) synaptic
+b) aptitude (текстовый интерфейс)
+c) gnome-software
+d) Варианты a и c верны
+Правильный ответ: d
+
+17. Какой командой проверить целостность установленных пакетов?
+a) dpkg -C
+b) apt-get check
+c) debsums
+d) Все перечисленные
+Правильный ответ: d
+
+18. Какой файл содержит информацию о доступных версиях пакетов в репозиториях?
+a) /var/lib/apt/lists/
+b) /var/lib/dpkg/status
+c) /var/cache/apt/pkgcache.bin
+d) /etc/apt/versions.list
+Правильный ответ: a
+
+19. Какой командой полностью очистить кэш загруженных пакетов?
+a) apt clean
+b) apt autoclean
+c) apt-get autoremove
+d) rm -rf /var/cache/apt/archives/
+Правильный ответ: a
+
+20. Какой командой переустановить пакет firefox с сохранением конфигурации?
+a) apt reinstall firefox
+b) dpkg-reconfigure firefox
+c) apt install --reinstall firefox
+d) Варианты a и c верны
+Правильный ответ: d
+
+21. Какой командой посмотреть зависимости пакета nginx?
+a) apt depends nginx
+b) apt-cache depends nginx
+c) dpkg -p nginx | grep Depends
+d) Все перечисленные
+Правильный ответ: d
+
+22. Какой компонент репозитория содержит информацию о пакетах и их зависимостях?
+a) Packages.gz
+b) Sources.gz
+c) Release
+d) InRelease
+Правильный ответ: a
+
+23. Какой командой установить пакет из конкретного репозитория?
+a) apt install package/repo
+b) apt-get install -t repo package
+c) apt install -t repo package
+d) Варианты b и c верны
+Правильный ответ: d
+
+24. Какой командой создать резервную копию списка установленных пакетов?
+a) dpkg --get-selections > packages.list
+b) apt-mark showmanual > packages.list
+c) apt list --installed > packages.list
+d) Любой из перечисленных
+Правильный ответ: d
+
+25. Какой командой восстановить пакеты из резервной копии списка?
+a) dpkg --set-selections < packages.list && apt-get dselect-upgrade
+b) xargs apt install < packages.list
+c) apt-get install $(cat packages.list)
+d) dpkg -i packages.list
+Правильный ответ: a
+
+26. Какой командой обновить систему до новой мажорной версии дистрибутива?
+a) apt dist-upgrade
+b) do-release-upgrade
+c) apt full-upgrade
+d) apt upgrade --dist
+Правильный ответ: b
+
+27. Какой файл содержит настройки прокси для APT?
+a) /etc/apt/apt.conf.d/proxy
+b) /etc/environment
+c) /etc/profile
+d) Любой из перечисленных
+Правильный ответ: a
+
+28. Какой командой проверить, какие пакеты можно обновить?
+a) apt list --upgradable
+b) apt-get upgrade --dry-run
+c) aptitude safe-upgrade --simulate
+d) Все перечисленные
+Правильный ответ: d
+
+29. Какой командой удалить неиспользуемые зависимости (сирот)?
+a) apt autoremove
+b) apt-get autoremove
+c) aptitude autoclean
+d) Варианты a и b верны
+Правильный ответ: d
+
+30. Какой командой установить несколько пакетов, пропуская те, которые не найдены?
+a) apt install package1 package2 --skip-missing
+b) apt-get install package1 package2 --ignore-missing
+c) apt install package1 package2 || true
+d) aptitude install package1 package2
+Правильный ответ: b

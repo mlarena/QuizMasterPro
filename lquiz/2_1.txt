@@ -1,0 +1,210 @@
+Процесс загрузки и выключения системы
+1. Какая последовательность этапов загрузки ОС Linux является правильной для системы с UEFI?
+a) POST → GRUB2 → Загрузка ядра → Initramfs → systemd
+b) POST → Загрузка ядра → GRUB2 → Initramfs → systemd
+c) POST → Загрузчик UEFI → GRUB2 → Ядро → Initramfs → systemd
+d) POST → BIOS → MBR → GRUB → Ядро → Initrd → SysV init
+Правильный ответ: c
+
+2. Где хранится конфигурация GRUB2 в системах с UEFI?
+a) В MBR первого диска
+b) В файле /boot/grub/grub.cfg
+c) В разделе EFI System Partition (ESP), обычно /boot/efi/EFI/astra/grub.cfg
+d) В /etc/default/grub
+Правильный ответ: c
+
+3. Какой командой обновить конфигурацию GRUB2 после изменения файла /etc/default/grub?
+a) update-grub
+b) grub-mkconfig -o /boot/grub/grub.cfg
+c) grub2-mkconfig -o /boot/efi/EFI/astra/grub.cfg
+d) Любой из перечисленных, в зависимости от системы
+Правильный ответ: d
+
+4. Как добавить параметр quiet к загружаемому ядру в GRUB2?
+a) В файле /etc/default/grub добавить в GRUB_CMDLINE_LINUX_DEFAULT
+b) В файле /boot/grub/grub.cfg добавить в строку linux
+c) В файле /etc/kernel/cmdline
+d) Через grub-editenv
+Правильный ответ: a
+
+5. Какая команда загружает модуль ядра vfat в текущую сессию?
+a) insmod vfat
+b) modprobe vfat
+c) loadmod vfat
+d) module-load vfat
+Правильный ответ: b
+
+6. Какой командой сделать службу nginx автоматически запускаемой при загрузке системы?
+a) systemctl enable nginx
+b) systemctl start nginx
+c) systemctl reload nginx
+d) systemctl autostart nginx
+Правильный ответ: a
+
+7. Какой target в systemd соответствует уровню запуска с графическим интерфейсом?
+a) multi-user.target
+b) graphical.target
+c) default.target
+d) display-manager.target
+Правильный ответ: b
+
+8. Где размещаются пользовательские юниты systemd для создания собственной службы?
+a) /etc/systemd/system/
+b) /lib/systemd/system/
+c) /usr/lib/systemd/system/
+d) /run/systemd/system/
+Правильный ответ: a
+
+9. Как в Astra Linux SE запустить службу с определенным уровнем доверия (мандатным атрибутом)?
+a) Использовать systemctl start service@trustlevel
+b) В конфигурации юнита указать Parsectx= или использовать s утилиту в скрипте запуска
+c) Изменить уровень доверия всей системы перед запуском
+d) Запустить из сессии с нужным уровнем доверия
+Правильный ответ: b
+
+10. Какой файл содержит параметры, передаваемые ядру при загрузке в Astra Linux?
+a) /etc/kernel/postinst.d/
+b) /proc/cmdline
+c) /etc/default/grub (после генерации grub.cfg)
+d) /boot/grub/grub.cfg
+Правильный ответ: b (актуальные параметры можно посмотреть в /proc/cmdline, настройка через /etc/default/grub)
+
+11. Какой командой можно посмотреть журнал загрузки системы (boot log)?
+a) journalctl -b
+b) dmesg
+c) cat /var/log/boot.log
+d) Все перечисленные
+Правильный ответ: d
+
+12. Как запретить загрузку модуля ядра usb_storage?
+a) Добавить blacklist usb_storage в файл /etc/modprobe.d/blacklist.conf
+b) Выполнить rmmod usb_storage
+c) В /etc/default/grub добавить modprobe.blacklist=usb_storage
+d) Варианты a и c верны
+Правильный ответ: d
+
+13. Какой командой перейти в режим восстановления (single-user mode) без пароля?
+a) В меню GRUB2 добавить single к параметрам ядра
+b) В меню GRUB2 добавить systemd.unit=rescue.target
+c) В меню GRUB2 добавить systemd.unit=emergency.target
+d) Любой из перечисленных
+Правильный ответ: c
+
+14. Какая директория содержит модули ядра?
+a) /lib/modules/$(uname -r)/
+b) /usr/lib/modules/
+c) /boot/modules/
+d) /etc/modules-load.d/
+Правильный ответ: a
+
+15. Какой командой перезагрузить систему через systemd?
+a) systemctl reboot
+b) systemctl poweroff
+c) systemctl halt
+d) shutdown -r now
+Правильный ответ: a
+
+16. Какой раздел должен быть смонтирован как /boot/efi для правильной работы UEFI?
+a) Раздел с файловой системой ext4
+b) Раздел с файловой системой FAT32 (ESP)
+c) Раздел с файловой системой Btrfs
+d) Раздел LVM
+Правильный ответ: b
+
+17. Как добавить параметр модуля ядра, например, для модуля usbcore параметр autosuspend=1?
+a) Создать файл в /etc/modprobe.d/ с содержимым options usbcore autosuspend=1
+b) В командной строке ядра добавить usbcore.autosuspend=1
+c) В файле /etc/modules добавить строку usbcore autosuspend=1
+d) Варианты a и b верны
+Правильный ответ: d
+
+18. Какая команда отобразит текущий default target (цель по умолчанию)?
+a) systemctl get-default
+b) systemctl list-units --type=target
+c) runlevel
+d) systemctl status default.target
+Правильный ответ: a
+
+19. Какой командой можно принудительно перезапустить службу, даже если она не запущена?
+a) systemctl restart service
+b) systemctl reload service
+c) systemctl try-restart service
+d) systemctl force-restart service
+Правильный ответ: a
+
+20. Как в конфигурационном файле юнита systemd указать, что служба должна быть запущена после загрузки сети?
+a) After=network.target
+b) Requires=network-online.target
+c) Wants=network-online.target
+d) Любой из перечисленных, в зависимости от потребностей
+Правильный ответ: d
+
+21. Какой параметр ядра отключает вывод логов на консоль?
+a) quiet
+b) loglevel=0
+c) console=null
+d) verbose=0
+Правильный ответ: a
+
+22. Какой командой можно посмотреть список всех загруженных модулей ядра?
+a) lsmod
+b) modprobe --list
+c) cat /proc/modules
+d) ls /lib/modules/$(uname -r)
+Правильный ответ: a
+
+23. Какой target используется как аналог уровня выполнения 3 (многопользовательский без графики)?
+a) multi-user.target
+b) graphical.target
+c) runlevel3.target
+d) Варианты a и c верны
+Правильный ответ: d
+
+24. Какой командой можно проверить, есть ли ошибки в конфигурации юнита systemd?
+a) systemctl daemon-reload
+b) systemctl status unit.service
+c) systemd-analyze verify /path/to/unit.service
+d) journalctl -u unit.service
+Правильный ответ: c
+
+25. Какой файл конфигурации GRUB2 определяет видимое меню загрузки?
+a) /boot/grub/grub.cfg
+b) /etc/default/grub
+c) /etc/grub.d/40_custom
+d) /etc/grub.conf
+Правильный ответ: a
+
+26. Какой командой можно смонтировать initramfs для просмотра его содержимого?
+a) unmkinitramfs /boot/initrd.img-$(uname -r) /tmp/initrd
+b) lsinitramfs /boot/initrd.img-$(uname -r)
+c) cpio -id < /boot/initrd.img-$(uname -r)
+d) Все перечисленные способы рабочие
+Правильный ответ: d
+
+27. Какой параметр ядра используется для указания корневой файловой системы?
+a) root=
+b) ro или rw
+c) init=
+d) rootflags=
+Правильный ответ: a
+
+28. Какой командой можно увидеть цепочку зависимостей юнита (что за чем запускается)?
+a) systemctl list-dependencies unit
+b) systemctl show unit
+c) systemctl status unit
+d) systemd-analyze critical-chain unit
+Правильный ответ: a
+
+29. Какой командой загрузить новый модуль ядра без перезагрузки?
+a) insmod
+b) modprobe
+c) depmod
+d) load_module
+Правильный ответ: b
+
+30. Какой параметр ядра используется для указания пути к initramfs?
+a) initrd=
+b) initramfs=
+c) rd.img=
+d) boot=
+Правильный ответ: a

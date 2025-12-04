@@ -1,0 +1,210 @@
+Управление учетными записями пользователей и групп
+1. В каких файлах хранится основная информация о локальных пользователях и группах в Linux?
+a) /etc/passwd и /etc/group
+b) /etc/shadow и /etc/gshadow
+c) /var/log/auth.log и /var/log/secure
+d) /home/username и /root
+Правильный ответ: a
+
+2. Какой командой добавить нового пользователя ivanov с созданием домашнего каталога по умолчанию?
+a) useradd -m ivanov
+b) adduser ivanov (в Debian/Astra Linux)
+c) useradd --create-home ivanov
+d) Все перечисленные варианты верны
+Правильный ответ: d
+
+3. Какой файл содержит зашифрованные пароли пользователей и информацию об их старении?
+a) /etc/passwd
+b) /etc/shadow
+c) /etc/group
+d) /etc/gshadow
+Правильный ответ: b
+
+4. Какая команда позволяет изменить срок действия пароля пользователя?
+a) chage
+b) passwd -e
+c) usermod -e
+d) Все перечисленные
+Правильный ответ: d
+
+5. Какой модуль PAM (Pluggable Authentication Modules) отвечает за проверку пароля?
+a) pam_unix.so
+b) pam_permit.so
+c) pam_deny.so
+d) pam_env.so
+Правильный ответ: a
+
+6. Как добавить пользователя petrov в группу admins?
+a) useradd -G admins petrov
+b) usermod -aG admins petrov
+c) groupmod -A petrov admins
+d) adduser petrov admins
+Правильный ответ: b
+
+7. Какой командой заблокировать учетную запись пользователя sidorov?
+a) usermod -L sidorov
+b) passwd -l sidorov
+c) chage -E 0 sidorov
+d) Любой из перечисленных
+Правильный ответ: d
+
+8. Какая утилита используется в Astra Linux для графического управления пользователями и группами?
+a) Параметры системы → Учетные записи
+b) Центр управления Astra Linux → Управление пользователями
+c) users-admin
+d) Все перечисленные
+Правильный ответ: b
+
+9. Какой файл определяет, какие группы будут назначены новому пользователю по умолчанию?
+a) /etc/default/useradd
+b) /etc/login.defs
+c) /etc/adduser.conf
+d) /etc/pam.d/system-auth
+Правильный ответ: a
+
+10. Как просмотреть группы, в которых состоит текущий пользователь?
+a) groups
+b) id -Gn
+c) cat /etc/group | grep username
+d) Все перечисленные
+Правильный ответ: d
+
+11. Какой командой установить пользователю ivanov срок действия учетной записи до 2025-12-31?
+a) usermod -e 2025-12-31 ivanov
+b) chage -E 2025-12-31 ivanov
+c) passwd --expire 2025-12-31 ivanov
+d) Варианты a и b верны
+Правильный ответ: d
+
+12. Какой каталог содержит конфигурационные файлы PAM?
+a) /etc/pam.conf
+b) /etc/pam.d/
+c) /etc/security/
+d) /lib/security/
+Правильный ответ: b
+
+13. Какой командой удалить пользователя petrov вместе с его домашним каталогом?
+a) userdel petrov
+b) userdel -r petrov
+c) deluser --remove-home petrov
+d) Варианты b и c верны
+Правильный ответ: d
+
+14. Какой файл содержит шаблоны для автоматического создания домашних каталогов пользователей?
+a) /etc/skel/
+b) /etc/default/useradd
+c) /home/.skel
+d) /usr/local/skel
+Правильный ответ: a
+
+15. Какой модуль PAM ограничивает доступ по времени?
+a) pam_time.so
+b) pam_access.so
+c) pam_limits.so
+d) pam_tally2.so
+Правильный ответ: a
+
+16. Какой командой создать новую группу developers?
+a) groupadd developers
+b) addgroup developers
+c) newgrp developers
+d) Варианты a и b верны
+Правильный ответ: d
+
+17. Какой файл определяет политику сложности паролей в PAM?
+a) /etc/security/pwquality.conf
+b) /etc/pam.d/common-password
+c) /etc/login.defs
+d) /etc/security/limits.conf
+Правильный ответ: a
+
+18. Какой командой изменить UID (идентификатор пользователя) для учетной записи ivanov на 1500?
+a) usermod -u 1500 ivanov
+b) userchange --uid 1500 ivanov
+c) chuid 1500 ivanov
+d) id -u 1500 ivanov
+Правильный ответ: a
+
+19. Какой файл содержит настройки окружения пользователя по умолчанию (например, переменные PATH)?
+a) ~/.bashrc
+b) ~/.profile
+c) /etc/profile
+d) Все перечисленные
+Правильный ответ: d
+
+20. Какой модуль PAM используется для ограничения ресурсов (например, количество процессов)?
+a) pam_limits.so
+b) pam_cgroup.so
+c) pam_resource.so
+d) pam_umask.so
+Правильный ответ: a
+
+21. Какой командой изменить основной каталог (home directory) для пользователя sidorov на /opt/sidorov?
+a) usermod -d /opt/sidorov sidorov
+b) usermod -m -d /opt/sidorov sidorov
+c) chhome /opt/sidorov sidorov
+d) Варианты a и b верны
+Правильный ответ: d
+
+22. Какой файл определяет системные лимиты для количества процессов, открытых файлов и т.д.?
+a) /etc/security/limits.conf
+b) /etc/sysctl.conf
+c) /etc/security/limits.d/
+d) Все перечисленные
+Правильный ответ: d
+
+23. Какой командой посмотреть информацию о последних входах пользователя?
+a) lastlog
+b) last
+c) faillog
+d) who
+Правильный ответ: a
+
+24. Какой модуль PAM блокирует учетную запись после нескольких неудачных попыток входа?
+a) pam_tally2.so
+b) pam_faillock.so
+c) pam_deny.so
+d) Варианты a и b верны
+Правильный ответ: d
+
+25. Какой командой изменить комментарий (GECOS) для пользователя petrov?
+a) usermod -c "Новый комментарий" petrov
+b) chfn petrov
+c) passwd -g petrov
+d) Варианты a и b верны
+Правильный ответ: d
+
+26. Какой файл содержит политику блокировки учетных записей при неудачных попытках входа?
+a) /etc/security/faillock.conf
+b) /etc/pam.d/common-auth
+c) /etc/login.defs
+d) /etc/security/access.conf
+Правильный ответ: a
+
+27. Какой командой установить пользователю ivanov оболочку (shell) /bin/zsh?
+a) usermod -s /bin/zsh ivanov
+b) chsh -s /bin/zsh ivanov
+c) passwd --shell /bin/zsh ivanov
+d) Варианты a и b верны
+Правильный ответ: d
+
+28. Какой файл определяет, каким пользователям разрешен доступ по SSH?
+a) /etc/ssh/sshd_config (директива AllowUsers)
+b) /etc/security/access.conf
+c) /etc/pam.d/sshd
+d) Все перечисленные
+Правильный ответ: d
+
+29. Какой командой удалить группу testgroup?
+a) groupdel testgroup
+b) delgroup testgroup
+c) groupmod -D testgroup
+d) Варианты a и b верны
+Правильный ответ: d
+
+30. Какой модуль PAM загружает переменные окружения из файла /etc/environment?
+a) pam_env.so
+b) pam_mkhomedir.so
+c) pam_umask.so
+d) pam_script.so
+Правильный ответ: a

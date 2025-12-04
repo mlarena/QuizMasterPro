@@ -1,0 +1,211 @@
+Расширенное администрирование устройств хранения данных в Astra Linux
+1. Что такое LVM (Logical Volume Manager) в Linux?
+a) Менеджер виртуальных машин
+b) Система управления разделами диска с возможностью динамического изменения размеров
+c) Утилита для создания RAID-массивов
+d) Программа для шифрования дисков
+Правильный ответ: b
+
+2. Какой командой создать физический том (PV) на разделе /dev/sdb1?
+a) pvcreate /dev/sdb1
+b) vgcreate /dev/sdb1
+c) lvcreate /dev/sdb1
+d) lvmcreate /dev/sdb1
+Правильный ответ: a
+
+3. Какой командой создать группу томов (VG) с именем datavg из физического тома /dev/sdb1?
+a) vgcreate datavg /dev/sdb1
+b) pvcreate datavg /dev/sdb1
+c) lvcreate -n datavg /dev/sdb1
+d) vgmake datavg /dev/sdb1
+Правильный ответ: a
+
+4. Какой командой создать логический том (LV) размером 10 ГБ с именем datavol в группе томов datavg?
+a) lvcreate -n datavol -L 10G datavg
+b) lvcreate -L 10G -n datavol datavg
+c) lvcreate --name datavol --size 10G datavg
+d) Все перечисленные
+Правильный ответ: d
+
+5. Какой командой отформатировать логический том /dev/datavg/datavol в файловую систему ext4?
+a) mkfs.ext4 /dev/datavg/datavol
+b) mkfs -t ext4 /dev/mapper/datavg-datavol
+c) format /dev/datavg/datavol ext4
+d) Варианты a и b верны
+Правильный ответ: d
+
+6. Какой командой увеличить размер логического тома datavol на 5 ГБ?
+a) lvextend -L +5G /dev/datavg/datavol
+b) lvresize -L +5G /dev/datavg/datavol
+c) lvgrow -L +5G /dev/datavg/datavol
+d) Варианты a и b верны
+Правильный ответ: d
+
+7. После увеличения размера логического тома ext4, какой командой увеличить файловую систему?
+a) resize2fs /dev/datavg/datavol
+b) ext2resize /dev/datavg/datavol
+c) fsadm resize /dev/datavg/datavol
+d) growfs /dev/datavg/datavol
+Правильный ответ: a
+
+8. Какой командой создать снапшот (снимок состояния) логического тома?
+a) lvcreate -s -n snapvol -L 2G /dev/datavg/datavol
+b) lvsnapshot -n snapvol -s 2G /dev/datavg/datavol
+c) lvmsnapshot -n snapvol /dev/datavg/datavol
+d) snapshot -c snapvol /dev/datavg/datavol
+Правильный ответ: a
+
+9. Какой командой просмотреть информацию о физических томах в системе?
+a) pvs
+b) pvdisplay
+c) lvm pvscan
+d) Все перечисленные
+Правильный ответ: d
+
+10. Какой командой удалить логический том datavol из группы томов datavg?
+a) lvremove /dev/datavg/datavol
+b) lvmremove /dev/datavg/datavol
+c) vgremove datavol
+d) lvreduce --remove /dev/datavg/datavol
+Правильный ответ: a
+
+11. Какой командой добавить физический том /dev/sdc1 в существующую группу томов datavg?
+a) vgextend datavg /dev/sdc1
+b) pvextend datavg /dev/sdc1
+c) lvextend datavg /dev/sdc1
+d) vgextend /dev/sdc1 datavg
+Правильный ответ: a
+
+12. Какой командой создать зашифрованный раздел с использованием LUKS?
+a) cryptsetup luksFormat /dev/sdb1
+b) cryptsetup create encrypted /dev/sdb1
+c) luksformat /dev/sdb1
+d) encryptfs /dev/sdb1
+Правильный ответ: a
+
+13. Какой командой открыть зашифрованный раздел /dev/sdb1 с именем encrypted_data?
+a) cryptsetup luksOpen /dev/sdb1 encrypted_data
+b) cryptsetup open /dev/sdb1 encrypted_data
+c) cryptmount /dev/sdb1 encrypted_data
+d) luksopen /dev/sdb1 encrypted_data
+Правильный ответ: a
+
+14. Какой командой просмотреть детальную информацию о группе томов datavg?
+a) vgdisplay datavg
+b) vgs datavg
+c) lvm vgscan datavg
+d) vgshow datavg
+Правильный ответ: a
+
+15. Какой командой уменьшить размер логического тома (предварительно уменьшив файловую систему)?
+a) lvreduce -L -5G /dev/datavg/datavol
+b) lvreduce --size -5G /dev/datavg/datavol
+c) lvresize -L 15G /dev/datavg/datavol (если был 20ГБ)
+d) Любой из перечисленных
+Правильный ответ: d
+
+16. Какой командой активировать группу томов при загрузке системы?
+a) vgchange -ay datavg
+b) vgactivate datavg
+c) lvmon datavg
+d) vgstart datavg
+Правильный ответ: a
+
+17. Какой командой удалить физический том из группы томов?
+a) vgreduce datavg /dev/sdb1
+b) pvreduce datavg /dev/sdb1
+c) vgremove /dev/sdb1
+d) pvremove /dev/sdb1
+Правильный ответ: a
+
+18. Какой командой проверить состояние LVM-метаданных на физических томах?
+a) pvck
+b) vgck
+c) lvck
+d) lvmcheck
+Правильный ответ: a
+
+19. Какой командой переименовать группу томов oldvg в newvg?
+a) vgrename oldvg newvg
+b) vgmv oldvg newvg
+c) vgname oldvg newvg
+d) renamevg oldvg newvg
+Правильный ответ: a
+
+20. Какой командой создать логический том, который будет использовать все свободное пространство в группе томов?
+a) lvcreate -n vol -l 100%FREE datavg
+b) lvcreate -n vol -L 100% datavg
+c) lvcreate -n vol --full datavg
+d) lvcreate -n vol -A datavg
+Правильный ответ: a
+
+21. Какой командой изменить размер файловой системы XFS, расположенной на логическом томе?
+a) xfs_growfs /mount/point
+b) resize2fs /dev/datavg/datavol
+c) growfs /mount/point
+d) xfs_resize /mount/point
+Правильный ответ: a
+
+22. Какой командой отобразить дерево зависимостей LVM?
+a) lvdisplay -t
+b) lvm lvs --tree
+c) pvs --tree
+d) lvmtree
+Правильный ответ: b
+
+23. Какой командой создать зашифрованный раздел с использованием ключевого файла?
+a) cryptsetup luksFormat --key-file=/path/to/keyfile /dev/sdb1
+b) cryptsetup --keyfile=/path/to/keyfile luksFormat /dev/sdb1
+c) luksformat --key-file /path/to/keyfile /dev/sdb1
+d) encrypt --key-file /path/to/keyfile /dev/sdb1
+Правильный ответ: a
+
+24. Какой командой добавить новый ключ для доступа к зашифрованному разделу LUKS?
+a) cryptsetup luksAddKey /dev/sdb1
+b) cryptsetup addkey /dev/sdb1
+c) luksaddkey /dev/sdb1
+d) cryptadd /dev/sdb1
+Правильный ответ: a
+
+25. Какой командой проверить целостность зашифрованного раздела LUKS?
+a) cryptsetup luksDump /dev/sdb1
+b) cryptsetup status /dev/sdb1
+c) lukscheck /dev/sdb1
+d) cryptcheck /dev/sdb1
+Правильный ответ: a
+
+26. Какой командой настроить автоматическое монтирование зашифрованного раздела при загрузке через /etc/crypttab?
+a) Вписать в файл: encrypted_data /dev/sdb1 /path/to/keyfile
+b) Вписать в файл: encrypted_data /dev/sdb1 none
+c) Использовать cryptsetup luksOpen --automatic /dev/sdb1
+d) Добавить в /etc/fstab параметр luks
+Правильный ответ: a
+
+27. Какой командой проверить состояние SMART диска /dev/sda?
+a) smartctl -a /dev/sda
+b) smartctl --health /dev/sda
+c) smartd /dev/sda
+d) hdparm -S /dev/sda
+Правильный ответ: a
+
+28. Какой командой изменить размер группы томов (после добавления физического тома)?
+a) vgextend (расширить)
+b) vgreduce (уменьшить)
+c) vgresize (изменить размер)
+d) Группа томов изменяется автоматически
+Правильный ответ: d
+
+29. Какой командой создать тонко-провизированный (thin) логический том?
+a) lvcreate -T datavg/thinpool -L 100G
+b) lvcreate --type thin datavg/thinpool -L 100G
+c) lvcreate --thinpool datavg/thinpool -L 100G
+d) Варианты a и b верны
+Правильный ответ: d
+
+30. Какой командой удалить зашифрованный раздел LUKS (удалить все данные)?
+a) cryptsetup luksErase /dev/sdb1
+b) cryptsetup erase /dev/sdb1
+c) dd if=/dev/zero of=/dev/sdb1
+d) cryptsetup luksClose encrypted_data && wipefs -a /dev/sdb1
+Правильный ответ: d
+

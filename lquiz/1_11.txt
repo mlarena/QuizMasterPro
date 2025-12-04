@@ -1,0 +1,231 @@
+Настройка сети в Astra Linux SE
+1. Какой инструмент является стандартным для графической настройки сети в Astra Linux SE с рабочим столом GNOME?
+a) nmtui (текстовый интерфейс)
+b) ip или ifconfig
+c) NetworkManager с апплетом в системном трее
+d) systemd-networkd
+Правильный ответ: c
+
+2. Какой файл конфигурации используется для настройки статических параметров сетевого интерфейса при использовании ifup/ifdown в Debian-based системах?
+a) /etc/sysconfig/network-scripts/ifcfg-eth0
+b) /etc/netplan/01-netcfg.yaml
+c) /etc/network/interfaces
+d) /etc/NetworkManager/NetworkManager.conf
+Правильный ответ: c
+
+3. Какая команда покажет MAC-адрес и статус всех сетевых интерфейсов?
+a) ip link show
+b) ifconfig -a
+c) nmcli device status
+d) Все перечисленные
+Правильный ответ: d
+
+4. Как с помощью nmcli подключиться к Wi-Fi сети с именем (SSID) "AstraNet" и паролем "password123"?
+a) nmcli device wifi connect AstraNet password password123
+b) nmcli connection add type wifi ssid AstraNet password password123
+c) nmcli wifi connect AstraNet password password123
+d) nmcli --wifi connect AstraNet --password password123
+Правильный ответ: a
+
+5. Какая команда позволит просмотреть таблицу маршрутизации ядра?
+a) route
+b) ip route show
+c) netstat -rn
+d) Все перечисленные
+Правильный ответ: d
+
+6. Какой параметр в файле /etc/network/interfaces задает получение IP-адреса по DHCP?
+a) method dhcp
+b) dhcp auto
+c) iface eth0 inet dhcp
+d) inet dhcp
+Правильный ответ: c
+
+7. Какой командой можно перезапустить сетевую службу NetworkManager?
+a) systemctl restart NetworkManager
+b) service network-manager restart
+c) nmcli networking off && nmcli networking on
+d) Все перечисленные
+Правильный ответ: d
+
+8. Как временно отключить сетевой интерфейс eth0 с помощью утилиты ip?
+a) ip link set eth0 down
+b) ifdown eth0
+c) nmcli device disconnect eth0
+d) ip addr flush eth0
+Правильный ответ: a
+
+9. Какая команда покажет статистику по сетевым интерфейсам (принято/передано байт, ошибок)?
+a) ip -s link
+b) netstat -i
+c) ifconfig (в выводе есть статистика)
+d) Все перечисленные
+Правильный ответ: d
+
+10. Как с помощью nmcli создать новое статическое подключение для интерфейса eth0 с IP 192.168.1.100/24 и шлюзом 192.168.1.1?
+a) nmcli connection add type ethernet ifname eth0 ip4 192.168.1.100/24 gw4 192.168.1.1
+b) nmcli connection add con-name static-eth0 ifname eth0 type ethernet ip4 192.168.1.100/24 gw4 192.168.1.1
+c) nmcli device modify eth0 ipv4.addresses 192.168.1.100/24 ipv4.gateway 192.168.1.1
+d) nmcli connection edit type ethernet
+Правильный ответ: b
+
+11. Какой утилитой можно проверить доступность удаленного хоста (например, 8.8.8.8) с отправкой ICMP-пакетов?
+a) ping
+b) traceroute
+c) netcat
+d) nslookup
+Правильный ответ: a
+
+12. Как добавить статический маршрут к сети 10.0.0.0/24 через шлюз 192.168.1.1 с помощью команды ip?
+a) ip route add 10.0.0.0/24 via 192.168.1.1
+b) ip route append 10.0.0.0/24 gw 192.168.1.1
+c) route add -net 10.0.0.0/24 gw 192.168.1.1
+d) netmask 10.0.0.0/24 gateway 192.168.1.1
+Правильный ответ: a
+
+13. Какой командой можно посмотреть DNS-сервера, используемые в системе в данный момент?
+a) cat /etc/resolv.conf
+b) nmcli device show | grep DNS
+c) systemd-resolve --status
+d) Все перечисленные
+Правильный ответ: d
+
+14. Как настроить статический IP-адрес 192.168.1.50/24 для интерфейса eth1 в файле /etc/network/interfaces?
+a)
+
+text
+iface eth1 inet static
+address 192.168.1.50
+netmask 255.255.255.0
+b)
+
+text
+auto eth1
+iface eth1 inet static
+address 192.168.1.50
+network 192.168.1.0
+netmask 255.255.255.0
+c)
+
+text
+interface eth1
+static ip=192.168.1.50/24
+d)
+
+text
+[connection]
+id=eth1
+ipv4.addresses=192.168.1.50/24
+Правильный ответ: b
+
+15. Какой командой можно проверить, какие порты прослушиваются на локальной машине?
+a) netstat -tlnp
+b) ss -tlnp
+c) nmap localhost
+d) Все перечисленные
+Правильный ответ: d
+
+16. Как с помощью ifup и ifdown включить или выключить интерфейс, определенный в /etc/network/interfaces?
+a) ifup eth0 и ifdown eth0
+b) ifconfig eth0 up и ifconfig eth0 down
+c) ip link set eth0 up и ip link set eth0 down
+d) networkctl up eth0 и networkctl down eth0
+Правильный ответ: a
+
+17. Какая команда покажет ARP-таблицу (соответствие IP и MAC-адресов в локальной сети)?
+a) arp -a
+b) ip neigh show
+c) cat /proc/net/arp
+d) Все перечисленные
+Правильный ответ: d
+
+18. Как с помощью nmcli отключить автоматическое подключение для существующего соединения "MyConnection"?
+a) nmcli connection modify MyConnection autoconnect no
+b) nmcli connection down MyConnection
+c) nmcli device disconnect MyConnection
+d) nmcli --permanent disable MyConnection
+Правильный ответ: a
+
+19. Какой утилитой можно определить маршрут, по которому пакеты идут до удаленного хоста?
+a) traceroute
+b) tracepath
+c) mtr
+d) Все перечисленные
+Правильный ответ: d
+
+20. Как назначить несколько IP-адресов на один интерфейс eth0 с помощью команды ip?
+a) ip addr add 192.168.1.101/24 dev eth0
+b) ip addr add 192.168.1.101/24 dev eth0 label eth0:0
+c) ifconfig eth0:0 192.168.1.101 netmask 255.255.255.0
+d) Варианты b и c верны
+Правильный ответ: d
+
+21. Какой параметр в настройках NetworkManager через nmcli отвечает за автоматическое подключение при загрузке?
+a) autoconnect
+b) startup
+c) boot
+d) onboot
+Правильный ответ: a
+
+22. Как проверить, что DNS-резолвинг работает правильно для имени ya.ru?
+a) nslookup ya.ru
+b) dig ya.ru
+c) host ya.ru
+d) Все перечисленные
+Правильный ответ: d
+
+23. Какой командой можно обновить DHCP-аренду для интерфейса eth0?
+a) dhclient -r eth0 (освободить), затем dhclient eth0 (запросить заново)
+b) nmcli device reapply eth0
+c) systemctl restart network-manager
+d) ifdown eth0 && ifup eth0
+Правильный ответ: a
+
+24. Какой файл содержит настройки хоста (статические DNS-записи) в Linux?
+a) /etc/hosts
+b) /etc/nsswitch.conf
+c) /etc/resolv.conf
+d) /etc/dhcp/dhclient.conf
+Правильный ответ: a
+
+25. Как с помощью nmcli переключиться с DHCP на статический IP-адрес для существующего подключения "Ethernet"?
+a) nmcli connection modify Ethernet ipv4.method manual ipv4.addresses 192.168.1.10/24
+b) nmcli connection edit Ethernet, затем изменить метод на manual
+c) nmcli device modify eth0 ipv4.method manual
+d) Варианты a и b верны
+Правильный ответ: d
+
+26. Какой командой можно узнать, через какой интерфейс пойдет трафик до определенного адреса (например, 8.8.8.8)?
+a) ip route get 8.8.8.8
+b) route get 8.8.8.8
+c) traceroute -i 8.8.8.8
+d) netstat -rn | grep 8.8.8.8
+Правильный ответ: a
+
+27. Как в файле /etc/network/interfaces указать DNS-сервера для статической конфигурации?
+a) Параметром dns-nameservers
+b) Параметром dns-servers
+c) DNS настраивается только через /etc/resolv.conf
+d) Через post-up с записью в /etc/resolv.conf
+Правильный ответ: a
+
+28. Какой командой можно проверить скорость и качество соединения с удаленным хостом с помощью утилиты, показывающей непрерывную статистику?
+a) ping
+b) traceroute
+c) mtr
+d) iperf
+Правильный ответ: c
+
+29. Как сбросить все настройки NetworkManager и начать конфигурацию заново?
+a) Удалить файлы в /etc/NetworkManager/system-connections/ и перезапустить NetworkManager
+b) nmcli connection delete --all
+c) rm -rf /etc/network/interfaces
+d) Варианты a и b верны
+Правильный ответ: d
+
+30. Какая команда покажет список сетевых соединений, управляемых NetworkManager, с их UUID, именем и типом?
+a) nmcli connection show
+b) nmcli device status
+c) nmcli -t -f NAME,UUID,DEVICE,TYPE connection
+d) Все перечисленные
+Правильный ответ: d
