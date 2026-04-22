@@ -1,32 +1,76 @@
 {% extends "base.html" %}
 {% block title %}Test Results Overview{% endblock %}
 {% block content %}
-<div class="card">
-    <div class="card-content">
-        <h2>Test Results Overview</h2>
-        <a href="{{ url_for('admin.dashboard') }}" class="btn btn-secondary mb-3">Back to Dashboard</a>
-        <h3>All Test Results</h3>
+<div class="space-y-8">
+    <div class="flex flex-col md:flex-row md:items-end justify-between gap-6">
+        <div>
+            <h1 class="text-4xl font-black text-slate-900 tracking-tight">Результаты тестов</h1>
+            <p class="text-slate-500 mt-2 text-lg">Мониторинг успеваемости всех пользователей</p>
+        </div>
+        <a href="{{ url_for('admin.dashboard') }}" 
+           class="inline-flex items-center px-6 py-3 bg-white border border-slate-200 text-slate-600 font-bold rounded-2xl transition-all shadow-sm hover:border-indigo-600 hover:text-indigo-600">
+            <span class="material-icons mr-2">dashboard</span>
+            В админку
+        </a>
+    </div>
+
+    <div class="bg-white rounded-3xl shadow-xl shadow-slate-200/50 border border-slate-100 overflow-hidden">
+        <div class="px-8 py-6 border-b border-slate-50 bg-slate-50/30 flex items-center justify-between">
+            <h3 class="font-bold text-slate-800 flex items-center">
+                <span class="material-icons text-indigo-600 mr-2">history_edu</span>
+                Журнал прохождений
+            </h3>
+            <span class="px-3 py-1 bg-indigo-100 text-indigo-700 text-xs font-bold rounded-full">
+                {{ results|length }} записей
+            </span>
+        </div>
+        
         {% if results %}
-            <div class="table-responsive">
-                <table class="table table-bordered table-hover">
+            <div class="overflow-x-auto">
+                <table class="w-full text-left border-collapse">
                     <thead>
-                        <tr>
-                            <th>Quiz Title</th>
-                            <th>Username</th>
-                            <th>Score (%)</th>
-                            <th style="white-space: nowrap;">Completed At</th>
-                            <th style="min-width: 120px;">Actions</th>
+                        <tr class="text-slate-400 text-[11px] uppercase tracking-widest font-bold">
+                            <th class="px-8 py-5 border-b border-slate-50">Квиз</th>
+                            <th class="px-8 py-5 border-b border-slate-50">Пользователь</th>
+                            <th class="px-8 py-5 border-b border-slate-50">Результат</th>
+                            <th class="px-8 py-5 border-b border-slate-50">Дата</th>
+                            <th class="px-8 py-5 border-b border-slate-50 text-right">Детали</th>
                         </tr>
                     </thead>
-                    <tbody>
+                    <tbody class="divide-y divide-slate-50">
                         {% for res in results %}
-                        <tr>
-                            <td><strong>{{ res.title }}</strong></td>
-                            <td>{{ res.username }}</td>
-                            <td>{{ "%.1f"|format(res.score) }}%</td>
-                            <td style="white-space: nowrap;">{{ res.completed_at[:16] }}</td>
-                            <td>
-                                <a href="{{ url_for('admin.quiz_result_details', result_id=res.id) }}" class="btn btn-primary btn-sm" style="white-space: nowrap;">View Details</a>
+                        <tr class="hover:bg-slate-50/50 transition-colors group">
+                            <td class="px-8 py-6">
+                                <div class="font-bold text-slate-900">{{ res.title }}</div>
+                            </td>
+                            <td class="px-8 py-6">
+                                <div class="flex items-center">
+                                    <div class="w-8 h-8 rounded-full bg-slate-100 flex items-center justify-center text-[10px] font-bold text-slate-500 mr-3">
+                                        {{ res.username[0] | upper }}
+                                    </div>
+                                    <span class="text-sm font-medium text-slate-700">{{ res.username }}</span>
+                                </div>
+                            </td>
+                            <td class="px-8 py-6">
+                                <div class="flex items-center">
+                                    <div class="w-full max-w-[60px] bg-slate-100 h-1.5 rounded-full mr-3 overflow-hidden">
+                                        <div class="h-full {% if res.score >= 70 %}bg-emerald-500{% elif res.score >= 40 %}bg-amber-500{% else %}bg-rose-500{% endif %}" 
+                                             style="width: {{ res.score }}%"></div>
+                                    </div>
+                                    <span class="text-sm font-bold {% if res.score >= 70 %}text-emerald-600{% elif res.score >= 40 %}text-amber-600{% else %}text-rose-600{% endif %}">
+                                        {{ "%.0f"|format(res.score) }}%
+                                    </span>
+                                </div>
+                            </td>
+                            <td class="px-8 py-6 whitespace-nowrap">
+                                <div class="text-slate-400 text-xs">{{ res.completed_at[:16] }}</div>
+                            </td>
+                            <td class="px-8 py-6 text-right">
+                                <a href="{{ url_for('admin.quiz_result_details', result_id=res.id) }}" 
+                                   title="Посмотреть детали"
+                                   class="inline-flex items-center justify-center w-10 h-10 bg-white border border-slate-200 text-slate-400 hover:border-indigo-600 hover:text-indigo-600 rounded-xl transition-all shadow-sm">
+                                    <span class="material-icons text-sm">visibility</span>
+                                </a>
                             </td>
                         </tr>
                         {% endfor %}
@@ -34,7 +78,13 @@
                 </table>
             </div>
         {% else %}
-            <p>No test results available.</p>
+            <div class="py-20 text-center">
+                <div class="inline-flex items-center justify-center w-20 h-20 bg-slate-50 rounded-full mb-6">
+                    <span class="material-icons text-slate-300 text-4xl">assignment_late</span>
+                </div>
+                <h3 class="text-xl font-bold text-slate-900">Результатов пока нет</h3>
+                <p class="text-slate-500 mt-2">Как только кто-то пройдет тест, данные появятся здесь.</p>
+            </div>
         {% endif %}
     </div>
 </div>

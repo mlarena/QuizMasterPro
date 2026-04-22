@@ -4,8 +4,9 @@ document.addEventListener('DOMContentLoaded', function() {
     const saveQuizBtn = document.getElementById('saveQuizBtn');
     const questionCard = document.querySelector('.question-card');
 
-    if (questionsContainer && addQuestionBtn && saveQuizBtn) { // Create or full edit mode with multiple questions
-        // Load existing quiz data if available
+    const quizData = window.quizData || {title: '', description: '', questions: []};
+
+    if (questionsContainer && addQuestionBtn && saveQuizBtn) {
         if (quizData.questions && quizData.questions.length > 0) {
             quizData.questions.forEach(q => addQuestionElement(questionsContainer, q));
             document.getElementById('quizTitle').value = quizData.title;
@@ -14,12 +15,8 @@ document.addEventListener('DOMContentLoaded', function() {
             addQuestionElement(questionsContainer);
         }
 
-        // Add new question
-        addQuestionBtn.addEventListener('click', function() {
-            addQuestionElement(questionsContainer);
-        });
+        addQuestionBtn.addEventListener('click', () => addQuestionElement(questionsContainer));
 
-        // Save quiz
         saveQuizBtn.addEventListener('click', function() {
             const quizDataToSave = {
                 title: document.getElementById('quizTitle').value,
@@ -27,109 +24,72 @@ document.addEventListener('DOMContentLoaded', function() {
                 questions: collectQuizData()
             };
 
+            saveQuizBtn.disabled = true;
+            saveQuizBtn.innerHTML = '<span class="animate-spin material-icons mr-2 text-sm">sync</span> Сохранение...';
+
             fetch(window.location.href, {
                 method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
+                headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify(quizDataToSave)
             })
             .then(response => response.json())
             .then(data => {
                 if (data.success) {
-                    showMaterialToast('Quiz saved successfully!', 'success');
-                    setTimeout(() => window.location.href = '/admin', 1000);
+                    window.location.href = '/admin';
                 } else {
-                    showMaterialToast(data.message || 'Error saving quiz', 'error');
+                    alert(data.message || 'Ошибка при сохранении');
+                    saveQuizBtn.disabled = false;
+                    saveQuizBtn.innerHTML = '<span class="material-icons mr-2">save</span> Сохранить квиз';
                 }
             })
             .catch(error => {
                 console.error('Error:', error);
-                showMaterialToast('Error saving quiz', 'error');
+                alert('Ошибка при сохранении');
+                saveQuizBtn.disabled = false;
             });
         });
-    } else if (questionCard) { // Edit single question mode
-        addQuestionElement(questionCard, quizData); // Use existing question-card as container
-        const addAnswerBtn = questionCard.querySelector('.btn-secondary'); // Add answer button in template
-        if (addAnswerBtn) {
-            addAnswerBtn.addEventListener('click', function() {
-                addAnswerElement(questionCard.querySelector('.answers-container'));
-            });
-        }
     }
 
     function addQuestionElement(container, questionData = null) {
-        if (container.classList.contains('question-card')) { // Single question mode
-            // Логика для одного вопроса
-            const answersContainer = container.querySelector('.answers-container');
-            const questionInput = container.querySelector('.question-textarea');
-            if (questionData) {
-                questionInput.value = questionData.text;
-            }
-
-            // Add answers
-            if (questionData && questionData.answers && questionData.answers.length > 0) {
-                questionData.answers.forEach(a => addAnswerElement(answersContainer, a));
-            } else {
-                addAnswerElement(answersContainer);
-                addAnswerElement(answersContainer);
-            }
-            return; // Exit, no need to create new div
-        }
-
-        // Multiple questions mode
+        const questionId = Date.now();
         const questionDiv = document.createElement('div');
-        questionDiv.className = 'card question-card';
+        questionDiv.className = 'bg-slate-50 rounded-2xl p-6 border border-slate-100 space-y-4 relative group question-card animate-fade-in';
         
-        const cardContent = document.createElement('div');
-        cardContent.className = 'card-content';
-        
-        const questionHeader = document.createElement('div');
-        questionHeader.className = 'flex';
-        
-        const questionInput = document.createElement('textarea');
-        questionInput.placeholder = 'Question text';
-        questionInput.required = true;
-        questionInput.className = 'form-control question-textarea';
-        questionInput.rows = 4;
-        questionInput.style.width = '100%';
-        
-        if (questionData) {
-            questionInput.value = questionData.text;
-        }
-        
-        const deleteBtn = document.createElement('button');
-        deleteBtn.type = 'button';
-        deleteBtn.className = 'btn btn-error btn-sm ml-2';
-        deleteBtn.innerHTML = '<i class="material-icons">delete</i>';
-        deleteBtn.addEventListener('click', function() {
-            if (confirm('Delete this question?')) {
-                questionDiv.remove();
-            }
+        questionDiv.innerHTML = `
+            <div class="flex items-start justify-between gap-4">
+                <div class="flex-grow">
+                    <label class="block text-[10px] font-bold text-slate-400 uppercase tracking-widest mb-1">Текст вопроса</label>
+                    <textarea class="w-full px-4 py-3 bg-white border border-slate-200 focus:border-indigo-500 rounded-xl transition-all outline-none text-sm font-medium text-slate-900 question-textarea" 
+                        placeholder="Введите вопрос..." rows="2" required>${questionData ? questionData.text : ''}</textarea>
+                </div>
+                <button type="button" class="mt-6 p-2 text-slate-300 hover:text-rose-500 transition-colors remove-question">
+                    <span class="material-icons">delete_outline</span>
+                </button>
+            </div>
+            
+            <div class="space-y-3">
+                <div class="flex items-center justify-between">
+                    <label class="block text-[10px] font-bold text-slate-400 uppercase tracking-widest">Варианты ответов</label>
+                    <button type="button" class="text-[10px] font-bold text-indigo-600 hover:text-indigo-700 uppercase tracking-widest add-answer">
+                        + Добавить ответ
+                    </button>
+                </div>
+                <div class="answers-container space-y-2"></div>
+            </div>
+        `;
+
+        const answersContainer = questionDiv.querySelector('.answers-container');
+        const addAnswerBtn = questionDiv.querySelector('.add-answer');
+        const removeQuestionBtn = questionDiv.querySelector('.remove-question');
+
+        addAnswerBtn.addEventListener('click', () => addAnswerElement(answersContainer));
+        removeQuestionBtn.addEventListener('click', () => {
+            if (confirm('Удалить этот вопрос?')) questionDiv.remove();
         });
-        
-        questionHeader.appendChild(questionInput);
-        questionHeader.appendChild(deleteBtn);
-        
-        const answersContainer = document.createElement('div');
-        answersContainer.className = 'answers-container mt-2';
-        
-        const addAnswerBtn = document.createElement('button');
-        addAnswerBtn.type = 'button';
-        addAnswerBtn.className = 'btn btn-secondary btn-sm';
-        addAnswerBtn.textContent = 'Add answer';
-        addAnswerBtn.addEventListener('click', function() {
-            addAnswerElement(answersContainer);
-        });
-        
-        cardContent.appendChild(questionHeader);
-        cardContent.appendChild(answersContainer);
-        cardContent.appendChild(addAnswerBtn);
-        questionDiv.appendChild(cardContent);
+
         container.appendChild(questionDiv);
-        
-        // Add answers
-        if (questionData && questionData.answers && questionData.answers.length > 0) {
+
+        if (questionData && questionData.answers) {
             questionData.answers.forEach(a => addAnswerElement(answersContainer, a));
         } else {
             addAnswerElement(answersContainer);
@@ -139,88 +99,43 @@ document.addEventListener('DOMContentLoaded', function() {
 
     function addAnswerElement(container, answerData = null) {
         const answerDiv = document.createElement('div');
-        answerDiv.className = 'answer-option';
+        answerDiv.className = 'flex items-center gap-3 group/answer answer-option';
         
-        const answerInput = document.createElement('textarea');
-        answerInput.placeholder = 'Answer text';
-        answerInput.required = true;
-        answerInput.className = 'form-control answer-textarea';
-        answerInput.rows = 4;
-        answerInput.style.width = '100%';
-        
-        const correctCheckbox = document.createElement('input');
-        correctCheckbox.type = 'checkbox';
-        correctCheckbox.id = `correct-${Date.now()}`;
-        
-        const correctLabel = document.createElement('label');
-        correctLabel.htmlFor = correctCheckbox.id;
-        correctLabel.textContent = 'Correct';
-        
-        const deleteBtn = document.createElement('button');
-        deleteBtn.type = 'button';
-        deleteBtn.className = 'btn btn-error btn-sm ml-2';
-        deleteBtn.innerHTML = '<i class="material-icons">clear</i>';
-        deleteBtn.addEventListener('click', function() {
-            answerDiv.remove();
-        });
-        
-        const answerControls = document.createElement('div');
-        answerControls.className = 'flex flex-center';
-        answerControls.appendChild(correctCheckbox);
-        answerControls.appendChild(correctLabel);
-        answerControls.appendChild(deleteBtn);
-        
-        if (answerData) {
-            answerInput.value = answerData.text;
-            correctCheckbox.checked = answerData.is_correct;
-        }
-        
-        answerDiv.appendChild(answerInput);
-        answerDiv.appendChild(answerControls);
+        answerDiv.innerHTML = `
+            <div class="flex-grow relative">
+                <input type="text" class="w-full pl-4 pr-10 py-2 bg-white border border-slate-200 focus:border-indigo-500 rounded-lg transition-all outline-none text-sm text-slate-700 answer-textarea" 
+                    placeholder="Вариант ответа" value="${answerData ? answerData.text : ''}" required>
+                <div class="absolute right-2 top-1/2 -translate-y-1/2 flex items-center">
+                    <input type="checkbox" class="h-4 w-4 text-emerald-500 border-slate-300 rounded focus:ring-emerald-500 transition cursor-pointer" 
+                        ${answerData && answerData.is_correct ? 'checked' : ''} title="Правильный ответ">
+                </div>
+            </div>
+            <button type="button" class="p-1 text-slate-300 hover:text-rose-500 transition-colors opacity-0 group-hover/answer:opacity-100 remove-answer">
+                <span class="material-icons text-sm">close</span>
+            </button>
+        `;
+
+        answerDiv.querySelector('.remove-answer').addEventListener('click', () => answerDiv.remove());
         container.appendChild(answerDiv);
     }
 
     function collectQuizData() {
         const questions = [];
-        const questionElements = document.querySelectorAll('.question-card');
-        
-        questionElements.forEach((qEl, qIdx) => {
-            const questionInput = qEl.querySelector('.question-textarea');
-            const answerElements = qEl.querySelectorAll('.answer-option');
-            
+        document.querySelectorAll('.question-card').forEach((qEl, qIdx) => {
             const answers = [];
-            answerElements.forEach((aEl, aIdx) => {
-                const answerInput = aEl.querySelector('.answer-textarea');
-                const correctCheckbox = aEl.querySelector('input[type="checkbox"]');
-                
+            qEl.querySelectorAll('.answer-option').forEach((aEl, aIdx) => {
                 answers.push({
-                    text: answerInput.value,
-                    is_correct: correctCheckbox.checked,
+                    text: aEl.querySelector('.answer-textarea').value,
+                    is_correct: aEl.querySelector('input[type="checkbox"]').checked,
                     order: aIdx + 1
                 });
             });
-            
             questions.push({
-                text: questionInput.value,
+                text: qEl.querySelector('.question-textarea').value,
                 order: qIdx + 1,
                 answers: answers
             });
         });
-        
         return questions;
-    }
-
-    function showMaterialToast(message, type = 'info') {
-        const toast = document.createElement('div');
-        toast.className = `toast toast-${type}`;
-        toast.textContent = message;
-        document.body.appendChild(toast);
-        
-        setTimeout(() => {
-            toast.classList.add('show');
-            setTimeout(() => {
-                toast.remove();
-            }, 3000);
-        }, 100);
     }
 });

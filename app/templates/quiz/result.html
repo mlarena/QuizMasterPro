@@ -1,161 +1,148 @@
 {% extends "base.html" %}
 {% block title %}Quiz Results: {{ quiz.title }}{% endblock %}
 {% block content %}
-<div class="card">
-    <div class="card-content">
-        <h2>Quiz Results: {{ quiz.title }}</h2>
-        <p><strong>Score:</strong> {{ result.score }}%</p>
-        <p><strong>Correct Answers:</strong> {{ quiz_results.correct_count }} / {{ quiz_results.total_questions }}</p>
-        <p><strong>Incorrect Answers:</strong> {{ quiz_results.incorrect_count }}</p>
-      
-        <h3>Detailed Results</h3>
-       
-        <!-- ФИЛЬТР: Кнопки для фильтра по корректности -->
-        <div id="filterButtons" class="flex flex-center mt-2 mb-3">
-            <button class="btn btn-primary btn-sm filter-btn active" data-filter="all">All</button>
-            <button class="btn btn-secondary btn-sm filter-btn ml-1" data-filter="correct">Correct</button>
-            <button class="btn btn-error btn-sm filter-btn ml-1" data-filter="incorrect">Incorrect</button>
-        </div>
-       
-        {% for detail in quiz_results.results %}
-            <div class="card question-card {% if not detail.is_correct %}border-left-error{% else %}border-left-success{% endif %} filtered-{{ 'incorrect' if not detail.is_correct else 'correct' }}">
-                <div class="card-content">
-                    <h4>Question {{ loop.index }}: {{ detail.question_text }}</h4>
-                    <p><strong>Status:</strong>
-                        <span class="{% if detail.is_correct %}text-success{% else %}text-error{% endif %}">
-                            {% if detail.is_correct %}Correct{% else %}Incorrect{% endif %}
-                        </span>
-                    </p>
-                  
-                    {% if detail.user_answers %}
-                        <p><strong>Your Answers:</strong></p>
-                        <ul class="mt-1 your-answers-ul">
-                            {% for ans_text in detail.user_answers_text %}
-                                <li class="{% if detail.is_correct %}text-success{% else %}text-error{% endif %}">{{ ans_text }}</li>
-                            {% endfor %}
-                        </ul>
-                    {% else %}
-                        <p class="text-warning">No answer selected</p>
-                    {% endif %}
-                  
-                    <p><strong>Correct Answers:</strong></p>
-                    <ul class="mt-1 correct-answers-ul">
-                        {% for ans_text in detail.correct_answers_text %}
-                            <li class="text-success">{{ ans_text }}</li>
-                        {% endfor %}
-                    </ul>
-                  
-                    {% if not detail.is_correct %}
-                        <div class="mt-2 p-2 explanation-box">
-                            <p><strong>Explanation:</strong> Your selection didn't match the correct answers.</p>
-                        </div>
-                    {% endif %}
+<div class="max-w-4xl mx-auto space-y-8">
+    <!-- Header Card -->
+    <div class="bg-white rounded-3xl shadow-xl shadow-slate-200/50 border border-slate-100 overflow-hidden">
+        <div class="p-8 sm:p-12 text-center space-y-6">
+            <div class="inline-flex items-center justify-center w-20 h-20 {% if result.score >= 70 %}bg-emerald-100 text-emerald-600{% elif result.score >= 40 %}bg-amber-100 text-amber-600{% else %}bg-rose-100 text-rose-600{% endif %} rounded-3xl mb-2">
+                <span class="material-icons text-4xl">{% if result.score >= 70 %}emoji_events{% else %}analytics{% endif %}</span>
+            </div>
+            <div>
+                <h1 class="text-3xl font-black text-slate-900 tracking-tight">Результаты: {{ quiz.title }}</h1>
+                <p class="text-slate-500 mt-2">Ваш результат прохождения теста</p>
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 pt-4">
+                <div class="p-6 bg-slate-50 rounded-2xl border border-slate-100">
+                    <div class="text-3xl font-black text-indigo-600">{{ result.score }}%</div>
+                    <div class="text-[10px] uppercase tracking-widest font-bold text-slate-400 mt-1">Общий балл</div>
+                </div>
+                <div class="p-6 bg-slate-50 rounded-2xl border border-slate-100">
+                    <div class="text-3xl font-black text-emerald-600">{{ quiz_results.correct_count }} / {{ quiz_results.total_questions }}</div>
+                    <div class="text-[10px] uppercase tracking-widest font-bold text-slate-400 mt-1">Верно</div>
+                </div>
+                <div class="p-6 bg-slate-50 rounded-2xl border border-slate-100">
+                    <div class="text-3xl font-black text-rose-500">{{ quiz_results.incorrect_count }}</div>
+                    <div class="text-[10px] uppercase tracking-widest font-bold text-slate-400 mt-1">Ошибки</div>
                 </div>
             </div>
-        {% endfor %}
+        </div>
+    </div>
+
+    <!-- Detailed Results Section -->
+    <div class="space-y-6">
+        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+            <h3 class="text-xl font-bold text-slate-900 flex items-center">
+                <span class="material-icons text-indigo-600 mr-2">fact_check</span>
+                Детальный разбор
+            </h3>
+            
+            <div id="filterButtons" class="inline-flex p-1 bg-slate-100 rounded-xl">
+                <button class="px-4 py-2 text-xs font-bold rounded-lg transition-all filter-btn active" data-filter="all">Все</button>
+                <button class="px-4 py-2 text-xs font-bold rounded-lg transition-all filter-btn" data-filter="correct text-emerald-600">Верные</button>
+                <button class="px-4 py-2 text-xs font-bold rounded-lg transition-all filter-btn" data-filter="incorrect text-rose-600">Ошибки</button>
+            </div>
+        </div>
+       
+        <div class="space-y-4">
+            {% for detail in quiz_results.results %}
+                <div class="bg-white rounded-2xl shadow-sm border border-slate-100 overflow-hidden question-card filtered-{{ 'incorrect' if not detail.is_correct else 'correct' }}">
+                    <div class="flex">
+                        <div class="w-2 {% if detail.is_correct %}bg-emerald-500{% else %}bg-rose-500{% endif %}"></div>
+                        <div class="p-6 flex-grow">
+                            <div class="flex items-start justify-between gap-4 mb-4">
+                                <h4 class="font-bold text-slate-900 leading-tight">
+                                    <span class="text-slate-300 mr-2">#{{ loop.index }}</span>
+                                    {{ detail.question_text }}
+                                </h4>
+                                <span class="shrink-0 inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-bold {% if detail.is_correct %}bg-emerald-100 text-emerald-700{% else %}bg-rose-100 text-rose-700{% endif %}">
+                                    <span class="material-icons text-[14px] mr-1">{% if detail.is_correct %}check{% else %}close{% endif %}</span>
+                                    {% if detail.is_correct %}Верно{% else %}Ошибка{% endif %}
+                                </span>
+                            </div>
+                          
+                            <div class="grid sm:grid-cols-2 gap-6">
+                                <div class="space-y-2">
+                                    <div class="text-[10px] uppercase tracking-widest font-bold text-slate-400">Ваш ответ</div>
+                                    {% if detail.user_answers %}
+                                        <ul class="space-y-1">
+                                            {% for ans_text in detail.user_answers_text %}
+                                                <li class="text-sm font-medium {% if detail.is_correct %}text-emerald-600{% else %}text-rose-600{% endif %} flex items-center">
+                                                    <span class="material-icons text-sm mr-2">radio_button_checked</span>
+                                                    {{ ans_text }}
+                                                </li>
+                                            {% endfor %}
+                                        </ul>
+                                    {% else %}
+                                        <div class="text-sm text-amber-500 italic">Ответ не выбран</div>
+                                    {% endif %}
+                                </div>
+                              
+                                <div class="space-y-2">
+                                    <div class="text-[10px] uppercase tracking-widest font-bold text-slate-400">Правильный ответ</div>
+                                    <ul class="space-y-1">
+                                        {% for ans_text in detail.correct_answers_text %}
+                                            <li class="text-sm font-medium text-emerald-600 flex items-center">
+                                                <span class="material-icons text-sm mr-2">check_circle</span>
+                                                {{ ans_text }}
+                                            </li>
+                                        {% endfor %}
+                                    </ul>
+                                </div>
+                            </div>
+                          
+                            {% if not detail.is_correct %}
+                                <div class="mt-6 p-4 bg-rose-50 rounded-xl border border-rose-100 flex items-start">
+                                    <span class="material-icons text-rose-400 mr-3">info</span>
+                                    <p class="text-xs text-rose-700 leading-relaxed">
+                                        <span class="font-bold">Подсказка:</span> Ваш выбор не совпал с правильными ответами. Попробуйте еще раз, чтобы закрепить материал!
+                                    </p>
+                                </div>
+                            {% endif %}
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
       
-        <div class="text-right mt-3">
-            <a href="{{ url_for('quiz.list_quizzes') }}" class="btn btn-primary">Back to Quizzes</a>
+        <div class="flex justify-center pt-8">
+            <a href="{{ url_for('quiz.list_quizzes') }}" 
+               class="inline-flex items-center px-8 py-4 bg-slate-900 hover:bg-slate-800 text-white font-bold rounded-2xl transition-all shadow-xl shadow-slate-200 hover:-translate-y-1 active:translate-y-0">
+                <span class="material-icons mr-2">arrow_back</span>
+                Вернуться к списку
+            </a>
         </div>
     </div>
 </div>
 
 <style>
-    /* Стили для фильтра (добавь в material.css для глобальности) */
-   /* Стили для фильтра и выделения в result.html */
-.filter-btn {
-    transition: background-color 250ms ease;
-    border-radius: 4px;
-}
-
-.filter-btn.active {
-    background-color: var(--primary-dark) !important;
-    color: white;
-}
-
-.question-card.filtered {
-    display: none;
-}
-
-.question-card.filtered-correct {
-    display: block;
-}
-
-.question-card.filtered-incorrect {
-    display: block;
-}
-
-.border-left-error { 
-    border-left: 4px solid var(--error); 
-}
-
-.border-left-success { 
-    border-left: 4px solid var(--success); 
-}
-
-.text-success { 
-    color: var(--success); 
-}
-
-.text-error { 
-    color: var(--error); 
-}
-
-.text-secondary { 
-    color: var(--text-secondary); 
-}
-
-.explanation-box {
-    background-color: rgba(220, 53, 69, 0.1); 
-    border-radius: 4px; 
-    border-left: 4px solid var(--error);
-}
-
-@media (max-width: 768px) {
-    #filterButtons {
-        flex-direction: column;
-        align-items: stretch;
+    .filter-btn.active {
+        background-color: white;
+        box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1);
+        color: #4f46e5;
     }
-    
-    .filter-btn.ml-1 {
-        margin-left: 0;
-        margin-top: 0.5rem;
-    }
-}
+    .question-card.filtered { display: none; }
 </style>
 {% endblock %}
 
 {% block scripts %}
 <script>
-    // JS для фильтра по корректности (vanilla, без зависимостей)
-// JS для фильтра по корректности в result.html
 document.addEventListener('DOMContentLoaded', function() {
     const filterBtns = document.querySelectorAll('.filter-btn');
     const questionCards = document.querySelectorAll('.question-card');
    
     filterBtns.forEach(btn => {
         btn.addEventListener('click', function() {
-            const filter = this.dataset.filter;
-           
-            // Убираем active с всех кнопок
+            const filter = this.dataset.filter.split(' ')[0];
             filterBtns.forEach(b => b.classList.remove('active'));
-            // Добавляем active на текущую
             this.classList.add('active');
            
-            // Фильтруем cards
             questionCards.forEach(card => {
-                card.classList.remove('filtered-correct', 'filtered-incorrect');
-                card.classList.add('filtered');
-               
                 if (filter === 'all') {
                     card.classList.remove('filtered');
-                    card.classList.add(`filtered-${card.classList.contains('border-left-success') ? 'correct' : 'incorrect'}`);
-                } else if (filter === 'correct' && card.classList.contains('border-left-success')) {
-                    card.classList.remove('filtered');
-                    card.classList.add('filtered-correct');
-                } else if (filter === 'incorrect' && card.classList.contains('border-left-error')) {
-                    card.classList.remove('filtered');
-                    card.classList.add('filtered-incorrect');
+                } else {
+                    card.classList.toggle('filtered', !card.classList.contains(`filtered-${filter}`));
                 }
             });
         });
