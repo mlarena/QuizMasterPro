@@ -4,43 +4,79 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>QuizMasterPro - {% block title %}{% endblock %}</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Material Icons -->
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/material.css') }}">
+    <style>
+        body { font-family: 'Inter', sans-serif; }
+    </style>
 </head>
-<body>
-    <nav class="navbar">
-        <a href="{{ url_for('main.index') }}" class="navbar-brand">QuizMasterPro</a>
-        <div class="navbar-menu">
-            {% if current_user.is_authenticated %}
-                {% if current_user.is_admin %}
-                    <a href="{{ url_for('admin.dashboard') }}" class="navbar-item">Admin Dashboard</a>
-                    <a href="{{ url_for('admin.results_overview') }}" class="navbar-item">Test Results</a>
-                {% endif %}
-                <a href="{{ url_for('quiz.list_quizzes') }}" class="navbar-item">Quizzes</a>
-                <a href="{{ url_for('auth.logout') }}" class="navbar-item">Logout</a>
-                <div class="user-info">
-                    <span class="avatar">{{ current_user.username[0] | upper }}</span>
-                    <span>{{ current_user.username }}</span>
+<body class="bg-gray-50 min-h-screen flex flex-col">
+    <nav class="bg-slate-900 text-white shadow-lg">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-16 items-center">
+                <div class="flex items-center">
+                    <a href="{{ url_for('main.index') }}" class="flex items-center space-x-2 text-xl font-bold tracking-tight">
+                        <span class="material-icons text-indigo-400">quiz</span>
+                        <span>QuizMasterPro</span>
+                    </a>
+                    <div class="hidden md:block ml-10">
+                        <div class="flex items-baseline space-x-4">
+                            {% if current_user.is_authenticated %}
+                                <a href="{{ url_for('quiz.list_quizzes') }}" class="px-3 py-2 rounded-md text-sm font-medium hover:bg-slate-800 transition">Квизы</a>
+                                {% if current_user.is_admin %}
+                                    <a href="{{ url_for('admin.dashboard') }}" class="px-3 py-2 rounded-md text-sm font-medium hover:bg-slate-800 transition">Админ-панель</a>
+                                    <a href="{{ url_for('admin.results_overview') }}" class="px-3 py-2 rounded-md text-sm font-medium hover:bg-slate-800 transition">Результаты</a>
+                                {% endif %}
+                            {% endif %}
+                        </div>
+                    </div>
                 </div>
-            {% else %}
-                <a href="{{ url_for('auth.login') }}" class="navbar-item">Login</a>
-            {% endif %}
+                <div class="flex items-center space-x-4">
+                    {% if current_user.is_authenticated %}
+                        <div class="flex items-center space-x-3">
+                            <div class="flex flex-col items-end">
+                                <span class="text-sm font-medium">{{ current_user.username }}</span>
+                                <a href="{{ url_for('auth.logout') }}" class="text-xs text-slate-400 hover:text-white transition">Выйти</a>
+                            </div>
+                            <div class="h-10 w-10 rounded-full bg-indigo-600 flex items-center justify-center font-bold text-white shadow-inner">
+                                {{ current_user.username[0] | upper }}
+                            </div>
+                        </div>
+                    {% else %}
+                        <a href="{{ url_for('auth.login') }}" class="bg-indigo-600 hover:bg-indigo-700 px-4 py-2 rounded-lg text-sm font-semibold transition shadow-md">Войти</a>
+                    {% endif %}
+                </div>
+            </div>
         </div>
     </nav>
    
-    <div class="container">
+    <main class="flex-grow container mx-auto px-4 py-8 max-w-7xl">
         {% with messages = get_flashed_messages(with_categories=true) %}
             {% if messages %}
+                <div class="space-y-4 mb-6">
                 {% for category, message in messages %}
-                    <div class="toast toast-{{ category }}">{{ message }}</div>
+                    <div class="p-4 rounded-lg border {% if category == 'error' %}bg-red-50 border-red-200 text-red-700{% else %}bg-green-50 border-green-200 text-green-700{% endif %} flex justify-between items-center shadow-sm">
+                        <span>{{ message }}</span>
+                        <button onclick="this.parentElement.remove()" class="text-current opacity-50 hover:opacity-100">&times;</button>
+                    </div>
                 {% endfor %}
+                </div>
             {% endif %}
         {% endwith %}
        
         {% block content %}
         {% endblock %}
-    </div>
+    </main>
+
+    <footer class="bg-white border-t py-6 mt-auto">
+        <div class="container mx-auto px-4 text-center text-gray-500 text-sm">
+            &copy; 2024 QuizMasterPro. Все права защищены.
+        </div>
+    </footer>
    
     {% block scripts %}
     {% endblock %}

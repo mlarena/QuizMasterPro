@@ -139,22 +139,22 @@ c) \help SELECT
 d) \syntax SELECT
 Правильный ответ: b
 
-21. Как показать текущие настройки параметров конфигурации - хуйня полная удалить
+21. Как показать текущие настройки параметров конфигурации
 a) \settings
 b) \show all
 c) \config
 d) SHOW ALL;
-Правильный ответ: b
+Правильный ответ: d
 
 22. Как скопировать содержимое таблицы users в файл users.csv с разделителем-запятой?
-a) \copy users TO 'users.csv' WITH CSV
+a) \copy users TO 'C:\test\users.csv' WITH CSV
 b) \copy users TO 'users.csv' DELIMITER ','
 c) COPY users TO 'users.csv' WITH CSV
 d) \export users TO 'users.csv' CSV
 Правильный ответ: a
 
 23. Как отобразить список всех подключений к текущей базе данных?
-a) \conninfo
+a) SELECT count(*) FROM pg_stat_activity WHERE datname = current_database();
 b) \connections
 c) \whoami
 d) \dbinfo
@@ -165,7 +165,7 @@ a) \format html
 b) \H
 c) \html on
 d) psql не поддерживает прямой вывод в HTML
-Правильный ответ: d
+Правильный ответ: b
 
 25. Как показать информацию о текущем подключении (пользователь, база данных, хост)?
 a) \conninfo

@@ -48,6 +48,31 @@ def login():
     
     return render_template('auth/login.html')
 
+@auth_bp.route('/register', methods=['GET', 'POST'])
+def register():
+    if current_user.is_authenticated:
+        return redirect(url_for('quiz.list_quizzes'))
+    
+    if request.method == 'POST':
+        username = request.form.get('username')
+        password = request.form.get('password')
+        is_admin = request.form.get('is_admin') == 'on'
+        
+        if User.query.filter_by(username=username).first():
+            flash('Username already exists', 'error')
+            return redirect(url_for('auth.register'))
+        
+        user = User(username=username, is_admin=is_admin)
+        user.set_password(password)
+        db.session.add(user)
+        db.session.commit()
+        
+        logger.info(f'New user registered: {username} (Admin: {is_admin})')
+        flash('Registration successful! Please login.', 'success')
+        return redirect(url_for('auth.login'))
+    
+    return render_template('auth/register.html')
+
 @auth_bp.route('/logout')
 @login_required
 def logout():
